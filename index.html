@@ -4,24 +4,24 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Семейный психолог онлайн — Анна Щеголихина</title>
-  <meta name="description" content="Онлайн-консультации семейного психолога для пар и семей. Тёплое пространство, где можно услышать друг друга. РФ и мир, на русском. Запись в календаре на сайте." />
+  <meta name="description" content="Онлайн-консультации семейного психолога для пар и семей: кризисы, ссоры, измена, отдаление. Без поиска виноватого. Запись в календаре на сайте." />
   <meta name="robots" content="index, follow" />
-  <meta name="theme-color" content="#FFF3E3" />
+  <meta name="theme-color" content="#1F3D3A" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="assets/favicon-192.png" />
   <link rel="canonical" href="https://психолог-семейный-онлайн.рф/" />
   <meta property="og:title" content="Семейный психолог онлайн — Анна Щеголихина" />
-  <meta property="og:description" content="Онлайн для пар и семей — без давления и готовых советов. Запись в календаре." />
+  <meta property="og:description" content="Консультации для пар и семей онлайн. Когда разговор дома идёт по кругу — нужен разговор, где слышат обоих." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://психолог-семейный-онлайн.рф/" />
   <meta property="og:image" content="https://психолог-семейный-онлайн.рф/assets/portrait-920.webp" />
   <meta property="og:locale" content="ru_RU" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&family=Literata:opsz,wght@7..72,500;7..72,600&display=swap" />
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&family=Literata:opsz,wght@7..72,500;7..72,600&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
   <noscript>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&family=Literata:opsz,wght@7..72,500;7..72,600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet" />
   </noscript>
   <script src="assets/cookie-notice.js" defer></script>
   <script src="assets/consent-analytics.js" defer></script>
@@ -46,997 +46,874 @@
   </script>
   <style>
     :root {
-      --cream: #FFF3E3;
-      --rose: #D4A5A5;
-      --lav: #B8A9C9;
-      --ink: #4A3F45;
-      --muted: #7A6A70;
-      --accent: #9a6b7a;
-      --font: Nunito, system-ui, sans-serif;
-      --serif: Literata, Georgia, serif;
-      --rose-x: 58%;
-      --rose-y: 40%;
-      --lav-x: 70%;
-      --lav-y: 44%;
-      --blob-scale: 1;
-      --blob-mute: 0;
-      --escape-opacity: 1;
-      --nimbus-opacity: 0.9;
+      --ink: #142428;
+      --muted: #5A6B70;
+      --line: rgba(20, 36, 40, 0.12);
+      --paper: #F4F7F6;
+      --paper-2: #E7EFEC;
+      --teal: #1F3D3A;
+      --teal-mid: #2F6A63;
+      --teal-soft: #4F8F86;
+      --sand: #E2C9A8;
+      --white: #FFFFFF;
+      --font: "Manrope", "Segoe UI", sans-serif;
+      --display: "Fraunces", Georgia, serif;
+      --shadow: 0 18px 50px rgba(20, 36, 40, 0.12);
+      --radius: 4px;
     }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
       font-family: var(--font);
-      background: var(--cream);
       color: var(--ink);
-      overflow-x: hidden;
-      line-height: 1.55;
-    }
-
-    .bar {
-      display: none;
-    }
-    .footer-links {
-      display: flex; flex-wrap: wrap; gap: 0.65rem 1.1rem;
-      margin-top: 0.85rem; font-size: 0.82rem;
-    }
-    .footer-links a { color: var(--muted); text-decoration: none; }
-    .footer-links a:hover { color: var(--accent); }
-    .ochno-note {
-      margin-top: 1.25rem; padding: 0.95rem 1.15rem; border-radius: 18px;
-      background: rgba(255,255,255,0.45); border: 1px solid rgba(255,255,255,0.8);
-      font-size: 0.9rem; color: var(--muted); max-width: 52ch;
-    }
-    .ochno-note a { color: var(--accent); font-weight: 700; text-decoration: none; }
-    .bar a { color: var(--accent); text-decoration: none; font-weight: 700; }
-    .bar .tag {
-      font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase;
-      padding: 0.25rem 0.55rem; border-radius: 999px;
-      border: 1px solid var(--rose); color: var(--accent);
-    }
-
-    /* Scroll-following clay blobs — круглые, узнаваемые, справа как в оригинале V */
-    .blob-layer {
-      position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden;
-    }
-    .scroll-blob {
-      position: absolute;
-      width: min(236px, 28vw);
-      height: min(236px, 28vw);
-      left: var(--rose-x); top: var(--rose-y);
-      transform: translate(-50%, -50%) scale(var(--blob-scale));
-      opacity: calc(0.98 - var(--blob-mute) * 0.16);
-      filter: saturate(calc(1 - var(--blob-mute) * 0.1));
-      will-change: transform, opacity, left, top;
-    }
-    .scroll-blob.lav {
-      left: var(--lav-x); top: var(--lav-y);
-    }
-    .blob-core {
-      display: block;
-      width: 100%; height: 100%;
-      border-radius: 50%;
-      filter: blur(0.5px);
-      box-shadow:
-        inset -12px -16px 30px rgba(255,255,255,0.55),
-        inset 10px 14px 28px rgba(120,80,100,0.18),
-        0 20px 40px rgba(160,120,140, calc(0.25 - var(--blob-mute) * 0.1));
-      animation: breathe 5s ease-in-out infinite;
-    }
-    .scroll-blob.rose .blob-core {
-      background: linear-gradient(145deg, #f0cfcf, var(--rose) 55%, #c4899a);
-    }
-    .scroll-blob.lav .blob-core {
-      background: linear-gradient(215deg, #ddd0ea, var(--lav) 50%, #9e8fb8);
-      animation-delay: 0.4s;
-    }
-    .blob-nimbus {
-      position: absolute;
-      left: calc((var(--rose-x) + var(--lav-x)) / 2);
-      top: calc((var(--rose-y) + var(--lav-y)) / 2);
-      width: min(340px, 42vw); height: min(340px, 42vw);
-      transform: translate(calc(-50% + 22px), calc(-50% - 14px)) scale(var(--blob-scale));
-      border-radius: 50%;
-      background: rgba(255,255,255,0.2);
-      border: 1px solid rgba(255,255,255,0.22);
-      box-shadow: 0 0 50px rgba(255,255,255,0.18), inset 0 0 40px rgba(184,169,201,0.12);
-      opacity: var(--nimbus-opacity);
-      pointer-events: none;
-      transition: opacity 0.4s ease;
-    }
-    .escape-circle {
-      position: fixed; z-index: 0; right: -88px; top: 12%;
-      width: min(240px, 32vw); height: min(240px, 32vw); border-radius: 50%;
-      background: rgba(255,255,255,0.18);
-      border: 1px solid rgba(255,255,255,0.22);
-      box-shadow: 0 0 70px rgba(255,255,255,0.12);
-      backdrop-filter: blur(14px);
-      opacity: var(--escape-opacity);
-      animation: breathe 5s ease-in-out infinite 0.8s;
-      pointer-events: none;
-    }
-    @keyframes breathe {
-      0%, 100% { transform: scale(0.96); }
-      50% { transform: scale(1.05); }
-    }
-
-    .aurora {
-      position: fixed; inset: -12%; z-index: -1; pointer-events: none;
       background:
-        radial-gradient(ellipse 50% 45% at 20% 30%, rgba(184,169,201,0.5), transparent 60%),
-        radial-gradient(ellipse 45% 40% at 80% 25%, rgba(212,165,165,0.45), transparent 55%),
-        radial-gradient(ellipse 55% 45% at 55% 80%, rgba(255,220,190,0.65), transparent 60%),
-        var(--cream);
-      animation: aurora 12s ease-in-out infinite alternate;
-      filter: blur(2px);
+        radial-gradient(ellipse 70% 50% at 100% 0%, rgba(79, 143, 134, 0.18), transparent 55%),
+        radial-gradient(ellipse 55% 45% at 0% 35%, rgba(226, 201, 168, 0.22), transparent 50%),
+        linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 48%, var(--paper) 100%);
+      line-height: 1.55;
+      overflow-x: hidden;
     }
-    @keyframes aurora {
-      from { transform: scale(1) translate(0,0); }
-      to { transform: scale(1.05) translate(-1.5%, 1%); }
-    }
-
-    .grid-soft {
-      position: fixed; inset: 0; z-index: 0; pointer-events: none;
-      background-image:
-        linear-gradient(rgba(74,63,69,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(74,63,69,0.04) 1px, transparent 1px);
-      background-size: 80px 80px;
+    img { max-width: 100%; display: block; }
+    a { color: var(--teal-mid); }
+    :focus-visible {
+      outline: 2px solid var(--teal-soft);
+      outline-offset: 3px;
     }
 
-    .wrap { position: relative; z-index: 1; }
+    .site-nav {
+      position: absolute;
+      z-index: 4;
+      top: 0; left: 0; right: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.15rem clamp(1rem, 3vw, 2rem);
+      color: rgba(255,255,255,0.9);
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+    .site-nav a {
+      color: inherit;
+      text-decoration: none;
+      opacity: 0.88;
+    }
+    .site-nav a:hover { opacity: 1; }
+    .site-nav .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem 1.25rem;
+    }
+    @media (max-width: 640px) {
+      .site-nav .nav-links { display: none; }
+    }
 
     .hero {
       position: relative;
-      width: min(1440px, 100%);
-      margin: 0 auto;
-      min-height: min(100vh, 820px);
-      max-height: 100vh;
+      min-height: 100svh;
+      display: grid;
+      align-items: end;
+      color: #fff;
       overflow: hidden;
       isolation: isolate;
     }
-    @media (max-width: 900px) {
-      .hero { max-height: none; min-height: 100svh; }
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
     }
-
-    .nav-float {
-      position: absolute; z-index: 6; top: 1.1rem; left: 1.2rem; right: 1.2rem;
-      display: flex; flex-wrap: wrap; gap: 0.55rem;
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 18%;
+      transform: scale(1.04);
+      animation: heroSettle 1.4s cubic-bezier(0.22, 1, 0.36, 1) both;
     }
-    .pill {
-      padding: 0.6rem 1rem; border-radius: 999px;
-      background: rgba(255,255,255,0.45);
-      border: 1px solid rgba(255,255,255,0.7);
-      backdrop-filter: blur(18px);
-      font-size: 0.75rem; font-weight: 700; color: var(--ink);
-      text-decoration: none;
-      box-shadow: 0 10px 30px rgba(180,140,150,0.15);
-      transition: transform 0.25s;
+    .hero-shade {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(105deg, rgba(15, 28, 30, 0.88) 8%, rgba(15, 28, 30, 0.55) 48%, rgba(15, 28, 30, 0.28) 100%),
+        linear-gradient(180deg, rgba(15, 28, 30, 0.25) 0%, rgba(15, 28, 30, 0.15) 40%, rgba(15, 28, 30, 0.82) 100%);
     }
-    .pill:hover { transform: translateY(-2px) scale(1.03); }
-
-    .brand {
-      font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--accent); font-weight: 800; margin-bottom: 0.75rem;
+    .hero-inner {
+      width: min(1180px, 100%);
+      margin: 0 auto;
+      padding: 7.5rem clamp(1rem, 3vw, 2rem) 3.4rem;
+    }
+    .hero-brand {
+      font-family: var(--display);
+      font-size: clamp(2.55rem, 7vw, 4.6rem);
+      font-weight: 600;
+      letter-spacing: -0.035em;
+      line-height: 1.02;
+      max-width: 14ch;
+      animation: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+    .hero-brand span {
+      display: block;
+      margin-top: 0.2em;
+      color: var(--sand);
     }
     .hero h1 {
-      font-family: var(--serif);
-      font-size: clamp(1.9rem, 3.5vw, 2.9rem);
-      font-weight: 600; line-height: 1.12; letter-spacing: -0.02em;
-      max-width: 14ch;
+      margin-top: 1.15rem;
+      max-width: 24ch;
+      font-size: clamp(1.2rem, 2.4vw, 1.55rem);
+      font-weight: 700;
+      line-height: 1.3;
+      animation: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.12s both;
     }
-    .hero h1 .accent-line {
-      background-image: linear-gradient(90deg, var(--rose), var(--lav));
-      background-size: 0% 0.14em;
-      background-repeat: no-repeat;
-      background-position: 0 92%;
-      animation: underlineGrow 1.1s cubic-bezier(0.22,1,0.36,1) forwards 0.6s;
+    .hero .lead {
+      margin-top: 0.85rem;
+      max-width: 36ch;
+      color: rgba(255,255,255,0.82);
+      font-size: 1.02rem;
+      animation: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.22s both;
     }
-    @keyframes underlineGrow { to { background-size: 100% 0.14em; } }
-    .lead {
-      margin-top: 0.85rem; color: var(--muted); max-width: 34ch; font-size: 0.98rem;
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 1.55rem;
+      animation: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.32s both;
     }
     .btn {
-      display: inline-flex; margin-top: 1.25rem; padding: 0.9rem 1.45rem;
-      border-radius: 999px;
-      background: linear-gradient(90deg, var(--rose), var(--lav));
-      color: #fff; text-decoration: none; font-weight: 800;
-      box-shadow: 0 12px 30px rgba(184,169,201,0.35);
-      transition: transform 0.2s;
-    }
-    .btn:hover { transform: translateY(-2px) scale(1.02); }
-    .btn-ghost {
-      background: rgba(255,255,255,0.55);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 3rem;
+      padding: 0.85rem 1.35rem;
+      border: 0;
+      border-radius: var(--radius);
+      background: var(--sand);
       color: var(--ink);
-      border: 1px solid rgba(255,255,255,0.85);
-      box-shadow: none;
-      margin-left: 0.65rem;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 0.95rem;
+      transition: transform 0.2s ease, background 0.2s ease;
     }
-    .cta-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem; }
+    .btn:hover { transform: translateY(-2px); background: #ecd4b4; }
+    .btn-dark {
+      background: var(--teal);
+      color: #fff;
+    }
+    .btn-dark:hover { background: #274d49; }
+    .btn-ghost {
+      background: transparent;
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.45);
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,0.08); }
+    .btn-line {
+      background: transparent;
+      color: var(--teal);
+      border: 1px solid rgba(31, 61, 58, 0.28);
+    }
+    .btn-line:hover { background: rgba(31, 61, 58, 0.05); }
 
-    .glass {
-      position: absolute; z-index: 5;
-      left: 6%; top: 50%; transform: translateY(-45%);
-      width: min(460px, 42%);
-      padding: 1.7rem 1.55rem;
-      border-radius: 28px;
-      background: rgba(255,255,255,0.42);
-      border: 1px solid rgba(255,255,255,0.75);
-      backdrop-filter: blur(22px);
-      -webkit-backdrop-filter: blur(22px);
-      box-shadow: 0 24px 60px rgba(180,140,150,0.18);
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: none; }
     }
-    @media (max-width: 900px) {
-      .glass {
-        position: relative; left: auto; top: auto; transform: none;
-        width: auto; margin: 52vh 1.25rem 2rem;
-      }
-      .escape-circle { top: 10%; right: -60px; opacity: calc(var(--escape-opacity) * 0.7); }
+    @keyframes heroSettle {
+      from { transform: scale(1.08); }
+      to { transform: scale(1.04); }
     }
 
-    .page { width: min(1080px, 100%); margin: 0 auto; padding: 0 1.25rem 3rem; }
+    .wrap {
+      width: min(1080px, 100%);
+      margin: 0 auto;
+      padding: 0 clamp(1rem, 3vw, 1.5rem) 4rem;
+    }
 
     .sec {
-      padding: 4.5rem 0 0;
-      opacity: 0; transform: translateY(22px);
+      padding-top: 4.75rem;
+      scroll-margin-top: 1rem;
+      opacity: 0;
+      transform: translateY(18px);
       transition: opacity 0.7s ease, transform 0.7s ease;
     }
     .sec.is-in { opacity: 1; transform: none; }
-    .eyebrow {
-      font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--accent); font-weight: 800; margin-bottom: 0.5rem;
-    }
-    .sec-head { margin-bottom: 1.75rem; max-width: 36ch; }
-    .sec-head h2 {
-      font-family: var(--serif);
-      font-size: clamp(1.65rem, 3.2vw, 2.25rem);
-      font-weight: 600; line-height: 1.15;
-    }
-    .sec-head p { margin-top: 0.55rem; color: var(--muted); }
 
-    /* Voices — dual gaze on split blobs */
-    .voices {
-      position: relative;
-      min-height: min(85vh, 720px);
-      display: grid; align-items: center;
-      padding: 5rem 0 3rem;
+    .eyebrow {
+      margin-bottom: 0.55rem;
+      color: var(--teal-mid);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
-    .voices-grid {
-      display: grid; gap: 2rem;
-      position: relative; z-index: 2;
+    .sec-head { max-width: 34ch; margin-bottom: 1.6rem; }
+    .sec-head h2 {
+      font-family: var(--display);
+      font-size: clamp(1.85rem, 3.6vw, 2.55rem);
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1.12;
+    }
+    .sec-head p {
+      margin-top: 0.65rem;
+      color: var(--muted);
+      max-width: 46ch;
+    }
+
+    .pain-list {
+      display: grid;
+      gap: 0;
+      border-top: 1px solid var(--line);
+    }
+    .pain-list li {
+      list-style: none;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1rem;
+      padding: 1.15rem 0;
+      border-bottom: 1px solid var(--line);
+      align-items: baseline;
+    }
+    .pain-list .n {
+      font-family: var(--display);
+      color: var(--teal-soft);
+      font-size: 1.15rem;
+      font-weight: 600;
+      min-width: 1.6rem;
+    }
+    .pain-list strong {
+      display: block;
+      font-size: 1.05rem;
+      margin-bottom: 0.2rem;
+    }
+    .pain-list span { color: var(--muted); font-size: 0.95rem; }
+
+    .split {
+      display: grid;
+      gap: 2rem;
+    }
+    @media (min-width: 860px) {
+      .split { grid-template-columns: 1.05fr 0.95fr; align-items: start; gap: 3rem; }
+    }
+
+    .steps { display: grid; gap: 1.35rem; }
+    .step {
+      padding-left: 1rem;
+      border-left: 2px solid rgba(47, 106, 99, 0.35);
+    }
+    .step h3 {
+      font-family: var(--display);
+      font-size: 1.28rem;
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+    }
+    .step p { color: var(--muted); max-width: 42ch; }
+
+    .promise {
+      margin-top: 0.5rem;
+      padding: 1.4rem 0 0;
+      border-top: 1px solid var(--line);
+      color: var(--ink);
+      font-family: var(--display);
+      font-size: clamp(1.35rem, 2.5vw, 1.7rem);
+      font-weight: 600;
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+      max-width: 22ch;
+    }
+    .promise small {
+      display: block;
+      margin-top: 0.7rem;
+      font-family: var(--font);
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--muted);
+      letter-spacing: 0;
+      max-width: 40ch;
+      line-height: 1.5;
+    }
+
+    .about {
+      display: grid;
+      gap: 1.75rem;
     }
     @media (min-width: 800px) {
-      .voices-grid { grid-template-columns: 1fr 1fr; gap: 3rem; }
+      .about { grid-template-columns: 0.85fr 1.15fr; align-items: center; gap: 2.5rem; }
     }
-    .voice-card {
-      padding: 1.6rem 1.4rem;
-      border-radius: 28px;
-      background: rgba(255,255,255,0.42);
-      border: 1px solid rgba(255,255,255,0.8);
-      backdrop-filter: blur(16px);
-      box-shadow: 0 16px 40px rgba(180,140,150,0.12);
-    }
-    .voice-card.women { border-top: 3px solid var(--rose); }
-    .voice-card.men { border-top: 3px solid var(--lav); }
-    .voice-card .tag {
-      font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
-      font-weight: 800; margin-bottom: 0.65rem;
-    }
-    .voice-card.women .tag { color: #b07878; }
-    .voice-card.men .tag { color: #7d6f96; }
-    .voice-card h3 {
-      font-family: var(--serif); font-size: 1.35rem; font-weight: 600; margin-bottom: 0.45rem;
-    }
-    .voice-card p { color: var(--muted); font-size: 0.95rem; }
-    .voice-card .placeholder {
-      font-size: 0.85rem; font-style: italic; color: var(--muted); opacity: 0.75; margin-top: 0.75rem;
-    }
-    .voices-note {
-      grid-column: 1 / -1; text-align: center; color: var(--muted); font-size: 0.9rem;
-      margin-top: 0.5rem;
-    }
-
-    /* Kinetic mid-page */
-    .kinetic-sec { text-align: center; padding-top: 5rem; }
-    .kinetic {
-      position: relative; min-height: 4.2rem; margin: 1rem auto 0.75rem; max-width: 16ch;
-    }
-    .kw {
-      font-family: var(--serif);
-      font-size: clamp(2rem, 5vw, 3.2rem);
-      font-weight: 600; letter-spacing: -0.02em;
-      position: absolute; left: 0; right: 0; top: 0;
-      opacity: 0; transform: translateY(16px);
-      transition: opacity 0.5s ease, transform 0.5s ease, color 0.4s;
-    }
-    .kw.is-active { opacity: 1; transform: none; }
-    .kw.is-done { opacity: 0; transform: translateY(-14px); }
-    .kw.final.is-active {
-      background: linear-gradient(90deg, var(--rose), var(--lav));
-      -webkit-background-clip: text; background-clip: text; color: transparent;
-    }
-
-    /* Scroll-lit word rows */
-    .word-rows { display: grid; gap: 0.75rem; }
-    .word-row {
-      padding: 1.25rem 1.3rem;
-      border-radius: 22px;
-      background: rgba(255,255,255,0.35);
-      border: 1px solid rgba(255,255,255,0.7);
-      transition: background 0.5s ease, border-color 0.5s ease, transform 0.5s ease, box-shadow 0.5s ease, color 0.5s;
-    }
-    .word-row .phase {
-      font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
-      font-weight: 800; color: var(--accent); margin-bottom: 0.35rem;
-    }
-    .word-row h3 { font-family: var(--serif); font-size: 1.25rem; font-weight: 600; margin-bottom: 0.3rem; }
-    .word-row p { color: var(--muted); font-size: 0.93rem; max-width: 48ch; }
-    .word-row.is-lit {
-      background: linear-gradient(135deg, rgba(212,165,165,0.55), rgba(184,169,201,0.5));
-      border-color: rgba(255,255,255,0.9);
-      color: #3d3338;
-      transform: translateX(6px);
-      box-shadow: 0 18px 44px rgba(160,120,140,0.2);
-    }
-    .word-row.is-lit .phase { color: #fff; }
-    .word-row.is-lit h3 { color: #2f282c; }
-    .word-row.is-lit p { color: rgba(47,40,44,0.78); }
-    .word-row.is-past { opacity: 0.55; transform: scale(0.985); }
-
-    .prob-grid {
-      display: grid; gap: 1rem;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    }
-    .prob-card {
-      padding: 1.35rem 1.2rem; border-radius: 26px;
-      background: rgba(255,255,255,0.55);
-      border: 1px solid rgba(255,255,255,0.85);
-      backdrop-filter: blur(14px);
-      box-shadow: 0 12px 32px rgba(180,140,150,0.1);
-    }
-    .prob-card .dot {
-      width: 12px; height: 12px; border-radius: 50%; margin-bottom: 0.75rem;
-      background: linear-gradient(135deg, var(--rose), var(--lav));
-      animation: breathe 5s ease-in-out infinite;
-    }
-    .prob-card h3 { font-family: var(--serif); font-size: 1.1rem; margin-bottom: 0.35rem; }
-    .prob-card p { font-size: 0.9rem; color: var(--muted); }
-
-    .recog { display: grid; gap: 1.75rem; }
-    @media (min-width: 800px) { .recog { grid-template-columns: 1.15fr 0.85fr; align-items: center; } }
-    .q-item {
-      padding: 1rem 1.2rem; margin-bottom: 0.65rem; border-radius: 999px;
-      background: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.8);
-      font-weight: 700; font-size: 0.95rem;
-    }
-    .support-circle {
-      position: relative; width: min(240px, 78%); aspect-ratio: 1; margin: 0 auto;
-    }
-    .support-circle .ring {
-      position: absolute; inset: 0; border-radius: 50%;
-      background: #FFF9F2;
-      border: none;
-      box-shadow:
-        inset -10px -12px 24px rgba(255,255,255,0.7),
-        inset 8px 10px 22px rgba(120,80,100,0.08),
-        0 16px 40px rgba(184,169,201,0.22);
-      animation: breathe 5s ease-in-out infinite;
-    }
-    .support-circle .ring.inner {
-      inset: 16%;
-      background: linear-gradient(155deg, rgba(232,213,222,0.75), rgba(212,165,165,0.55) 55%, rgba(184,169,201,0.45));
-      border: 1px solid rgba(255,255,255,0.55);
-      box-shadow: inset 0 0 20px rgba(255,255,255,0.35);
-      animation-delay: 0.35s;
-    }
-    .support-circle .heart {
-      position: absolute; inset: 36%;
-      display: grid; place-items: center;
-    }
-    .support-circle .heart svg { width: 58%; opacity: 0.9; }
-
-    .about { display: grid; gap: 1.75rem; }
-    @media (min-width: 800px) { .about { grid-template-columns: 0.9fr 1.1fr; align-items: center; } }
     .about-photo {
       position: relative;
-      width: min(300px, 78vw);
-      margin: 0 auto;
-      aspect-ratio: 1;
-      border-radius: 28px;
-      overflow: visible;
-      background: transparent;
-      isolation: isolate;
-    }
-    .about-photo::before {
-      content: "";
-      position: absolute;
-      inset: -14%;
-      z-index: -1;
-      border-radius: 40%;
-      background:
-        radial-gradient(circle at 40% 35%, rgba(212,165,165,0.55), transparent 58%),
-        radial-gradient(circle at 65% 60%, rgba(184,169,201,0.5), transparent 60%);
-      filter: blur(18px);
-      transform: translateY(10px);
-    }
-    .about-photo-frame {
-      position: relative;
-      border-radius: 28px;
       overflow: hidden;
-      background: #2c2729;
-      box-shadow:
-        0 0 0 1px rgba(255,255,255,0.55),
-        0 10px 28px rgba(160,120,140,0.18),
-        0 28px 64px rgba(184,169,201,0.32);
+      border-radius: 2px;
+      aspect-ratio: 4 / 5;
+      background: #1a2c2a;
+      box-shadow: var(--shadow);
     }
     .about-photo img {
-      display: block; width: 100%; height: 100%;
-      aspect-ratio: 1;
-      object-fit: cover; object-position: center 8%;
-      filter: saturate(0.94) contrast(1.03);
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 12%;
+      filter: saturate(0.92) contrast(1.04);
     }
-    .diplomas { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0; }
-    .diploma {
-      padding: 0.45rem 0.8rem; border-radius: 999px; font-size: 0.78rem; font-weight: 700;
-      background: rgba(255,255,255,0.65); border: 1px solid rgba(255,255,255,0.9); color: var(--accent);
+    .about-copy p {
+      color: var(--muted);
+      max-width: 48ch;
+      margin-bottom: 0.95rem;
     }
-    .lock-row { display: flex; align-items: center; gap: 0.5rem; font-weight: 700; font-size: 0.92rem; color: var(--accent); }
+    .creds {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem 1.1rem;
+      margin: 1.1rem 0 0.4rem;
+      color: var(--teal);
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+    .creds span::before {
+      content: "";
+      display: inline-block;
+      width: 0.4rem;
+      height: 0.4rem;
+      margin-right: 0.45rem;
+      border-radius: 50%;
+      background: var(--teal-soft);
+      vertical-align: middle;
+    }
 
-    .price-grid { display: grid; gap: 1rem; align-items: stretch; }
+    .price-grid {
+      display: grid;
+      gap: 1rem;
+    }
     @media (min-width: 900px) {
       .price-grid {
-        grid-template-columns: 1fr 1.18fr 1fr;
-        gap: 1.1rem;
-        align-items: center;
+        grid-template-columns: 1fr 1.15fr 1fr;
+        align-items: stretch;
       }
     }
-    @media (min-width: 600px) and (max-width: 899px) {
-      .price-grid { grid-template-columns: 1fr 1fr; }
-      .price-card.featured { grid-column: 1 / -1; max-width: 420px; margin: 0 auto; width: 100%; }
+    .price {
+      display: flex;
+      flex-direction: column;
+      padding: 1.45rem 1.3rem 1.35rem;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(20, 36, 40, 0.1);
+      border-radius: 2px;
+      box-shadow: 0 10px 28px rgba(20, 36, 40, 0.05);
     }
-    .price-card {
-      position: relative;
-      padding: 1.7rem 1.45rem; border-radius: 28px;
-      background:
-        linear-gradient(155deg, rgba(255,255,255,0.72), rgba(255,243,227,0.55) 45%, rgba(212,165,165,0.18)),
-        rgba(255,255,255,0.5);
-      border: 1px solid rgba(255,255,255,0.9);
-      backdrop-filter: blur(14px);
-      box-shadow:
-        inset -6px -8px 18px rgba(255,255,255,0.45),
-        0 16px 40px rgba(180,140,150,0.12);
+    .price.featured {
+      background: linear-gradient(160deg, #234743 0%, #1F3D3A 70%);
+      color: #fff;
+      border-color: transparent;
+      box-shadow: var(--shadow);
+    }
+    .price .label {
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--teal-mid);
+    }
+    .price.featured .label { color: var(--sand); }
+    .price .meta {
+      margin-top: 0.35rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+    .price.featured .meta { color: rgba(255,255,255,0.72); }
+    .price .amount {
+      margin: 0.7rem 0 0.55rem;
+      font-family: var(--display);
+      font-size: 2.15rem;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+    }
+    .price.featured .amount { font-size: 2.35rem; }
+    .price .amount span { font-size: 1rem; }
+    .price p {
+      color: var(--muted);
+      font-size: 0.93rem;
+      margin-bottom: 1.1rem;
+      flex: 1;
+    }
+    .price.featured p { color: rgba(255,255,255,0.78); }
+    .price .btn { align-self: start; margin-top: auto; }
+    .price.featured .btn {
+      background: var(--sand);
+      color: var(--ink);
+    }
+    .price-note {
+      margin-top: 1rem;
+      color: var(--muted);
+      font-size: 0.88rem;
+      max-width: 56ch;
+    }
+    .price-note a {
+      color: var(--teal);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .reviews {
+      display: grid;
+      gap: 1.5rem;
+    }
+    @media (min-width: 860px) {
+      .reviews { grid-template-columns: repeat(3, 1fr); gap: 1.75rem; }
+    }
+    .review {
+      padding-top: 1rem;
+      border-top: 2px solid rgba(47, 106, 99, 0.28);
+    }
+    .review blockquote {
+      font-family: var(--display);
+      font-size: 1.05rem;
+      line-height: 1.4;
+      margin-bottom: 0.85rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 7;
+      -webkit-box-orient: vertical;
       overflow: hidden;
     }
-    .price-card::before {
-      content: "";
-      position: absolute; right: -20%; top: -30%;
-      width: 160px; height: 160px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(184,169,201,0.35), transparent 70%);
-      pointer-events: none;
+    .review.is-open blockquote {
+      display: block;
+      -webkit-line-clamp: unset;
+      overflow: visible;
     }
-    .price-card.featured {
-      background:
-        linear-gradient(155deg, rgba(255,255,255,0.85), rgba(212,165,165,0.28) 40%, rgba(184,169,201,0.35)),
-        rgba(255,255,255,0.65);
-      border: 1px solid rgba(184,169,201,0.75);
-      box-shadow:
-        0 0 0 1px rgba(255,255,255,0.7),
-        0 22px 55px rgba(160,120,140,0.28),
-        0 0 50px rgba(184,169,201,0.28);
-      transform: scale(1.03);
-      z-index: 1;
+    .review cite {
+      display: block;
+      font-style: normal;
+      color: var(--muted);
+      font-size: 0.86rem;
+      font-weight: 600;
     }
-    .price-card.featured .badge {
-      display: inline-block;
-      margin-bottom: 0.55rem;
-      padding: 0.28rem 0.7rem;
-      border-radius: 999px;
-      font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 800;
-      color: #fff;
-      background: linear-gradient(90deg, var(--rose), var(--lav));
-    }
-    .price-card:not(.featured) .badge { display: none; }
-    .price-card .label { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 800; color: var(--accent); }
-    .price-card .amount { font-family: var(--serif); font-size: 2.1rem; font-weight: 600; margin: 0.35rem 0 0.35rem; position: relative; }
-    .price-card.featured .amount { font-size: 2.35rem; }
-    .price-card .amount span { font-size: 1.05rem; }
-    .price-card .meta { font-size: 0.8rem; font-weight: 700; color: var(--accent); margin-bottom: 0.45rem; }
-    .price-card p { color: var(--muted); font-size: 0.92rem; margin-bottom: 1rem; position: relative; }
-    .price-card .btn { position: relative; margin-top: 0.25rem; }
-
-    .reviews { display: grid; gap: 1rem; }
-    @media (min-width: 800px) { .reviews { grid-template-columns: repeat(3, 1fr); } }
-    .review {
-      padding: 1.25rem; border-radius: 22px;
-      background: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.85);
-    }
-    .stars { color: #c9a06a; letter-spacing: 0.08em; margin-bottom: 0.5rem; }
-    .review blockquote {
-      font-family: var(--serif); font-size: 1.02rem; margin-bottom: 0.65rem;
-      display: -webkit-box; -webkit-line-clamp: 6; -webkit-box-orient: vertical; overflow: hidden;
-    }
-    .review.is-open blockquote { display: block; -webkit-line-clamp: unset; overflow: visible; }
-    .review cite { font-size: 0.85rem; color: var(--muted); font-style: normal; }
     .review-toggle {
-      margin-top: 0.55rem; background: none; border: none; padding: 0;
-      color: var(--accent); font-weight: 800; font-size: 0.82rem; cursor: pointer; font-family: inherit;
+      margin-top: 0.55rem;
+      border: 0;
+      background: none;
+      padding: 0;
+      color: var(--teal-mid);
+      font: inherit;
+      font-weight: 800;
+      font-size: 0.84rem;
+      cursor: pointer;
     }
-    .reviews-disclaimer { margin-top: 0.85rem; font-size: 0.85rem; color: var(--muted); max-width: 52ch; }
-    .legal-note {
-      margin-top: 1rem; font-size: 0.8rem; color: var(--muted); max-width: 60ch; line-height: 1.45;
+    .reviews-disclaimer {
+      margin-top: 1rem;
+      color: var(--muted);
+      font-size: 0.85rem;
+      max-width: 52ch;
     }
 
     .faq-item {
-      border-radius: 18px; margin-bottom: 0.65rem;
-      background: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.85);
-      overflow: hidden;
+      border-bottom: 1px solid var(--line);
     }
     .faq-item summary {
-      padding: 1rem 1.2rem; cursor: pointer; font-weight: 700; list-style: none;
+      list-style: none;
+      cursor: pointer;
+      padding: 1.05rem 0;
+      font-weight: 700;
     }
     .faq-item summary::-webkit-details-marker { display: none; }
-    .faq-item .ans { padding: 0 1.2rem 1rem; color: var(--muted); font-size: 0.93rem; }
+    .faq-item .ans {
+      padding: 0 0 1.1rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+      max-width: 68ch;
+    }
 
     .booking {
-      padding: 2rem 1.4rem; border-radius: 28px;
-      background: rgba(255,255,255,0.55); border: 1px solid rgba(255,255,255,0.85);
-      backdrop-filter: blur(14px);
+      padding: 1.5rem 0 0;
+      border-top: 1px solid var(--line);
     }
-    .calendar-note { margin-top: 0.85rem; font-size: 0.85rem; color: var(--muted); }
+    .calendar-note {
+      margin-top: 0.9rem;
+      color: var(--muted);
+      font-size: 0.86rem;
+      max-width: 58ch;
+    }
+    .ochno-note {
+      margin-top: 1.15rem;
+      max-width: 52ch;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .ochno-note a {
+      color: var(--teal);
+      font-weight: 800;
+      text-decoration: none;
+    }
     [data-anna-psy-widget] { min-height: 120px; }
 
     .site-footer {
-      margin-top: 4rem; padding: 2.5rem 1.25rem 3rem;
-      background: rgba(255,255,255,0.4); border-top: 1px solid rgba(255,255,255,0.7);
+      margin-top: 3rem;
+      padding: 2.5rem clamp(1rem, 3vw, 1.5rem) 3rem;
+      border-top: 1px solid var(--line);
+      background: rgba(255,255,255,0.45);
     }
     .footer-inner {
-      width: min(1080px, 100%); margin: 0 auto;
-      display: grid; gap: 1.5rem;
+      width: min(1080px, 100%);
+      margin: 0 auto;
+      display: grid;
+      gap: 1.5rem;
     }
-    @media (min-width: 720px) {
-      .footer-inner { grid-template-columns: 1.4fr 1fr auto; align-items: end; }
+    @media (min-width: 760px) {
+      .footer-inner {
+        grid-template-columns: 1.5fr 1fr auto;
+        align-items: end;
+      }
     }
-    .footer-brand { font-family: var(--serif); font-size: 1.15rem; font-weight: 600; }
-    .footer-brand span { display: block; margin-top: 0.3rem; font-family: var(--font); font-size: 0.82rem; color: var(--muted); font-weight: 600; }
-    .socials { display: flex; gap: 0.65rem; }
+    .footer-brand {
+      font-family: var(--display);
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+    .footer-brand span {
+      display: block;
+      margin-top: 0.35rem;
+      font-family: var(--font);
+      font-size: 0.86rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem 1.05rem;
+      margin-top: 0.85rem;
+      font-size: 0.84rem;
+    }
+    .footer-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .footer-links a:hover { color: var(--teal); }
+    .legal-note {
+      margin-top: 0.9rem;
+      color: var(--muted);
+      font-size: 0.8rem;
+      max-width: 60ch;
+      line-height: 1.45;
+    }
+    .socials { display: flex; gap: 0.55rem; }
     .social {
-      width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center;
-      background: rgba(255,255,255,0.7); color: var(--accent); text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 2.7rem;
+      min-height: 2.7rem;
+      padding: 0 0.7rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 0.82rem;
+      background: rgba(255,255,255,0.7);
     }
 
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
-      .scroll-blob .blob-core, .blob-nimbus, .escape-circle, .aurora, .prob-card .dot, .support-circle .ring { animation: none !important; }
-      h1 .accent-line, .hero h1 .accent-line { background-size: 100% 0.14em; animation: none; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
       .sec { opacity: 1; transform: none; }
-      .kw { position: static; display: none; }
-      .kw.final { display: block; opacity: 1; }
-      .word-row.is-lit { transform: none; }
-      .scroll-blob { transition: none; }
-    }
-    @media (max-width: 700px) {
-      .scroll-blob { width: min(150px, 38vw); height: min(150px, 38vw); }
-      .blob-nimbus { width: min(200px, 50vw); height: min(200px, 50vw); }
-      .escape-circle { width: min(180px, 40vw); height: min(180px, 40vw); right: -70px; top: 8%; }
-      .nav-float { gap: 0.4rem; }
-      .pill { padding: 0.5rem 0.8rem; font-size: 0.7rem; }
-      .hero h1 { font-size: clamp(1.7rem, 7vw, 2.2rem); }
-      .btn, .btn-ghost { margin-left: 0; }
-      .cta-row { gap: 0.55rem; }
-      .voices-grid { gap: 1.25rem; }
-      .about-photo { width: min(260px, 72vw); }
-      .price-card .amount { font-size: 1.85rem; }
     }
   </style>
 </head>
 <body>
-  <div class="aurora" aria-hidden="true"></div>
-  <div class="grid-soft" aria-hidden="true"></div>
-  <div class="escape-circle" aria-hidden="true"></div>
-  <div class="blob-layer" aria-hidden="true">
-    <div class="blob-nimbus" id="blobNimbus"></div>
-    <div class="scroll-blob rose" id="blobRose"><span class="blob-core"></span></div>
-    <div class="scroll-blob lav" id="blobLav"><span class="blob-core"></span></div>
-  </div>
+  <header class="hero">
+    <nav class="site-nav" aria-label="Навигация">
+      <a href="#booking">Запись</a>
+      <div class="nav-links">
+        <a href="#requests">Запросы</a>
+        <a href="#about">О специалисте</a>
+        <a href="#pricing">Цены</a>
+        <a href="#faq">Вопросы</a>
+      </div>
+    </nav>
+    <div class="hero-media" aria-hidden="true">
+      <img
+        src="assets/portrait-920.webp"
+        srcset="assets/portrait-460.webp 460w, assets/portrait-920.webp 920w"
+        sizes="100vw"
+        alt=""
+        width="920"
+        height="920"
+        fetchpriority="high"
+      />
+      <div class="hero-shade"></div>
+    </div>
+    <div class="hero-inner">
+      <p class="hero-brand">Анна <span>Щеголихина</span></p>
+      <h1>Семейный психолог онлайн для пар и семей</h1>
+      <p class="lead">Когда разговор дома идёт по кругу — нужен разговор, где слышат обоих. Без давления, ярлыков и готовых советов.</p>
+      <div class="cta-row">
+        <a class="btn" href="#booking">Записаться на консультацию</a>
+        <a class="btn btn-ghost" href="#requests">С чем приходят</a>
+      </div>
+    </div>
+  </header>
 
-  <div class="wrap">
-    <header class="hero">
-      <nav class="nav-float" aria-label="Навигация">
-        <a class="pill" href="#problems">Запросы</a>
-        <a class="pill" href="#about">Обо мне</a>
-        <a class="pill" href="#pricing">Цены</a>
-        <a class="pill" href="#booking">Связь</a>
-      </nav>
-      <div class="glass">
-        <p class="brand">Анна Щеголихина · семейный психолог онлайн</p>
-        <h1>Время прояснить, что <span class="accent-line">между вами</span></h1>
-        <p class="lead">Онлайн для пар и семей — тёплое пространство, где можно услышать друг друга без давления и готовых советов.</p>
-        <div class="cta-row">
-          <a class="btn" href="#booking">Записаться</a>
-          <a class="btn btn-ghost" href="#voices">Два взгляда</a>
+  <main class="wrap">
+    <section class="sec" id="requests">
+      <div class="sec-head">
+        <p class="eyebrow">Узнаёте ситуацию</p>
+        <h2>С чем обычно приходят на первую встречу</h2>
+        <p>Не обязательно «всё рушится». Часто приходят, когда держитесь — но прежние способы уже не работают.</p>
+      </div>
+      <ol class="pain-list">
+        <li>
+          <span class="n">01</span>
+          <div>
+            <strong>Ссоры по одному сценарию</strong>
+            <span>Одни и те же претензии, одни и те же обиды. Устали мириться «на тех же условиях».</span>
+          </div>
+        </li>
+        <li>
+          <span class="n">02</span>
+          <div>
+            <strong>Рядом холодно, хотя «всё нормально»</strong>
+            <span>Формально живёте вместе, а близости, тепла и опоры почти не осталось.</span>
+          </div>
+        </li>
+        <li>
+          <span class="n">03</span>
+          <div>
+            <strong>Измена или трещина доверия</strong>
+            <span>Боль, злость, растерянность и вопрос: можно ли идти дальше — и как.</span>
+          </div>
+        </li>
+        <li>
+          <span class="n">04</span>
+          <div>
+            <strong>Один тянет, второй молчит</strong>
+            <span>Разный темп, разные языки. Хочется быть услышанным — и страшно говорить прямо.</span>
+          </div>
+        </li>
+        <li>
+          <span class="n">05</span>
+          <div>
+            <strong>Нужна ясность для себя</strong>
+            <span>Остаться, уйти, изменить формат. Без чужого вердикта и давления «спасти любой ценой».</span>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section class="sec" id="how">
+      <div class="split">
+        <div class="sec-head" style="margin-bottom:0">
+          <p class="eyebrow">Как устроена работа</p>
+          <h2>Не ищем виноватого. Смотрим, что происходит между вами</h2>
+          <p>Моя роль — сделать разговор безопаснее и точнее: чтобы каждый мог сказать важное и услышать другое.</p>
+        </div>
+        <div class="steps">
+          <article class="step">
+            <h3>Берёте время в календаре</h3>
+            <p>Выбираете формат и слот. Если виджет недоступен — пишете в Telegram или WhatsApp, отвечу в течение дня.</p>
+          </article>
+          <article class="step">
+            <h3>Разбираем ситуацию на встрече</h3>
+            <p>50 или 90 минут онлайн. Без «правильной стороны»: исследуем реакции, потребности и повторяющиеся круги.</p>
+          </article>
+          <article class="step">
+            <h3>Выходите с более ясной картиной</h3>
+            <p>Не обещаю «вернуть сказку». Помогаю увидеть, что реально происходит и какие шаги имеют смысл именно вам.</p>
+          </article>
         </div>
       </div>
-    </header>
+      <p class="promise">
+        Правая сторона здесь не выбирается.
+        <small>Слёзы, злость, отстранение — разные языки боли. С одинаковым уважением к обоим.</small>
+      </p>
+    </section>
 
-    <!-- NEW: dual voices over splitting blobs -->
-    <section class="voices sec" id="voices" data-blob-mode="split">
-      <div class="page" style="padding-left:0;padding-right:0;width:100%">
-        <div class="sec-head" style="margin-left:1.25rem;margin-right:1.25rem">
-          <p class="eyebrow">Два взгляда</p>
-          <h2>Одна ситуация — два переживания</h2>
-          <p>Шары расходятся: слева — женский голос, справа — мужской.</p>
+    <section class="sec" id="about">
+      <div class="sec-head">
+        <p class="eyebrow">О специалисте</p>
+        <h2>Анна Щеголихина</h2>
+        <p>Клинический и семейный психолог · практика с 2019 года · онлайн по всей России и за рубежом на русском</p>
+      </div>
+      <div class="about">
+        <div class="about-photo">
+          <img
+            src="assets/portrait-920.webp"
+            srcset="assets/portrait-460.webp 460w, assets/portrait-920.webp 920w"
+            sizes="(max-width:800px) 80vw, 360px"
+            alt="Анна Щеголихина, семейный психолог"
+            width="920"
+            height="920"
+            loading="lazy"
+          />
         </div>
-        <div class="voices-grid" style="padding:0 1.25rem">
-          <article class="voice-card women">
-            <p class="tag">Голос · женщина</p>
-            <h3>«Меня не слышат»</h3>
-            <p>Обида, усталость, желание наконец быть понятой.</p>
-            <p class="placeholder">[+ ваша цитата / фраза позже]</p>
-          </article>
-          <article class="voice-card men">
-            <p class="tag">Голос · мужчина</p>
-            <h3>«От меня всё требуют»</h3>
-            <p>Давление, защита, страх сделать ещё хуже.</p>
-            <p class="placeholder">[+ ваша цитата / фраза позже]</p>
-          </article>
-          <p class="voices-note">Не «кто прав» — а что происходит между вами.</p>
+        <div class="about-copy">
+          <p>Работаю со взрослыми индивидуально и с парами, когда важно выдержать кризис, восстановить контакт или честно разобраться в сложном выборе.</p>
+          <p>На встрече нет задачи «сделать вид, что всё хорошо». Есть ваша история, чувства и потребности каждого — и возможность постепенно понять, что с ними делать.</p>
+          <p>Конфиденциальность — условие работы, а не декоративная фраза на сайте.</p>
+          <div class="creds">
+            <span>Диплом психолога</span>
+            <span>Семейное консультирование</span>
+            <span>Кризис пары</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <div class="page">
-      <section class="sec" id="problems">
-        <div class="sec-head">
-          <p class="eyebrow">Запросы</p>
-          <h2>Что обычно приводит на встречу</h2>
-        </div>
-        <div class="prob-grid">
-          <article class="prob-card"><div class="dot"></div><h3>Кризис в отношениях</h3><p>Холодно рядом, хотя формально «всё как надо».</p></article>
-          <article class="prob-card"><div class="dot"></div><h3>Измена</h3><p>Трещина доверия — и вопрос, можно ли идти дальше.</p></article>
-          <article class="prob-card"><div class="dot"></div><h3>Частые ссоры</h3><p>Одни и те же круги. Устали мириться на тех же условиях.</p></article>
-          <article class="prob-card"><div class="dot"></div><h3>Непонимание</h3><p>Говорите — а слышит будто другой человек.</p></article>
-        </div>
-      </section>
-
-      <!-- Kinetic words mid-page (from H) -->
-      <section class="sec kinetic-sec" id="path-words">
-        <p class="eyebrow">Путь разговора</p>
-        <div class="kinetic" id="kinetic" aria-live="polite">
-          <span class="kw">Молчание</span>
-          <span class="kw">Напряжение</span>
-          <span class="kw">Разговор</span>
-          <span class="kw final">Ясность</span>
-        </div>
-        <p style="color:var(--muted);max-width:32ch;margin:0.5rem auto 0">От тупика — к пониманию. Без гарантий «счастья», с опорой на ясность.</p>
-      </section>
-
-      <!-- Scroll-lit rows (from H, V palette) -->
-      <section class="sec" id="word-rows-sec">
-        <div class="sec-head">
-          <p class="eyebrow">Узнаёте запрос?</p>
-          <h2>Три входа в разговор</h2>
-          <p>При прокрутке активный пункт мягко окрашивается в палитру V Matter.</p>
-        </div>
-        <div class="word-rows" id="wordRows">
-          <article class="word-row" data-row>
-            <p class="phase">Пара</p>
-            <h3>«Мы говорим — и не слышим»</h3>
-            <p>Круговые ссоры, холод, усталость быть непонятым.</p>
-          </article>
-          <article class="word-row" data-row>
-            <p class="phase">Семья</p>
-            <h3>«Дома тяжело дышать»</h3>
-            <p>Границы, дети, вина — когда роли съедают близость.</p>
-          </article>
-          <article class="word-row" data-row>
-            <p class="phase">Выбор</p>
-            <h3>«Нужна ясность для себя»</h3>
-            <p>Остаться, уйти, изменить формат — без чужого вердикта.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="sec" id="recognize">
-        <div class="sec-head">
-          <p class="eyebrow">Отклик</p>
-          <h2>Узнаёте себя?</h2>
-        </div>
-        <div class="recog">
-          <div>
-            <div class="q-item">Чувствуете, что отдаляетесь?</div>
-            <div class="q-item">Боитесь говорить о боли?</div>
-            <div class="q-item">Держите отношения «на себе»?</div>
-            <div class="q-item">Хотите близости — и одновременно боитесь её?</div>
-          </div>
-          <div class="support-circle" aria-hidden="true">
-            <div class="ring"></div>
-            <div class="ring inner"></div>
-            <div class="heart">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#8E6B78" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="9" />
-                <path d="M12 16.2s-3.6-2.2-3.6-4.4A2.05 2.05 0 0 1 12 10.2a2.05 2.05 0 0 1 3.6 1.6c0 2.2-3.6 4.4-3.6 4.4z" />
-              </svg>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="sec" id="about">
-        <div class="sec-head">
-          <p class="eyebrow">Обо мне</p>
-          <h2>Анна Щеголихина</h2>
-          <p>Семейный психолог · онлайн · конфиденциально</p>
-        </div>
-        <div class="about">
-          <div class="about-photo">
-            <div class="about-photo-frame">
-              <img src="assets/portrait-920.webp" srcset="assets/portrait-460.webp 460w, assets/portrait-920.webp 920w" sizes="(max-width:800px) 70vw, 300px" alt="Анна Щеголихина, семейный психолог" width="920" height="920" loading="lazy" />
-            </div>
-          </div>
-          <div>
-            <p style="color:var(--muted);max-width:46ch">Создаю тёплое пространство для пар и семей — без давления «быть идеальными», с вниманием к тому, что между вами.</p>
-            <div class="diplomas">
-              <span class="diploma">Диплом психолога</span>
-              <span class="diploma">Семейное консультирование</span>
-              <span class="diploma">Кризис пары</span>
-            </div>
-            <div class="lock-row">🔒 Конфиденциальность — основа встречи</div>
-          </div>
-        </div>
-      </section>
-
-      <section class="sec" id="pricing">
-        <div class="sec-head">
-          <p class="eyebrow">Стоимость</p>
-          <h2>Простые и ясные цены</h2>
-        </div>
-        <div class="price-grid">
-          <article class="price-card">
-            <p class="label">Индивидуально</p>
-            <p class="meta">50 минут · онлайн</p>
-            <p class="amount">4 500 <span>₽</span></p>
-            <p>Если партнёр пока не готов идти вместе — или вы хотите разобраться в ситуации самостоятельно.</p>
-            <a class="btn" href="#booking" data-therapy-type="individual">Записаться</a>
-          </article>
-          <article class="price-card featured">
-            <span class="badge">Для пары</span>
-            <p class="label">Пара</p>
-            <p class="meta">90 минут · онлайн</p>
-            <p class="amount">7 000 <span>₽</span></p>
-            <p>Формат для пары или семьи: услышать друг друга, наладить диалог и двигаться к изменениям вместе.</p>
-            <a class="btn" href="#booking" data-therapy-type="family">Записаться</a>
-          </article>
-          <article class="price-card">
-            <p class="label">Индивидуально</p>
-            <p class="meta">90 минут · онлайн</p>
-            <p class="amount">7 000 <span>₽</span></p>
-            <p>Расширенная встреча, когда теме нужно больше пространства.</p>
-            <a class="btn" href="#booking" data-therapy-type="individual90">Записаться</a>
-          </article>
-        </div>
-        <p style="margin-top:1rem;color:var(--muted);font-size:0.88rem;max-width:52ch">При каждой оплате высылаю чек. Пакет из 5 сессий — скидка 20% (через мессенджеры). Отмена/перенос — за 24 часа. Условия — в <a href="oferta/" style="color:var(--accent);font-weight:700;text-decoration:none">оферте</a>.</p>
-      </section>
-
-      <section class="sec" id="reviews">
-        <div class="sec-head">
-          <p class="eyebrow">Отзывы</p>
-          <h2>Слова тех, кто уже начал</h2>
-          <p class="reviews-disclaimer">Опыт клиентов в отзывах не гарантирует такой же результат у вас.</p>
-        </div>
-        <div class="reviews">
-          <article class="review">
-            <p class="stars">★★★★★</p>
-            <blockquote>«Довольно скептически относилась к психологии, но когда отношения с мужем были почти разрушены — решились на семейную терапию в качестве последнего шанса. Сессии проходили в комфортном темпе, Анна не давала нам уходить в ссоры или обиды, выводила на конструктивные диалоги… нам удалось сохранить семью… мы наконец стали слышать друг друга.»</blockquote>
-            <cite>С. · 29 лет · личные сообщения</cite>
-            <button type="button" class="review-toggle" aria-expanded="false">Читать полностью</button>
-          </article>
-          <article class="review">
-            <p class="stars">★★★★★</p>
-            <blockquote>«Большая благодарность Анне за её человечность, отличный подход без копания в детских травмах, если это некомфортно. Подсвечивает такие важные моменты, которых я бы точно не заметила… Спасибо, Анна, вы вернули мне себя.»</blockquote>
-            <cite>М. · 32 года · Яндекс Услуги</cite>
-            <button type="button" class="review-toggle" aria-expanded="false">Читать полностью</button>
-          </article>
-          <article class="review">
-            <p class="stars">★★★★★</p>
-            <blockquote>«Проходил через развод и обратился к Анне, чтобы не утонуть в эмоциях. Работа помогла мне держать голову холодной, не влетать в конфликты и постепенно собрать себя заново. Чувствую, что вышел из ситуации гораздо сильнее, чем мог бы сам.»</blockquote>
-            <cite>К. · 49 лет · Яндекс Карты</cite>
-            <button type="button" class="review-toggle" aria-expanded="false">Читать полностью</button>
-          </article>
-        </div>
-      </section>
-
-      <section class="sec" id="faq">
-        <div class="sec-head">
-          <p class="eyebrow">FAQ</p>
-          <h2>Частые вопросы</h2>
-        </div>
-        <details class="faq-item">
-          <summary>Не будет ли психолог на стороне того, кто больше плачет/жалуется?</summary>
-          <p class="ans">Нет, категорически нет. Это одно из ключевых правил и этических принципов семейного терапевта. Слёзы и жалобы — симптом, язык боли. Я отнесусь к этой боли с уважением, и с таким же вниманием буду исследовать, что стоит за сдержанностью, гневом или отстранённостью второго партнёра. Моя роль — помочь каждому увидеть вклад другого и свой собственный.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Как проходит онлайн-консультация?</summary>
-          <p class="ans">Как очная встреча, только без дороги. За 5–10 минут до начала пришлю ссылку на видеовстречу в удобном мессенджере (Telegram, WhatsApp, MAX) — дополнительные программы не нужны. Длительность — 50 или 90 минут. Важно заранее выбрать тихое место, где вас не будут перебивать.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Как часто нужно встречаться с психологом?</summary>
-          <p class="ans">Оптимально — 1 раз в неделю: успеваете прожить изменения между встречами и не теряете нить работы. На старте или в острый период иногда 2 раза в неделю. Реже раза в неделю обычно замедляет процесс. К завершению ритм можно сделать свободнее. Частоту согласуем под ваш темп.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Сколько времени нужно, чтобы стало легче?</summary>
-          <p class="ans">Зависит от запроса и темпа. У многих первое облегчение и ясность появляются уже в первые 3–6 встреч — это не гарантия срока. Более устойчивые изменения обычно формируются за несколько месяцев регулярной работы. Идём в вашем темпе.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Что если я (мы) опоздаю или пропущу встречу?</summary>
-          <p class="ans">Перенос или отмена — не позднее чем за 24 часа: верну оплату или подберём другое время. При отмене менее чем за 24 часа или неявке оплата не возвращается (при пакете сессия списывается). Подробнее в <a href="oferta/">оферте</a>.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Остались сомнения или страхи?</summary>
-          <p class="ans">Это нормально. Напишите в Telegram или WhatsApp — отвечу в течение дня, помогу понять, подходит ли формат и с чего начать. Без давления «сразу записываться».</p>
-        </details>
-      </section>
-
-      <section class="sec" id="booking">
-        <div class="sec-head">
-          <p class="eyebrow">Запись</p>
-          <h2>Выберите время в календаре</h2>
-          <p>Онлайн-консультация. Если виджет не загрузится — напишите в мессенджер.</p>
-        </div>
-        <div class="booking">
-          <div data-anna-psy-widget></div>
-          <p class="calendar-note">Если календарь не отображается, попробуйте <strong>отключить VPN</strong> или открыть страницу в другом браузере. Кнопки тарифов выше предвыбирают формат в виджете.</p>
-          <p class="ochno-note">Живёте в Калининграде и хотите встретиться очно? <a href="kaliningrad/">Страница очных консультаций</a> — без конкуренции с онлайн-записью.</p>
-        </div>
-      </section>
-    </div>
-
-    <footer class="site-footer" id="contact">
-      <div class="footer-inner">
-        <div>
-          <p class="footer-brand">Анна Щеголихина
-            <span>Семейный психолог · онлайн · РФ / мир</span>
-          </p>
-          <div class="footer-links">
-            <a href="oferta/">Оферта</a>
-            <a href="privacy-policy/">Конфиденциальность</a>
-            <a href="consent/">Согласие</a>
-            <a href="#" class="js-cookie-settings">Настройки cookie</a>
-            <a href="kaliningrad/">Очно в Калининграде</a>
-          </div>
-          <p class="legal-note">Психологические консультации не являются медицинской услугой и не гарантируют конкретный результат. Отмена/перенос — за 24 часа (см. оферту).</p>
-        </div>
-        <div class="socials">
-          <a class="social" href="https://t.me/annashhe" target="_blank" rel="noopener" aria-label="Telegram">TG</a>
-          <a class="social" href="https://wa.me/79137556284" target="_blank" rel="noopener" aria-label="WhatsApp">WA</a>
-        </div>
-        <div><a class="btn" href="#booking">Записаться</a></div>
+    <section class="sec" id="pricing">
+      <div class="sec-head">
+        <p class="eyebrow">Стоимость</p>
+        <h2>Понятные форматы и цены</h2>
+        <p>Оплата до встречи, чек при каждой оплате. Кнопка сразу ведёт к записи нужного формата.</p>
       </div>
-    </footer>
-  </div>
+      <div class="price-grid">
+        <article class="price">
+          <p class="label">Индивидуально</p>
+          <p class="meta">50 минут · онлайн</p>
+          <p class="amount">4 500 <span>₽</span></p>
+          <p>Если партнёр пока не готов идти вместе — или нужно сначала разобраться в своей части ситуации.</p>
+          <a class="btn btn-line" href="#booking" data-therapy-type="individual">Записаться</a>
+        </article>
+        <article class="price featured">
+          <p class="label">Для пары / семьи</p>
+          <p class="meta">90 минут · онлайн</p>
+          <p class="amount">7 000 <span>₽</span></p>
+          <p>Основной формат, когда важно услышать друг друга и изменить то, что происходит между вами.</p>
+          <a class="btn" href="#booking" data-therapy-type="family">Записаться</a>
+        </article>
+        <article class="price">
+          <p class="label">Индивидуально</p>
+          <p class="meta">90 минут · онлайн</p>
+          <p class="amount">7 000 <span>₽</span></p>
+          <p>Расширенная встреча, когда теме нужно больше пространства и спокойного темпа.</p>
+          <a class="btn btn-line" href="#booking" data-therapy-type="individual90">Записаться</a>
+        </article>
+      </div>
+      <p class="price-note">Пакет из 5 сессий — скидка 20% (через мессенджеры). Отмена или перенос — не позднее чем за 24 часа. Условия — в <a href="oferta/">оферте</a>.</p>
+    </section>
+
+    <section class="sec" id="reviews">
+      <div class="sec-head">
+        <p class="eyebrow">Отзывы</p>
+        <h2>Что говорят те, кто уже начал</h2>
+      </div>
+      <div class="reviews">
+        <article class="review">
+          <blockquote>«Довольно скептически относилась к психологии, но когда отношения с мужем были почти разрушены — решились на семейную терапию в качестве последнего шанса. Сессии проходили в комфортном темпе, Анна не давала нам уходить в ссоры или обиды, выводила на конструктивные диалоги… нам удалось сохранить семью… мы наконец стали слышать друг друга.»</blockquote>
+          <cite>С. · 29 лет · личные сообщения</cite>
+          <button type="button" class="review-toggle" aria-expanded="false">Читать полностью</button>
+        </article>
+        <article class="review">
+          <blockquote>«Большая благодарность Анне за её человечность, отличный подход без копания в детских травмах, если это некомфортно. Подсвечивает такие важные моменты, которых я бы точно не заметила… Спасибо, Анна, вы вернули мне себя.»</blockquote>
+          <cite>М. · 32 года · Яндекс Услуги</cite>
+          <button type="button" class="review-toggle" aria-expanded="false">Читать полностью</button>
+        </article>
+        <article class="review">
+          <blockquote>«Проходил через развод и обратился к Анне, чтобы не утонуть в эмоциях. Работа помогла мне держать голову холодной, не влетать в конфликты и постепенно собрать себя заново. Чувствую, что вышел из ситуации гораздо сильнее, чем мог бы сам.»</blockquote>
+          <cite>К. · 49 лет · Яндекс Карты</cite>
+          <button type="button" class="review-toggle" aria-expanded="false">Читать полностью</button>
+        </article>
+      </div>
+      <p class="reviews-disclaimer">Опыт клиентов в отзывах не гарантирует такой же результат у вас.</p>
+    </section>
+
+    <section class="sec" id="faq">
+      <div class="sec-head">
+        <p class="eyebrow">Сомнения</p>
+        <h2>Ответы до записи</h2>
+      </div>
+      <details class="faq-item">
+        <summary>Не будет ли психолог на стороне того, кто больше плачет или жалуется?</summary>
+        <p class="ans">Нет. Это одно из ключевых правил семейной работы. Слёзы и жалобы — язык боли, не доказательство правоты. К этой боли отнесусь с уважением — и с тем же вниманием буду исследовать, что стоит за сдержанностью, гневом или отстранением второго партнёра.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Как проходит онлайн-консультация?</summary>
+        <p class="ans">Как очная встреча, только без дороги. За 5–10 минут до начала пришлю ссылку на видеовстречу в Telegram, WhatsApp или MAX — дополнительные программы не нужны. Длительность — 50 или 90 минут. Важно заранее выбрать тихое место, где вас не будут перебивать.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Если партнёр пока не готов идти вместе?</summary>
+        <p class="ans">Можно начать с индивидуальной встречи: разобраться в своей части ситуации, снизить накал и понять, какие шаги сейчас реалистичны. Парный формат подключаем, когда оба готовы.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Как часто нужно встречаться?</summary>
+        <p class="ans">Обычно раз в неделю: успеваете прожить изменения между встречами и не теряете нить работы. В острый период иногда чаще. Реже раза в неделю обычно замедляет процесс. Ритм согласуем под ваш темп.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Сколько нужно, чтобы стало легче?</summary>
+        <p class="ans">Зависит от запроса. У многих первое облегчение и ясность появляются в первые 3–6 встреч — это не гарантия срока. Более устойчивые изменения обычно требуют регулярной работы в течение нескольких месяцев.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Что если нужно перенести встречу?</summary>
+        <p class="ans">Перенос или отмена — не позднее чем за 24 часа: верну оплату или подберём другое время. При отмене менее чем за 24 часа или неявке оплата не возвращается. Подробнее в <a href="oferta/">оферте</a>.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Ещё сомневаетесь, подходит ли формат?</summary>
+        <p class="ans">Напишите в Telegram или WhatsApp — отвечу в течение дня, помогу понять, с чего начать. Без давления «сразу записываться».</p>
+      </details>
+    </section>
+
+    <section class="sec" id="booking">
+      <div class="sec-head">
+        <p class="eyebrow">Запись</p>
+        <h2>Выберите время в календаре</h2>
+        <p>Онлайн-консультация. Если календарь не загрузится — напишите в мессенджер.</p>
+      </div>
+      <div class="booking">
+        <div data-anna-psy-widget></div>
+        <p class="calendar-note">Если календарь не отображается, попробуйте отключить VPN или открыть страницу в другом браузере. Кнопки тарифов выше предвыбирают формат в виджете.</p>
+        <p class="ochno-note">Живёте в Калининграде и хотите встретиться очно? Есть отдельная страница: <a href="kaliningrad/">очные консультации в Калининграде</a>.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="contact">
+    <div class="footer-inner">
+      <div>
+        <p class="footer-brand">Анна Щеголихина
+          <span>Семейный психолог · онлайн · РФ / мир</span>
+        </p>
+        <div class="footer-links">
+          <a href="oferta/">Оферта</a>
+          <a href="privacy-policy/">Конфиденциальность</a>
+          <a href="consent/">Согласие</a>
+          <a href="#" class="js-cookie-settings">Настройки cookie</a>
+          <a href="kaliningrad/">Очно в Калининграде</a>
+        </div>
+        <p class="legal-note">Психологические консультации не являются медицинской услугой и не гарантируют конкретный результат. Отмена или перенос — за 24 часа (см. оферту).</p>
+      </div>
+      <div class="socials">
+        <a class="social" href="https://t.me/annashhe" target="_blank" rel="noopener" aria-label="Telegram">TG</a>
+        <a class="social" href="https://wa.me/79137556284" target="_blank" rel="noopener" aria-label="WhatsApp">WA</a>
+      </div>
+      <div><a class="btn btn-dark" href="#booking">Записаться</a></div>
+    </div>
+  </footer>
 
   <script>
     const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const root = document.documentElement;
-    const voices = document.getElementById('voices');
-    const problems = document.getElementById('problems');
-    const wordRows = document.getElementById('word-rows-sec');
-    const about = document.getElementById('about');
-
-    function clamp(n, a, b) { return Math.max(a, Math.min(b, n)); }
-    function lerp(a, b, t) { return a + (b - a) * t; }
-    function smooth(t) { t = clamp(t, 0, 1); return t * t * (3 - 2 * t); }
-    function progressThrough(el, lead = 0.75, trail = 0.25) {
-      if (!el) return 0;
-      const vh = innerHeight;
-      const r = el.getBoundingClientRect();
-      const start = vh * lead;
-      const end = vh * trail;
-      return smooth((start - r.top) / Math.max(1, start - end));
-    }
-    function mix(a, b, t) {
-      return {
-        rx: lerp(a.rx, b.rx, t), lx: lerp(a.lx, b.lx, t),
-        ry: lerp(a.ry, b.ry, t), ly: lerp(a.ly, b.ly, t),
-        mute: lerp(a.mute, b.mute, t), scale: lerp(a.scale, b.scale, t),
-        n: lerp(a.n, b.n, t), e: lerp(a.e, b.e, t)
-      };
-    }
-    function applyPose(p) {
-      root.style.setProperty('--rose-x', p.rx.toFixed(2) + '%');
-      root.style.setProperty('--lav-x', p.lx.toFixed(2) + '%');
-      root.style.setProperty('--rose-y', p.ry.toFixed(2) + '%');
-      root.style.setProperty('--lav-y', p.ly.toFixed(2) + '%');
-      root.style.setProperty('--blob-mute', p.mute.toFixed(3));
-      root.style.setProperty('--blob-scale', p.scale.toFixed(3));
-      root.style.setProperty('--nimbus-opacity', p.n.toFixed(3));
-      root.style.setProperty('--escape-opacity', p.e.toFixed(3));
-    }
-
-    /* 1 split (rose L / lav R) → 2 meet → 3 swap split (rose R / lav L) → 4 meet */
-    const hero =  { rx:58, lx:70, ry:40, ly:44, mute:0,    scale:1,    n:0.88, e:1 };
-    const splitA ={ rx:24, lx:78, ry:52, ly:56, mute:0.12, scale:0.94, n:0,    e:0.12 };
-    const meet1 = { rx:48, lx:56, ry:46, ly:48, mute:0.1,  scale:0.96, n:0.4,  e:0.1 };
-    const splitB ={ rx:78, lx:24, ry:50, ly:54, mute:0.14, scale:0.92, n:0,    e:0.1 };
-    const meet2 = { rx:50, lx:60, ry:56, ly:58, mute:0.16, scale:0.88, n:0.25, e:0.2 };
-
-    function updateBlobs() {
-      const t1 = progressThrough(voices, 0.92, 0.38);
-      const t2 = progressThrough(problems, 0.88, 0.32);
-      const t3 = progressThrough(wordRows, 0.88, 0.3);
-      const t4 = progressThrough(about, 0.82, 0.35);
-
-      let pose;
-      if (t4 > 0.02) pose = mix(splitB, meet2, t4);
-      else if (t3 > 0.02) pose = mix(meet1, splitB, t3);
-      else if (t2 > 0.02) pose = mix(splitA, meet1, t2);
-      else pose = mix(hero, splitA, t1);
-      applyPose(pose);
-    }
-    if (!reduce) {
-      let ticking = false;
-      addEventListener('scroll', () => {
-        if (ticking) return;
-        ticking = true;
-        requestAnimationFrame(() => { updateBlobs(); ticking = false; });
-      }, { passive: true });
-      addEventListener('resize', updateBlobs, { passive: true });
-      updateBlobs();
-    } else {
-      applyPose(meet1);
-    }
-
-    /* Section reveal */
     const secs = document.querySelectorAll('.sec');
     if ('IntersectionObserver' in window) {
       const io = new IntersectionObserver((entries) => {
         entries.forEach((e) => {
-          if (e.isIntersecting) { e.target.classList.add('is-in'); }
+          if (e.isIntersecting) e.target.classList.add('is-in');
         });
       }, { threshold: 0.12 });
       secs.forEach((s) => io.observe(s));
-    } else secs.forEach((s) => s.classList.add('is-in'));
-
-    /* Kinetic words — start when section visible */
-    const kws = [...document.querySelectorAll('.kw')];
-    const kineticSec = document.getElementById('path-words');
-    let kineticStarted = false;
-    function runKinetic() {
-      if (kineticStarted || !kws.length) return;
-      kineticStarted = true;
-      if (reduce) { kws[kws.length - 1].classList.add('is-active'); return; }
-      let i = 0;
-      const show = () => {
-        kws.forEach((w, idx) => {
-          w.classList.toggle('is-active', idx === i);
-          w.classList.toggle('is-done', idx < i);
-        });
-        if (i < kws.length - 1) { i += 1; setTimeout(show, 1100); }
-      };
-      show();
-    }
-    if (kineticSec && 'IntersectionObserver' in window) {
-      const kio = new IntersectionObserver((entries) => {
-        entries.forEach((e) => { if (e.isIntersecting) { runKinetic(); kio.disconnect(); } });
-      }, { threshold: 0.4 });
-      kio.observe(kineticSec);
-    } else runKinetic();
-
-    /* Word rows scroll highlight */
-    const rows = [...document.querySelectorAll('[data-row]')];
-    if ('IntersectionObserver' in window && rows.length) {
-      const rio = new IntersectionObserver((entries) => {
-        entries.forEach((e) => {
-          if (!e.isIntersecting) return;
-          const idx = rows.indexOf(e.target);
-          rows.forEach((r, i) => {
-            r.classList.toggle('is-lit', i === idx);
-            r.classList.toggle('is-past', i < idx);
-          });
-        });
-      }, { threshold: 0.55, rootMargin: '-15% 0px -40% 0px' });
-      rows.forEach((r) => rio.observe(r));
+    } else {
+      secs.forEach((s) => s.classList.add('is-in'));
     }
 
-    /* Calendar widget + therapy type preselect (как на мужском сайте) */
+    document.querySelectorAll('.review-toggle').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const card = btn.closest('.review');
+        const open = card.classList.toggle('is-open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        btn.textContent = open ? 'Свернуть' : 'Читать полностью';
+      });
+    });
+
     (function () {
       var pendingTherapyType = null;
 
@@ -1118,7 +995,7 @@
         s.onerror = function () {
           var host = document.querySelector('[data-anna-psy-widget]');
           if (!host) return;
-          host.innerHTML = '<div style="padding:1.25rem;border-radius:16px;background:rgba(255,255,255,0.7)"><p style="margin:0 0 .75rem">Календарь временно недоступен. Запишитесь через мессенджеры.</p><p style="margin:0"><a href="https://t.me/annashhe" target="_blank" rel="noopener">Telegram</a> · <a href="https://wa.me/79137556284" target="_blank" rel="noopener">WhatsApp</a></p></div>';
+          host.innerHTML = '<div style="padding:1.25rem;border:1px solid rgba(20,36,40,.12);background:rgba(255,255,255,.8)"><p style="margin:0 0 .75rem">Календарь временно недоступен. Запишитесь через мессенджеры.</p><p style="margin:0"><a href="https://t.me/annashhe" target="_blank" rel="noopener">Telegram</a> · <a href="https://wa.me/79137556284" target="_blank" rel="noopener">WhatsApp</a></p></div>';
         };
         s.onload = function () {
           var attempts = 0;
@@ -1158,16 +1035,6 @@
         }, 120);
       });
     })();
-
-    /* Review expand */
-    document.querySelectorAll('.review-toggle').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const card = btn.closest('.review');
-        const open = card.classList.toggle('is-open');
-        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-        btn.textContent = open ? 'Свернуть' : 'Читать полностью';
-      });
-    });
   </script>
 </body>
 </html>
