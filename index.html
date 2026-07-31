@@ -4,18 +4,40 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Семейный психолог онлайн — Анна Щеголихина</title>
-  <meta name="description" content="Онлайн-консультации семейного психолога для пар и семей. Тёплое пространство, где можно услышать друг друга. РФ и мир, на русском." />
+  <meta name="description" content="Онлайн-консультации семейного психолога для пар и семей. Тёплое пространство, где можно услышать друг друга. РФ и мир, на русском. Запись в календаре на сайте." />
+  <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#FFF3E3" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="assets/favicon-192.png" />
-  <link rel="canonical" href="./" />
+  <link rel="canonical" href="https://психолог-семейный-онлайн.рф/" />
   <meta property="og:title" content="Семейный психолог онлайн — Анна Щеголихина" />
-  <meta property="og:description" content="Онлайн для пар и семей — без давления и готовых советов." />
+  <meta property="og:description" content="Онлайн для пар и семей — без давления и готовых советов. Запись в календаре." />
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://психолог-семейный-онлайн.рф/" />
+  <meta property="og:image" content="https://психолог-семейный-онлайн.рф/assets/portrait-920.webp" />
   <meta property="og:locale" content="ru_RU" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800&family=Literata:opsz,wght@7..72,500;7..72,600&display=swap" rel="stylesheet" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Анна Щеголихина — семейный психолог онлайн",
+    "url": "https://психолог-семейный-онлайн.рф/",
+    "image": "https://психолог-семейный-онлайн.рф/assets/portrait-920.webp",
+    "telephone": "+79137556284",
+    "priceRange": "₽₽",
+    "areaServed": ["RU", "Worldwide"],
+    "availableLanguage": "ru",
+    "description": "Онлайн-консультации для пар и семей. Индивидуальные и парные встречи.",
+    "provider": {
+      "@type": "Person",
+      "name": "Анна Щеголихина",
+      "jobTitle": "Семейный и клинический психолог"
+    }
+  }
+  </script>
   <style>
     :root {
       --cream: #FFF3E3;
@@ -77,8 +99,8 @@
       height: min(236px, 28vw);
       left: var(--rose-x); top: var(--rose-y);
       transform: translate(-50%, -50%) scale(var(--blob-scale));
-      opacity: calc(0.98 - var(--blob-mute) * 0.28);
-      filter: saturate(calc(1 - var(--blob-mute) * 0.18));
+      opacity: calc(0.98 - var(--blob-mute) * 0.16);
+      filter: saturate(calc(1 - var(--blob-mute) * 0.1));
       will-change: transform, opacity, left, top;
     }
     .scroll-blob.lav {
@@ -414,21 +436,35 @@
       margin: 0 auto;
       aspect-ratio: 1;
       border-radius: 28px;
+      overflow: visible;
+      background: transparent;
+      isolation: isolate;
+    }
+    .about-photo::before {
+      content: "";
+      position: absolute;
+      inset: -14%;
+      z-index: -1;
+      border-radius: 40%;
+      background:
+        radial-gradient(circle at 40% 35%, rgba(212,165,165,0.55), transparent 58%),
+        radial-gradient(circle at 65% 60%, rgba(184,169,201,0.5), transparent 60%);
+      filter: blur(18px);
+      transform: translateY(10px);
+    }
+    .about-photo-frame {
+      position: relative;
+      border-radius: 28px;
       overflow: hidden;
       background: #2c2729;
       box-shadow:
         0 0 0 1px rgba(255,255,255,0.55),
-        0 22px 55px rgba(160,120,140,0.28);
-    }
-    .about-photo::after {
-      content: "";
-      position: absolute; inset: 0; pointer-events: none; z-index: 1;
-      background:
-        linear-gradient(180deg, transparent 62%, rgba(255,243,227,0.45) 100%),
-        radial-gradient(ellipse 80% 50% at 50% 0%, rgba(212,165,165,0.12), transparent 60%);
+        0 10px 28px rgba(160,120,140,0.18),
+        0 28px 64px rgba(184,169,201,0.32);
     }
     .about-photo img {
       display: block; width: 100%; height: 100%;
+      aspect-ratio: 1;
       object-fit: cover; object-position: center 8%;
       filter: saturate(0.94) contrast(1.03);
     }
@@ -439,9 +475,18 @@
     }
     .lock-row { display: flex; align-items: center; gap: 0.5rem; font-weight: 700; font-size: 0.92rem; color: var(--accent); }
 
-    .price-grid { display: grid; gap: 1rem; }
-    @media (min-width: 900px) { .price-grid { grid-template-columns: repeat(3, 1fr); } }
-    @media (min-width: 600px) and (max-width: 899px) { .price-grid { grid-template-columns: 1fr 1fr; } }
+    .price-grid { display: grid; gap: 1rem; align-items: stretch; }
+    @media (min-width: 900px) {
+      .price-grid {
+        grid-template-columns: 1fr 1.18fr 1fr;
+        gap: 1.1rem;
+        align-items: center;
+      }
+    }
+    @media (min-width: 600px) and (max-width: 899px) {
+      .price-grid { grid-template-columns: 1fr 1fr; }
+      .price-card.featured { grid-column: 1 / -1; max-width: 420px; margin: 0 auto; width: 100%; }
+    }
     .price-card {
       position: relative;
       padding: 1.7rem 1.45rem; border-radius: 28px;
@@ -462,17 +507,31 @@
       background: radial-gradient(circle, rgba(184,169,201,0.35), transparent 70%);
       pointer-events: none;
     }
-    .price-card:nth-child(2)::before {
-      background: radial-gradient(circle, rgba(212,165,165,0.4), transparent 70%);
-      left: -15%; right: auto; top: auto; bottom: -25%;
-    }
-    .price-card:nth-child(3) {
+    .price-card.featured {
       background:
-        linear-gradient(155deg, rgba(255,255,255,0.75), rgba(184,169,201,0.22) 55%, rgba(212,165,165,0.2)),
-        rgba(255,255,255,0.55);
+        linear-gradient(155deg, rgba(255,255,255,0.85), rgba(212,165,165,0.28) 40%, rgba(184,169,201,0.35)),
+        rgba(255,255,255,0.65);
+      border: 1px solid rgba(184,169,201,0.75);
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,0.7),
+        0 22px 55px rgba(160,120,140,0.28),
+        0 0 50px rgba(184,169,201,0.28);
+      transform: scale(1.03);
+      z-index: 1;
     }
+    .price-card.featured .badge {
+      display: inline-block;
+      margin-bottom: 0.55rem;
+      padding: 0.28rem 0.7rem;
+      border-radius: 999px;
+      font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 800;
+      color: #fff;
+      background: linear-gradient(90deg, var(--rose), var(--lav));
+    }
+    .price-card:not(.featured) .badge { display: none; }
     .price-card .label { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 800; color: var(--accent); }
     .price-card .amount { font-family: var(--serif); font-size: 2.1rem; font-weight: 600; margin: 0.35rem 0 0.35rem; position: relative; }
+    .price-card.featured .amount { font-size: 2.35rem; }
     .price-card .amount span { font-size: 1.05rem; }
     .price-card .meta { font-size: 0.8rem; font-weight: 700; color: var(--accent); margin-bottom: 0.45rem; }
     .price-card p { color: var(--muted); font-size: 0.92rem; margin-bottom: 1rem; position: relative; }
@@ -485,8 +544,31 @@
       background: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.85);
     }
     .stars { color: #c9a06a; letter-spacing: 0.08em; margin-bottom: 0.5rem; }
-    .review blockquote { font-family: var(--serif); font-size: 1.05rem; margin-bottom: 0.5rem; }
+    .review blockquote {
+      font-family: var(--serif); font-size: 1.02rem; margin-bottom: 0.65rem;
+      display: -webkit-box; -webkit-line-clamp: 6; -webkit-box-orient: vertical; overflow: hidden;
+    }
+    .review.is-open blockquote { display: block; -webkit-line-clamp: unset; overflow: visible; }
     .review cite { font-size: 0.85rem; color: var(--muted); font-style: normal; }
+    .review-toggle {
+      margin-top: 0.55rem; background: none; border: none; padding: 0;
+      color: var(--accent); font-weight: 800; font-size: 0.82rem; cursor: pointer; font-family: inherit;
+    }
+    .reviews-disclaimer { margin-top: 0.85rem; font-size: 0.85rem; color: var(--muted); max-width: 52ch; }
+    .legal-note {
+      margin-top: 1rem; font-size: 0.8rem; color: var(--muted); max-width: 60ch; line-height: 1.45;
+    }
+    .cookie-banner {
+      position: fixed; left: 1rem; right: 1rem; bottom: 1rem; z-index: 80;
+      display: none; gap: 0.85rem; flex-wrap: wrap; align-items: center; justify-content: space-between;
+      padding: 0.95rem 1.1rem; border-radius: 18px;
+      background: rgba(255,255,255,0.92); border: 1px solid rgba(255,255,255,0.95);
+      box-shadow: 0 16px 40px rgba(160,120,140,0.2); backdrop-filter: blur(14px);
+      font-size: 0.85rem; color: var(--muted);
+    }
+    .cookie-banner.open { display: flex; }
+    .cookie-banner a { color: var(--accent); font-weight: 700; }
+    .cookie-banner .btn { margin-top: 0; padding: 0.65rem 1.1rem; font-size: 0.82rem; }
 
     .faq-item {
       border-radius: 18px; margin-bottom: 0.65rem;
@@ -691,7 +773,9 @@
         </div>
         <div class="about">
           <div class="about-photo">
-            <img src="assets/portrait-920.webp" srcset="assets/portrait-460.webp 460w, assets/portrait-920.webp 920w" sizes="(max-width:800px) 70vw, 300px" alt="Анна Щеголихина, семейный психолог" width="920" height="920" loading="lazy" />
+            <div class="about-photo-frame">
+              <img src="assets/portrait-920.webp" srcset="assets/portrait-460.webp 460w, assets/portrait-920.webp 920w" sizes="(max-width:800px) 70vw, 300px" alt="Анна Щеголихина, семейный психолог" width="920" height="920" loading="lazy" />
+            </div>
           </div>
           <div>
             <p style="color:var(--muted);max-width:46ch">Создаю тёплое пространство для пар и семей — без давления «быть идеальными», с вниманием к тому, что между вами.</p>
@@ -715,48 +799,52 @@
             <p class="label">Индивидуально</p>
             <p class="meta">50 минут · онлайн</p>
             <p class="amount">4 500 <span>₽</span></p>
-            <p>Личная сессия в вашем темпе — для ясности с собой и в отношениях.</p>
+            <p>Если партнёр пока не готов идти вместе — или вы хотите разобраться в ситуации самостоятельно.</p>
             <a class="btn" href="#booking" data-therapy-type="individual">Записаться</a>
+          </article>
+          <article class="price-card featured">
+            <span class="badge">Для пары</span>
+            <p class="label">Пара</p>
+            <p class="meta">90 минут · онлайн</p>
+            <p class="amount">7 000 <span>₽</span></p>
+            <p>Формат для пары или семьи: услышать друг друга, наладить диалог и двигаться к изменениям вместе.</p>
+            <a class="btn" href="#booking" data-therapy-type="family">Записаться</a>
           </article>
           <article class="price-card">
             <p class="label">Индивидуально</p>
             <p class="meta">90 минут · онлайн</p>
             <p class="amount">7 000 <span>₽</span></p>
-            <p>Расширенная встреча, когда теме нужно больше пространства.</p>
-            <a class="btn" href="#booking" data-therapy-type="individual90">Записаться</a>
-          </article>
-          <article class="price-card">
-            <p class="label">Пара</p>
-            <p class="meta">90 минут · онлайн</p>
-            <p class="amount">7 000 <span>₽</span></p>
-            <p>Вдвоём: диалог и восстановление контакта без чужого вердикта.</p>
-            <a class="btn" href="#booking" data-therapy-type="family">Записаться</a>
+            <p>Расширенная встреча, когда теме нужно больше пространства. Запись — через мессенджеры.</p>
+            <a class="btn" href="https://t.me/annashhe" target="_blank" rel="noopener" data-therapy-type="individual90">Написать</a>
           </article>
         </div>
-        <p style="margin-top:1rem;color:var(--muted);font-size:0.88rem;max-width:52ch">Пакет из 5 сессий — скидка 20% (через мессенджеры). Условия — в <a href="oferta/" style="color:var(--accent);font-weight:700;text-decoration:none">оферте</a>.</p>
+        <p style="margin-top:1rem;color:var(--muted);font-size:0.88rem;max-width:52ch">При каждой оплате высылаю чек. Пакет из 5 сессий — скидка 20% (через мессенджеры). Отмена/перенос — за 24 часа. Условия — в <a href="oferta/" style="color:var(--accent);font-weight:700;text-decoration:none">оферте</a>.</p>
       </section>
 
       <section class="sec" id="reviews">
         <div class="sec-head">
           <p class="eyebrow">Отзывы</p>
           <h2>Слова тех, кто уже начал</h2>
-          <p>Опыт клиентов не гарантирует такой же результат у вас.</p>
+          <p class="reviews-disclaimer">Опыт клиентов в отзывах не гарантирует такой же результат у вас.</p>
         </div>
         <div class="reviews">
           <article class="review">
             <p class="stars">★★★★★</p>
-            <blockquote>«Будто нас снова мягко соединили — без давления.»</blockquote>
-            <cite>— Ольга и Сергей</cite>
+            <blockquote>«Довольно скептически относилась к психологии, но когда отношения с мужем были почти разрушены — решились на семейную терапию в качестве последнего шанса. Сессии проходили в комфортном темпе, Анна не давала нам уходить в ссоры или обиды, выводила на конструктивные диалоги… нам удалось сохранить семью… мы наконец стали слышать друг друга.»</blockquote>
+            <cite>С. · 29 лет · личные сообщения</cite>
+            <button type="button" class="review-toggle" aria-expanded="false">Читать полностью</button>
           </article>
           <article class="review">
             <p class="stars">★★★★★</p>
-            <blockquote>«Стало безопасно говорить о том, о чём молчали годами.»</blockquote>
-            <cite>— Наталья</cite>
+            <blockquote>«Большая благодарность Анне за её человечность, отличный подход без копания в детских травмах, если это некомфортно. Подсвечивает такие важные моменты, которых я бы точно не заметила… Спасибо, Анна, вы вернули мне себя.»</blockquote>
+            <cite>М. · 32 года · Яндекс Услуги</cite>
+            <button type="button" class="review-toggle" aria-expanded="false">Читать полностью</button>
           </article>
           <article class="review">
             <p class="stars">★★★★★</p>
-            <blockquote>«Онлайн оказался тёплым. Чувствуется присутствие.»</blockquote>
-            <cite>— Артём</cite>
+            <blockquote>«Проходил через развод и обратился к Анне, чтобы не утонуть в эмоциях. Работа помогла мне держать голову холодной, не влетать в конфликты и постепенно собрать себя заново. Чувствую, что вышел из ситуации гораздо сильнее, чем мог бы сам.»</blockquote>
+            <cite>К. · 49 лет · Яндекс Карты</cite>
+            <button type="button" class="review-toggle" aria-expanded="false">Читать полностью</button>
           </article>
         </div>
       </section>
@@ -766,11 +854,30 @@
           <p class="eyebrow">FAQ</p>
           <h2>Частые вопросы</h2>
         </div>
-        <details class="faq-item"><summary>Как проходит онлайн-встреча?</summary><p class="ans">Видеосвязь в согласованном мессенджере, в тихом месте. 50 или 90 минут — в вашем темпе.</p></details>
-        <details class="faq-item"><summary>Сохранится ли конфиденциальность?</summary><p class="ans">Да. Содержание встреч конфиденциально. Запись не делаю без вашего согласия.</p></details>
-        <details class="faq-item"><summary>Как оплатить?</summary><p class="ans">100% предоплата до начала встречи. Реквизиты пришлю после записи. Чек — через «Мой налог».</p></details>
-        <details class="faq-item"><summary>Можно ли отменить?</summary><p class="ans">Перенос или отмена не позднее чем за 24 часа — без потери оплаты. Подробнее в <a href="oferta/">оферте</a>.</p></details>
-        <details class="faq-item"><summary>Кому подойдёт?</summary><p class="ans">Пара́м и семьям в кризисе, при ссорах, измене, непонимании — и индивидуально, когда важно разобраться в отношениях.</p></details>
+        <details class="faq-item">
+          <summary>Не будет ли психолог на стороне того, кто больше плачет/жалуется?</summary>
+          <p class="ans">Нет, категорически нет. Это одно из ключевых правил и этических принципов семейного терапевта. Слёзы и жалобы — симптом, язык боли. Я отнесусь к этой боли с уважением, и с таким же вниманием буду исследовать, что стоит за сдержанностью, гневом или отстранённостью второго партнёра. Моя роль — помочь каждому увидеть вклад другого и свой собственный.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Как проходит онлайн-консультация?</summary>
+          <p class="ans">Как очная встреча, только без дороги. За 5–10 минут до начала пришлю ссылку на видеовстречу в удобном мессенджере (Telegram, WhatsApp, MAX) — дополнительные программы не нужны. Длительность — 50 или 90 минут. Важно заранее выбрать тихое место, где вас не будут перебивать.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Как часто нужно встречаться с психологом?</summary>
+          <p class="ans">Оптимально — 1 раз в неделю: успеваете прожить изменения между встречами и не теряете нить работы. На старте или в острый период иногда 2 раза в неделю. Реже раза в неделю обычно замедляет процесс. К завершению ритм можно сделать свободнее. Частоту согласуем под ваш темп.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Сколько времени нужно, чтобы стало легче?</summary>
+          <p class="ans">Зависит от запроса и темпа. У многих первое облегчение и ясность появляются уже в первые 3–6 встреч — это не гарантия срока. Более устойчивые изменения обычно формируются за несколько месяцев регулярной работы. Идём в вашем темпе.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Что если я (мы) опоздаю или пропущу встречу?</summary>
+          <p class="ans">Перенос или отмена — не позднее чем за 24 часа: верну оплату или подберём другое время. При отмене менее чем за 24 часа или неявке оплата не возвращается (при пакете сессия списывается). Подробнее в <a href="oferta/">оферте</a>.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Остались сомнения или страхи?</summary>
+          <p class="ans">Это нормально. Напишите в Telegram или WhatsApp — отвечу в течение дня, помогу понять, подходит ли формат и с чего начать. Без давления «сразу записываться».</p>
+        </details>
       </section>
 
       <section class="sec" id="booking">
@@ -799,6 +906,7 @@
             <a href="consent/">Согласие</a>
             <a href="kaliningrad/">Очно в Калининграде</a>
           </div>
+          <p class="legal-note">Психологические консультации не являются медицинской услугой и не гарантируют конкретный результат. Отмена/перенос — за 24 часа (см. оферту).</p>
         </div>
         <div class="socials">
           <a class="social" href="https://t.me/annashhe" target="_blank" rel="noopener" aria-label="Telegram">TG</a>
@@ -807,6 +915,11 @@
         <div><a class="btn" href="#booking">Записаться</a></div>
       </div>
     </footer>
+  </div>
+
+  <div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Уведомление о cookie">
+    <p>Используем cookie для работы сайта и статистики. Подробнее — в <a href="privacy-policy/">политике</a>.</p>
+    <button type="button" class="btn" id="cookieOk">OK</button>
   </div>
 
   <script>
@@ -849,10 +962,10 @@
 
     /* 1 split (rose L / lav R) → 2 meet → 3 swap split (rose R / lav L) → 4 meet */
     const hero =  { rx:58, lx:70, ry:40, ly:44, mute:0,    scale:1,    n:0.88, e:1 };
-    const splitA ={ rx:24, lx:78, ry:52, ly:56, mute:0.28, scale:0.92, n:0,    e:0.12 };
-    const meet1 = { rx:48, lx:56, ry:46, ly:48, mute:0.2,  scale:0.95, n:0.45, e:0.1 };
-    const splitB ={ rx:78, lx:24, ry:50, ly:54, mute:0.3,  scale:0.9,  n:0,    e:0.1 };
-    const meet2 = { rx:50, lx:60, ry:56, ly:58, mute:0.35, scale:0.84, n:0.28, e:0.22 };
+    const splitA ={ rx:24, lx:78, ry:52, ly:56, mute:0.12, scale:0.94, n:0,    e:0.12 };
+    const meet1 = { rx:48, lx:56, ry:46, ly:48, mute:0.1,  scale:0.96, n:0.4,  e:0.1 };
+    const splitB ={ rx:78, lx:24, ry:50, ly:54, mute:0.14, scale:0.92, n:0,    e:0.1 };
+    const meet2 = { rx:50, lx:60, ry:56, ly:58, mute:0.16, scale:0.88, n:0.25, e:0.2 };
 
     function updateBlobs() {
       const t1 = progressThrough(voices, 0.92, 0.38);
@@ -957,6 +1070,32 @@
         });
       }, { rootMargin: '200px 0px' });
       io.observe(root);
+    })();
+
+    /* Review expand */
+    document.querySelectorAll('.review-toggle').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const card = btn.closest('.review');
+        const open = card.classList.toggle('is-open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        btn.textContent = open ? 'Свернуть' : 'Читать полностью';
+      });
+    });
+
+    /* Cookie notice — no analytics until OK (как на мужском сайте) */
+    (function () {
+      var key = 'psi_family_cookie_ok';
+      var banner = document.getElementById('cookieBanner');
+      var ok = document.getElementById('cookieOk');
+      if (!banner || !ok) return;
+      try {
+        if (localStorage.getItem(key)) return;
+      } catch (e) {}
+      banner.classList.add('open');
+      ok.addEventListener('click', function () {
+        try { localStorage.setItem(key, '1'); } catch (e) {}
+        banner.classList.remove('open');
+      });
     })();
   </script>
 </body>
