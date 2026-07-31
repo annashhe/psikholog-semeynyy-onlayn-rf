@@ -18,7 +18,13 @@
   <meta property="og:locale" content="ru_RU" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800&family=Literata:opsz,wght@7..72,500;7..72,600&display=swap" rel="stylesheet" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&family=Literata:opsz,wght@7..72,500;7..72,600&display=swap" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&family=Literata:opsz,wght@7..72,500;7..72,600&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&family=Literata:opsz,wght@7..72,500;7..72,600&display=swap" rel="stylesheet" />
+  </noscript>
+  <script src="assets/cookie-notice.js" defer></script>
+  <script src="assets/consent-analytics.js" defer></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -558,17 +564,6 @@
     .legal-note {
       margin-top: 1rem; font-size: 0.8rem; color: var(--muted); max-width: 60ch; line-height: 1.45;
     }
-    .cookie-banner {
-      position: fixed; left: 1rem; right: 1rem; bottom: 1rem; z-index: 80;
-      display: none; gap: 0.85rem; flex-wrap: wrap; align-items: center; justify-content: space-between;
-      padding: 0.95rem 1.1rem; border-radius: 18px;
-      background: rgba(255,255,255,0.92); border: 1px solid rgba(255,255,255,0.95);
-      box-shadow: 0 16px 40px rgba(160,120,140,0.2); backdrop-filter: blur(14px);
-      font-size: 0.85rem; color: var(--muted);
-    }
-    .cookie-banner.open { display: flex; }
-    .cookie-banner a { color: var(--accent); font-weight: 700; }
-    .cookie-banner .btn { margin-top: 0; padding: 0.65rem 1.1rem; font-size: 0.82rem; }
 
     .faq-item {
       border-radius: 18px; margin-bottom: 0.65rem;
@@ -814,8 +809,8 @@
             <p class="label">Индивидуально</p>
             <p class="meta">90 минут · онлайн</p>
             <p class="amount">7 000 <span>₽</span></p>
-            <p>Расширенная встреча, когда теме нужно больше пространства. Запись — через мессенджеры.</p>
-            <a class="btn" href="https://t.me/annashhe" target="_blank" rel="noopener" data-therapy-type="individual90">Написать</a>
+            <p>Расширенная встреча, когда теме нужно больше пространства.</p>
+            <a class="btn" href="#booking" data-therapy-type="individual90">Записаться</a>
           </article>
         </div>
         <p style="margin-top:1rem;color:var(--muted);font-size:0.88rem;max-width:52ch">При каждой оплате высылаю чек. Пакет из 5 сессий — скидка 20% (через мессенджеры). Отмена/перенос — за 24 часа. Условия — в <a href="oferta/" style="color:var(--accent);font-weight:700;text-decoration:none">оферте</a>.</p>
@@ -888,7 +883,7 @@
         </div>
         <div class="booking">
           <div data-anna-psy-widget></div>
-          <p class="calendar-note">Если календарь не отображается, попробуйте <strong>отключить VPN</strong> или открыть страницу в другом браузере. Индивидуальная 90 мин — пока через Telegram / WhatsApp.</p>
+          <p class="calendar-note">Если календарь не отображается, попробуйте <strong>отключить VPN</strong> или открыть страницу в другом браузере. Кнопки тарифов выше предвыбирают формат в виджете.</p>
           <p class="ochno-note">Живёте в Калининграде и хотите встретиться очно? <a href="kaliningrad/">Страница очных консультаций</a> — без конкуренции с онлайн-записью.</p>
         </div>
       </section>
@@ -904,6 +899,7 @@
             <a href="oferta/">Оферта</a>
             <a href="privacy-policy/">Конфиденциальность</a>
             <a href="consent/">Согласие</a>
+            <a href="#" class="js-cookie-settings">Настройки cookie</a>
             <a href="kaliningrad/">Очно в Калининграде</a>
           </div>
           <p class="legal-note">Психологические консультации не являются медицинской услугой и не гарантируют конкретный результат. Отмена/перенос — за 24 часа (см. оферту).</p>
@@ -915,11 +911,6 @@
         <div><a class="btn" href="#booking">Записаться</a></div>
       </div>
     </footer>
-  </div>
-
-  <div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Уведомление о cookie">
-    <p>Используем cookie для работы сайта и статистики. Подробнее — в <a href="privacy-policy/">политике</a>.</p>
-    <button type="button" class="btn" id="cookieOk">OK</button>
   </div>
 
   <script>
@@ -1045,8 +1036,79 @@
       rows.forEach((r) => rio.observe(r));
     }
 
-    /* Calendar widget (same as мужской сайт) */
+    /* Calendar widget + therapy type preselect (как на мужском сайте) */
     (function () {
+      var pendingTherapyType = null;
+
+      function normalizeTherapyType(value) {
+        var v = String(value || '').toLowerCase();
+        if (v === 'individual_90') return 'individual90';
+        if (v === 'individual90' || v === 'family' || v === 'individual') return v;
+        return '';
+      }
+      function setPendingTherapyType(value) {
+        var normalized = normalizeTherapyType(value);
+        if (!normalized) return;
+        pendingTherapyType = normalized;
+        try { sessionStorage.setItem('psiPendingTherapyType', normalized); } catch (e) {}
+      }
+      function getPendingTherapyType() {
+        if (pendingTherapyType) return pendingTherapyType;
+        try {
+          var fromSession = sessionStorage.getItem('psiPendingTherapyType');
+          var normalized = normalizeTherapyType(fromSession);
+          if (normalized) { pendingTherapyType = normalized; return normalized; }
+        } catch (e) {}
+        return '';
+      }
+      function clearPendingTherapyType() {
+        pendingTherapyType = '';
+        try { sessionStorage.removeItem('psiPendingTherapyType'); } catch (e) {}
+      }
+      function applyPendingTherapyTypeToWidget(host) {
+        if (!host) return false;
+        var type = getPendingTherapyType();
+        if (!type) return false;
+        var candidates = Array.prototype.slice.call(
+          host.querySelectorAll('button, [role="button"], label, [data-therapy-type], input')
+        );
+        var items = candidates
+          .map(function (el) { return { el: el, text: (el.textContent || el.value || el.getAttribute('aria-label') || '').trim() }; })
+          .filter(function (item) { return item.text; });
+        if (!items.length) return false;
+
+        function clickItem(item) {
+          if (!item || !item.el) return false;
+          try { item.el.click(); clearPendingTherapyType(); return true; } catch (e) { return false; }
+        }
+
+        if (type === 'family') {
+          return clickItem(items.find(function (item) { return /(семейн|парн)/i.test(item.text); }));
+        }
+        if (type === 'individual90') {
+          var explicit90 = items.find(function (item) {
+            return /(индивидуальн)/i.test(item.text) && /(90\s*мин|90мин|расшир)/i.test(item.text);
+          });
+          if (clickItem(explicit90)) return true;
+          var individualOnly = items.filter(function (item) {
+            return /(индивидуальн)/i.test(item.text) && !/(семейн|парн)/i.test(item.text);
+          });
+          if (individualOnly.length > 1 && clickItem(individualOnly[1])) return true;
+          return clickItem(individualOnly[0]);
+        }
+        if (type === 'individual') {
+          var explicit50 = items.find(function (item) {
+            return /(индивидуальн)/i.test(item.text) && /(50\s*мин|50мин|стандарт)/i.test(item.text);
+          });
+          if (clickItem(explicit50)) return true;
+          var individualBase = items.filter(function (item) {
+            return /(индивидуальн)/i.test(item.text) && !/(семейн|парн)/i.test(item.text);
+          });
+          return clickItem(individualBase[0]);
+        }
+        return false;
+      }
+
       function loadBookingWidget() {
         if (window.__psiWidgetLoading) return;
         window.__psiWidgetLoading = true;
@@ -1058,18 +1120,43 @@
           if (!host) return;
           host.innerHTML = '<div style="padding:1.25rem;border-radius:16px;background:rgba(255,255,255,0.7)"><p style="margin:0 0 .75rem">Календарь временно недоступен. Запишитесь через мессенджеры.</p><p style="margin:0"><a href="https://t.me/annashhe" target="_blank" rel="noopener">Telegram</a> · <a href="https://wa.me/79137556284" target="_blank" rel="noopener">WhatsApp</a></p></div>';
         };
+        s.onload = function () {
+          var attempts = 0;
+          var tryApply = function () {
+            attempts += 1;
+            var host = document.querySelector('[data-anna-psy-widget]');
+            applyPendingTherapyTypeToWidget(host);
+            if (attempts < 40) setTimeout(tryApply, 400);
+          };
+          tryApply();
+        };
         var root = document.getElementById('booking');
         if (root) root.appendChild(s);
       }
+
       var root = document.getElementById('booking');
-      if (!root) return;
-      if (!('IntersectionObserver' in window)) { loadBookingWidget(); return; }
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) { loadBookingWidget(); io.disconnect(); }
-        });
-      }, { rootMargin: '200px 0px' });
-      io.observe(root);
+      if (root) {
+        if (!('IntersectionObserver' in window)) {
+          loadBookingWidget();
+        } else {
+          var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) { loadBookingWidget(); io.disconnect(); }
+            });
+          }, { rootMargin: '200px 0px' });
+          io.observe(root);
+        }
+      }
+
+      document.addEventListener('click', function (e) {
+        var trigger = e.target && e.target.closest && e.target.closest('[data-therapy-type]');
+        if (!trigger) return;
+        setPendingTherapyType(trigger.getAttribute('data-therapy-type'));
+        if (!window.__psiWidgetLoading) loadBookingWidget();
+        setTimeout(function () {
+          applyPendingTherapyTypeToWidget(document.querySelector('[data-anna-psy-widget]'));
+        }, 120);
+      });
     })();
 
     /* Review expand */
@@ -1081,22 +1168,6 @@
         btn.textContent = open ? 'Свернуть' : 'Читать полностью';
       });
     });
-
-    /* Cookie notice — no analytics until OK (как на мужском сайте) */
-    (function () {
-      var key = 'psi_family_cookie_ok';
-      var banner = document.getElementById('cookieBanner');
-      var ok = document.getElementById('cookieOk');
-      if (!banner || !ok) return;
-      try {
-        if (localStorage.getItem(key)) return;
-      } catch (e) {}
-      banner.classList.add('open');
-      ok.addEventListener('click', function () {
-        try { localStorage.setItem(key, '1'); } catch (e) {}
-        banner.classList.remove('open');
-      });
-    })();
   </script>
 </body>
 </html>
