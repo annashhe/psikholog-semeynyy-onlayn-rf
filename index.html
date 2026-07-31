@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Семейный психолог онлайн — Анна Щеголихина</title>
+  <meta name="description" content="Онлайн-консультации семейного психолога для пар и семей. Тёплое пространство, где можно услышать друг друга. РФ и мир, на русском." />
+  <meta name="theme-color" content="#FFF3E3" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="canonical" href="./" />
+  <meta property="og:title" content="Семейный психолог онлайн — Анна Щеголихина" />
+  <meta property="og:description" content="Онлайн для пар и семей — без давления и готовых советов." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="ru_RU" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800&family=Literata:opsz,wght@7..72,500;7..72,600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #FFF3E3;
+      --rose: #D4A5A5;
+      --lav: #B8A9C9;
+      --ink: #4A3F45;
+      --muted: #7A6A70;
+      --accent: #9a6b7a;
+      --font: Nunito, system-ui, sans-serif;
+      --serif: Literata, Georgia, serif;
+      --rose-x: 58%;
+      --rose-y: 40%;
+      --lav-x: 70%;
+      --lav-y: 44%;
+      --blob-scale: 1;
+      --blob-mute: 0;
+      --escape-opacity: 1;
+      --nimbus-opacity: 0.9;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      background: var(--cream);
+      color: var(--ink);
+      overflow-x: hidden;
+      line-height: 1.55;
+    }
+
+    .bar {
+      display: none;
+    }
+    .footer-links {
+      display: flex; flex-wrap: wrap; gap: 0.65rem 1.1rem;
+      margin-top: 0.85rem; font-size: 0.82rem;
+    }
+    .footer-links a { color: var(--muted); text-decoration: none; }
+    .footer-links a:hover { color: var(--accent); }
+    .ochno-note {
+      margin-top: 1.25rem; padding: 0.95rem 1.15rem; border-radius: 18px;
+      background: rgba(255,255,255,0.45); border: 1px solid rgba(255,255,255,0.8);
+      font-size: 0.9rem; color: var(--muted); max-width: 52ch;
+    }
+    .ochno-note a { color: var(--accent); font-weight: 700; text-decoration: none; }
+    .bar a { color: var(--accent); text-decoration: none; font-weight: 700; }
+    .bar .tag {
+      font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 0.25rem 0.55rem; border-radius: 999px;
+      border: 1px solid var(--rose); color: var(--accent);
+    }
+
+    /* Scroll-following clay blobs — круглые, узнаваемые, справа как в оригинале V */
+    .blob-layer {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden;
+    }
+    .scroll-blob {
+      position: absolute;
+      width: min(236px, 28vw);
+      height: min(236px, 28vw);
+      left: var(--rose-x); top: var(--rose-y);
+      transform: translate(-50%, -50%) scale(var(--blob-scale));
+      opacity: calc(0.98 - var(--blob-mute) * 0.28);
+      filter: saturate(calc(1 - var(--blob-mute) * 0.18));
+      will-change: transform, opacity, left, top;
+    }
+    .scroll-blob.lav {
+      left: var(--lav-x); top: var(--lav-y);
+    }
+    .blob-core {
+      display: block;
+      width: 100%; height: 100%;
+      border-radius: 50%;
+      filter: blur(0.5px);
+      box-shadow:
+        inset -12px -16px 30px rgba(255,255,255,0.55),
+        inset 10px 14px 28px rgba(120,80,100,0.18),
+        0 20px 40px rgba(160,120,140, calc(0.25 - var(--blob-mute) * 0.1));
+      animation: breathe 5s ease-in-out infinite;
+    }
+    .scroll-blob.rose .blob-core {
+      background: linear-gradient(145deg, #f0cfcf, var(--rose) 55%, #c4899a);
+    }
+    .scroll-blob.lav .blob-core {
+      background: linear-gradient(215deg, #ddd0ea, var(--lav) 50%, #9e8fb8);
+      animation-delay: 0.4s;
+    }
+    .blob-nimbus {
+      position: absolute;
+      left: calc((var(--rose-x) + var(--lav-x)) / 2);
+      top: calc((var(--rose-y) + var(--lav-y)) / 2);
+      width: min(340px, 42vw); height: min(340px, 42vw);
+      transform: translate(calc(-50% + 22px), calc(-50% - 14px)) scale(var(--blob-scale));
+      border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.22);
+      box-shadow: 0 0 50px rgba(255,255,255,0.18), inset 0 0 40px rgba(184,169,201,0.12);
+      opacity: var(--nimbus-opacity);
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+    .escape-circle {
+      position: fixed; z-index: 0; right: -88px; top: 12%;
+      width: min(240px, 32vw); height: min(240px, 32vw); border-radius: 50%;
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.22);
+      box-shadow: 0 0 70px rgba(255,255,255,0.12);
+      backdrop-filter: blur(14px);
+      opacity: var(--escape-opacity);
+      animation: breathe 5s ease-in-out infinite 0.8s;
+      pointer-events: none;
+    }
+    @keyframes breathe {
+      0%, 100% { transform: scale(0.96); }
+      50% { transform: scale(1.05); }
+    }
+
+    .aurora {
+      position: fixed; inset: -12%; z-index: -1; pointer-events: none;
+      background:
+        radial-gradient(ellipse 50% 45% at 20% 30%, rgba(184,169,201,0.5), transparent 60%),
+        radial-gradient(ellipse 45% 40% at 80% 25%, rgba(212,165,165,0.45), transparent 55%),
+        radial-gradient(ellipse 55% 45% at 55% 80%, rgba(255,220,190,0.65), transparent 60%),
+        var(--cream);
+      animation: aurora 12s ease-in-out infinite alternate;
+      filter: blur(2px);
+    }
+    @keyframes aurora {
+      from { transform: scale(1) translate(0,0); }
+      to { transform: scale(1.05) translate(-1.5%, 1%); }
+    }
+
+    .grid-soft {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(74,63,69,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(74,63,69,0.04) 1px, transparent 1px);
+      background-size: 80px 80px;
+    }
+
+    .wrap { position: relative; z-index: 1; }
+
+    .hero {
+      position: relative;
+      width: min(1440px, 100%);
+      margin: 0 auto;
+      min-height: min(100vh, 820px);
+      max-height: 100vh;
+      overflow: hidden;
+      isolation: isolate;
+    }
+    @media (max-width: 900px) {
+      .hero { max-height: none; min-height: 100svh; }
+    }
+
+    .nav-float {
+      position: absolute; z-index: 6; top: 1.1rem; left: 1.2rem; right: 1.2rem;
+      display: flex; flex-wrap: wrap; gap: 0.55rem;
+    }
+    .pill {
+      padding: 0.6rem 1rem; border-radius: 999px;
+      background: rgba(255,255,255,0.45);
+      border: 1px solid rgba(255,255,255,0.7);
+      backdrop-filter: blur(18px);
+      font-size: 0.75rem; font-weight: 700; color: var(--ink);
+      text-decoration: none;
+      box-shadow: 0 10px 30px rgba(180,140,150,0.15);
+      transition: transform 0.25s;
+    }
+    .pill:hover { transform: translateY(-2px) scale(1.03); }
+
+    .brand {
+      font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--accent); font-weight: 800; margin-bottom: 0.75rem;
+    }
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(1.9rem, 3.5vw, 2.9rem);
+      font-weight: 600; line-height: 1.12; letter-spacing: -0.02em;
+      max-width: 14ch;
+    }
+    .hero h1 .accent-line {
+      background-image: linear-gradient(90deg, var(--rose), var(--lav));
+      background-size: 0% 0.14em;
+      background-repeat: no-repeat;
+      background-position: 0 92%;
+      animation: underlineGrow 1.1s cubic-bezier(0.22,1,0.36,1) forwards 0.6s;
+    }
+    @keyframes underlineGrow { to { background-size: 100% 0.14em; } }
+    .lead {
+      margin-top: 0.85rem; color: var(--muted); max-width: 34ch; font-size: 0.98rem;
+    }
+    .btn {
+      display: inline-flex; margin-top: 1.25rem; padding: 0.9rem 1.45rem;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--rose), var(--lav));
+      color: #fff; text-decoration: none; font-weight: 800;
+      box-shadow: 0 12px 30px rgba(184,169,201,0.35);
+      transition: transform 0.2s;
+    }
+    .btn:hover { transform: translateY(-2px) scale(1.02); }
+    .btn-ghost {
+      background: rgba(255,255,255,0.55);
+      color: var(--ink);
+      border: 1px solid rgba(255,255,255,0.85);
+      box-shadow: none;
+      margin-left: 0.65rem;
+    }
+    .cta-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem; }
+
+    .glass {
+      position: absolute; z-index: 5;
+      left: 6%; top: 50%; transform: translateY(-45%);
+      width: min(460px, 42%);
+      padding: 1.7rem 1.55rem;
+      border-radius: 28px;
+      background: rgba(255,255,255,0.42);
+      border: 1px solid rgba(255,255,255,0.75);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+      box-shadow: 0 24px 60px rgba(180,140,150,0.18);
+    }
+    @media (max-width: 900px) {
+      .glass {
+        position: relative; left: auto; top: auto; transform: none;
+        width: auto; margin: 52vh 1.25rem 2rem;
+      }
+      .escape-circle { top: 10%; right: -60px; opacity: calc(var(--escape-opacity) * 0.7); }
+    }
+
+    .page { width: min(1080px, 100%); margin: 0 auto; padding: 0 1.25rem 3rem; }
+
+    .sec {
+      padding: 4.5rem 0 0;
+      opacity: 0; transform: translateY(22px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .sec.is-in { opacity: 1; transform: none; }
+    .eyebrow {
+      font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--accent); font-weight: 800; margin-bottom: 0.5rem;
+    }
+    .sec-head { margin-bottom: 1.75rem; max-width: 36ch; }
+    .sec-head h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.65rem, 3.2vw, 2.25rem);
+      font-weight: 600; line-height: 1.15;
+    }
+    .sec-head p { margin-top: 0.55rem; color: var(--muted); }
+
+    /* Voices — dual gaze on split blobs */
+    .voices {
+      position: relative;
+      min-height: min(85vh, 720px);
+      display: grid; align-items: center;
+      padding: 5rem 0 3rem;
+    }
+    .voices-grid {
+      display: grid; gap: 2rem;
+      position: relative; z-index: 2;
+    }
+    @media (min-width: 800px) {
+      .voices-grid { grid-template-columns: 1fr 1fr; gap: 3rem; }
+    }
+    .voice-card {
+      padding: 1.6rem 1.4rem;
+      border-radius: 28px;
+      background: rgba(255,255,255,0.42);
+      border: 1px solid rgba(255,255,255,0.8);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 16px 40px rgba(180,140,150,0.12);
+    }
+    .voice-card.women { border-top: 3px solid var(--rose); }
+    .voice-card.men { border-top: 3px solid var(--lav); }
+    .voice-card .tag {
+      font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+      font-weight: 800; margin-bottom: 0.65rem;
+    }
+    .voice-card.women .tag { color: #b07878; }
+    .voice-card.men .tag { color: #7d6f96; }
+    .voice-card h3 {
+      font-family: var(--serif); font-size: 1.35rem; font-weight: 600; margin-bottom: 0.45rem;
+    }
+    .voice-card p { color: var(--muted); font-size: 0.95rem; }
+    .voice-card .placeholder {
+      font-size: 0.85rem; font-style: italic; color: var(--muted); opacity: 0.75; margin-top: 0.75rem;
+    }
+    .voices-note {
+      grid-column: 1 / -1; text-align: center; color: var(--muted); font-size: 0.9rem;
+      margin-top: 0.5rem;
+    }
+
+    /* Kinetic mid-page */
+    .kinetic-sec { text-align: center; padding-top: 5rem; }
+    .kinetic {
+      position: relative; min-height: 4.2rem; margin: 1rem auto 0.75rem; max-width: 16ch;
+    }
+    .kw {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 600; letter-spacing: -0.02em;
+      position: absolute; left: 0; right: 0; top: 0;
+      opacity: 0; transform: translateY(16px);
+      transition: opacity 0.5s ease, transform 0.5s ease, color 0.4s;
+    }
+    .kw.is-active { opacity: 1; transform: none; }
+    .kw.is-done { opacity: 0; transform: translateY(-14px); }
+    .kw.final.is-active {
+      background: linear-gradient(90deg, var(--rose), var(--lav));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+
+    /* Scroll-lit word rows */
+    .word-rows { display: grid; gap: 0.75rem; }
+    .word-row {
+      padding: 1.25rem 1.3rem;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.35);
+      border: 1px solid rgba(255,255,255,0.7);
+      transition: background 0.5s ease, border-color 0.5s ease, transform 0.5s ease, box-shadow 0.5s ease, color 0.5s;
+    }
+    .word-row .phase {
+      font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+      font-weight: 800; color: var(--accent); margin-bottom: 0.35rem;
+    }
+    .word-row h3 { font-family: var(--serif); font-size: 1.25rem; font-weight: 600; margin-bottom: 0.3rem; }
+    .word-row p { color: var(--muted); font-size: 0.93rem; max-width: 48ch; }
+    .word-row.is-lit {
+      background: linear-gradient(135deg, rgba(212,165,165,0.55), rgba(184,169,201,0.5));
+      border-color: rgba(255,255,255,0.9);
+      color: #3d3338;
+      transform: translateX(6px);
+      box-shadow: 0 18px 44px rgba(160,120,140,0.2);
+    }
+    .word-row.is-lit .phase { color: #fff; }
+    .word-row.is-lit h3 { color: #2f282c; }
+    .word-row.is-lit p { color: rgba(47,40,44,0.78); }
+    .word-row.is-past { opacity: 0.55; transform: scale(0.985); }
+
+    .prob-grid {
+      display: grid; gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+    .prob-card {
+      padding: 1.35rem 1.2rem; border-radius: 26px;
+      background: rgba(255,255,255,0.55);
+      border: 1px solid rgba(255,255,255,0.85);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 12px 32px rgba(180,140,150,0.1);
+    }
+    .prob-card .dot {
+      width: 12px; height: 12px; border-radius: 50%; margin-bottom: 0.75rem;
+      background: linear-gradient(135deg, var(--rose), var(--lav));
+      animation: breathe 5s ease-in-out infinite;
+    }
+    .prob-card h3 { font-family: var(--serif); font-size: 1.1rem; margin-bottom: 0.35rem; }
+    .prob-card p { font-size: 0.9rem; color: var(--muted); }
+
+    .recog { display: grid; gap: 1.75rem; }
+    @media (min-width: 800px) { .recog { grid-template-columns: 1.15fr 0.85fr; align-items: center; } }
+    .q-item {
+      padding: 1rem 1.2rem; margin-bottom: 0.65rem; border-radius: 999px;
+      background: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.8);
+      font-weight: 700; font-size: 0.95rem;
+    }
+    .support-circle {
+      position: relative; width: min(240px, 78%); aspect-ratio: 1; margin: 0 auto;
+    }
+    .support-circle .ring {
+      position: absolute; inset: 0; border-radius: 50%;
+      background: #FFF9F2;
+      border: none;
+      box-shadow:
+        inset -10px -12px 24px rgba(255,255,255,0.7),
+        inset 8px 10px 22px rgba(120,80,100,0.08),
+        0 16px 40px rgba(184,169,201,0.22);
+      animation: breathe 5s ease-in-out infinite;
+    }
+    .support-circle .ring.inner {
+      inset: 16%;
+      background: linear-gradient(155deg, rgba(232,213,222,0.75), rgba(212,165,165,0.55) 55%, rgba(184,169,201,0.45));
+      border: 1px solid rgba(255,255,255,0.55);
+      box-shadow: inset 0 0 20px rgba(255,255,255,0.35);
+      animation-delay: 0.35s;
+    }
+    .support-circle .heart {
+      position: absolute; inset: 36%;
+      display: grid; place-items: center;
+    }
+    .support-circle .heart svg { width: 58%; opacity: 0.9; }
+
+    .about { display: grid; gap: 1.75rem; }
+    @media (min-width: 800px) { .about { grid-template-columns: 0.9fr 1.1fr; align-items: center; } }
+    .about-photo {
+      position: relative;
+      width: min(300px, 78vw);
+      margin: 0 auto;
+      aspect-ratio: 1;
+      border-radius: 28px;
+      overflow: hidden;
+      background: #2c2729;
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,0.55),
+        0 22px 55px rgba(160,120,140,0.28);
+    }
+    .about-photo::after {
+      content: "";
+      position: absolute; inset: 0; pointer-events: none; z-index: 1;
+      background:
+        linear-gradient(180deg, transparent 62%, rgba(255,243,227,0.45) 100%),
+        radial-gradient(ellipse 80% 50% at 50% 0%, rgba(212,165,165,0.12), transparent 60%);
+    }
+    .about-photo img {
+      display: block; width: 100%; height: 100%;
+      object-fit: cover; object-position: center 8%;
+      filter: saturate(0.94) contrast(1.03);
+    }
+    .diplomas { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0; }
+    .diploma {
+      padding: 0.45rem 0.8rem; border-radius: 999px; font-size: 0.78rem; font-weight: 700;
+      background: rgba(255,255,255,0.65); border: 1px solid rgba(255,255,255,0.9); color: var(--accent);
+    }
+    .lock-row { display: flex; align-items: center; gap: 0.5rem; font-weight: 700; font-size: 0.92rem; color: var(--accent); }
+
+    .price-grid { display: grid; gap: 1rem; }
+    @media (min-width: 900px) { .price-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (min-width: 600px) and (max-width: 899px) { .price-grid { grid-template-columns: 1fr 1fr; } }
+    .price-card {
+      position: relative;
+      padding: 1.7rem 1.45rem; border-radius: 28px;
+      background:
+        linear-gradient(155deg, rgba(255,255,255,0.72), rgba(255,243,227,0.55) 45%, rgba(212,165,165,0.18)),
+        rgba(255,255,255,0.5);
+      border: 1px solid rgba(255,255,255,0.9);
+      backdrop-filter: blur(14px);
+      box-shadow:
+        inset -6px -8px 18px rgba(255,255,255,0.45),
+        0 16px 40px rgba(180,140,150,0.12);
+      overflow: hidden;
+    }
+    .price-card::before {
+      content: "";
+      position: absolute; right: -20%; top: -30%;
+      width: 160px; height: 160px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(184,169,201,0.35), transparent 70%);
+      pointer-events: none;
+    }
+    .price-card:nth-child(2)::before {
+      background: radial-gradient(circle, rgba(212,165,165,0.4), transparent 70%);
+      left: -15%; right: auto; top: auto; bottom: -25%;
+    }
+    .price-card:nth-child(3) {
+      background:
+        linear-gradient(155deg, rgba(255,255,255,0.75), rgba(184,169,201,0.22) 55%, rgba(212,165,165,0.2)),
+        rgba(255,255,255,0.55);
+    }
+    .price-card .label { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 800; color: var(--accent); }
+    .price-card .amount { font-family: var(--serif); font-size: 2.1rem; font-weight: 600; margin: 0.35rem 0 0.35rem; position: relative; }
+    .price-card .amount span { font-size: 1.05rem; }
+    .price-card .meta { font-size: 0.8rem; font-weight: 700; color: var(--accent); margin-bottom: 0.45rem; }
+    .price-card p { color: var(--muted); font-size: 0.92rem; margin-bottom: 1rem; position: relative; }
+    .price-card .btn { position: relative; margin-top: 0.25rem; }
+
+    .reviews { display: grid; gap: 1rem; }
+    @media (min-width: 800px) { .reviews { grid-template-columns: repeat(3, 1fr); } }
+    .review {
+      padding: 1.25rem; border-radius: 22px;
+      background: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.85);
+    }
+    .stars { color: #c9a06a; letter-spacing: 0.08em; margin-bottom: 0.5rem; }
+    .review blockquote { font-family: var(--serif); font-size: 1.05rem; margin-bottom: 0.5rem; }
+    .review cite { font-size: 0.85rem; color: var(--muted); font-style: normal; }
+
+    .faq-item {
+      border-radius: 18px; margin-bottom: 0.65rem;
+      background: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.85);
+      overflow: hidden;
+    }
+    .faq-item summary {
+      padding: 1rem 1.2rem; cursor: pointer; font-weight: 700; list-style: none;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item .ans { padding: 0 1.2rem 1rem; color: var(--muted); font-size: 0.93rem; }
+
+    .booking {
+      padding: 2rem 1.4rem; border-radius: 28px;
+      background: rgba(255,255,255,0.55); border: 1px solid rgba(255,255,255,0.85);
+      backdrop-filter: blur(14px);
+    }
+    .calendar-note { margin-top: 0.85rem; font-size: 0.85rem; color: var(--muted); }
+    [data-anna-psy-widget] { min-height: 120px; }
+
+    .site-footer {
+      margin-top: 4rem; padding: 2.5rem 1.25rem 3rem;
+      background: rgba(255,255,255,0.4); border-top: 1px solid rgba(255,255,255,0.7);
+    }
+    .footer-inner {
+      width: min(1080px, 100%); margin: 0 auto;
+      display: grid; gap: 1.5rem;
+    }
+    @media (min-width: 720px) {
+      .footer-inner { grid-template-columns: 1.4fr 1fr auto; align-items: end; }
+    }
+    .footer-brand { font-family: var(--serif); font-size: 1.15rem; font-weight: 600; }
+    .footer-brand span { display: block; margin-top: 0.3rem; font-family: var(--font); font-size: 0.82rem; color: var(--muted); font-weight: 600; }
+    .socials { display: flex; gap: 0.65rem; }
+    .social {
+      width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center;
+      background: rgba(255,255,255,0.7); color: var(--accent); text-decoration: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .scroll-blob .blob-core, .blob-nimbus, .escape-circle, .aurora, .prob-card .dot, .support-circle .ring { animation: none !important; }
+      h1 .accent-line, .hero h1 .accent-line { background-size: 100% 0.14em; animation: none; }
+      .sec { opacity: 1; transform: none; }
+      .kw { position: static; display: none; }
+      .kw.final { display: block; opacity: 1; }
+      .word-row.is-lit { transform: none; }
+      .scroll-blob { transition: none; }
+    }
+    @media (max-width: 700px) {
+      .scroll-blob { width: min(150px, 38vw); height: min(150px, 38vw); }
+      .blob-nimbus { width: min(200px, 50vw); height: min(200px, 50vw); }
+      .escape-circle { width: min(180px, 40vw); height: min(180px, 40vw); right: -70px; top: 8%; }
+      .nav-float { gap: 0.4rem; }
+      .pill { padding: 0.5rem 0.8rem; font-size: 0.7rem; }
+      .hero h1 { font-size: clamp(1.7rem, 7vw, 2.2rem); }
+      .btn, .btn-ghost { margin-left: 0; }
+      .cta-row { gap: 0.55rem; }
+      .voices-grid { gap: 1.25rem; }
+      .about-photo { width: min(260px, 72vw); }
+      .price-card .amount { font-size: 1.85rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="aurora" aria-hidden="true"></div>
+  <div class="grid-soft" aria-hidden="true"></div>
+  <div class="escape-circle" aria-hidden="true"></div>
+  <div class="blob-layer" aria-hidden="true">
+    <div class="blob-nimbus" id="blobNimbus"></div>
+    <div class="scroll-blob rose" id="blobRose"><span class="blob-core"></span></div>
+    <div class="scroll-blob lav" id="blobLav"><span class="blob-core"></span></div>
+  </div>
+
+  <div class="wrap">
+    <header class="hero">
+      <nav class="nav-float" aria-label="Навигация">
+        <a class="pill" href="#problems">Запросы</a>
+        <a class="pill" href="#about">Обо мне</a>
+        <a class="pill" href="#pricing">Цены</a>
+        <a class="pill" href="#booking">Связь</a>
+      </nav>
+      <div class="glass">
+        <p class="brand">Анна Щеголихина · семейный психолог онлайн</p>
+        <h1>Время прояснить, что <span class="accent-line">между вами</span></h1>
+        <p class="lead">Онлайн для пар и семей — тёплое пространство, где можно услышать друг друга без давления и готовых советов.</p>
+        <div class="cta-row">
+          <a class="btn" href="#booking">Записаться</a>
+          <a class="btn btn-ghost" href="#voices">Два взгляда</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- NEW: dual voices over splitting blobs -->
+    <section class="voices sec" id="voices" data-blob-mode="split">
+      <div class="page" style="padding-left:0;padding-right:0;width:100%">
+        <div class="sec-head" style="margin-left:1.25rem;margin-right:1.25rem">
+          <p class="eyebrow">Два взгляда</p>
+          <h2>Одна ситуация — два переживания</h2>
+          <p>Шары расходятся: слева — женский голос, справа — мужской.</p>
+        </div>
+        <div class="voices-grid" style="padding:0 1.25rem">
+          <article class="voice-card women">
+            <p class="tag">Голос · женщина</p>
+            <h3>«Меня не слышат»</h3>
+            <p>Обида, усталость, желание наконец быть понятой.</p>
+            <p class="placeholder">[+ ваша цитата / фраза позже]</p>
+          </article>
+          <article class="voice-card men">
+            <p class="tag">Голос · мужчина</p>
+            <h3>«От меня всё требуют»</h3>
+            <p>Давление, защита, страх сделать ещё хуже.</p>
+            <p class="placeholder">[+ ваша цитата / фраза позже]</p>
+          </article>
+          <p class="voices-note">Не «кто прав» — а что происходит между вами.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="page">
+      <section class="sec" id="problems">
+        <div class="sec-head">
+          <p class="eyebrow">Запросы</p>
+          <h2>Что обычно приводит на встречу</h2>
+        </div>
+        <div class="prob-grid">
+          <article class="prob-card"><div class="dot"></div><h3>Кризис в отношениях</h3><p>Холодно рядом, хотя формально «всё как надо».</p></article>
+          <article class="prob-card"><div class="dot"></div><h3>Измена</h3><p>Трещина доверия — и вопрос, можно ли идти дальше.</p></article>
+          <article class="prob-card"><div class="dot"></div><h3>Частые ссоры</h3><p>Одни и те же круги. Устали мириться на тех же условиях.</p></article>
+          <article class="prob-card"><div class="dot"></div><h3>Непонимание</h3><p>Говорите — а слышит будто другой человек.</p></article>
+        </div>
+      </section>
+
+      <!-- Kinetic words mid-page (from H) -->
+      <section class="sec kinetic-sec" id="path-words">
+        <p class="eyebrow">Путь разговора</p>
+        <div class="kinetic" id="kinetic" aria-live="polite">
+          <span class="kw">Молчание</span>
+          <span class="kw">Напряжение</span>
+          <span class="kw">Разговор</span>
+          <span class="kw final">Ясность</span>
+        </div>
+        <p style="color:var(--muted);max-width:32ch;margin:0.5rem auto 0">От тупика — к пониманию. Без гарантий «счастья», с опорой на ясность.</p>
+      </section>
+
+      <!-- Scroll-lit rows (from H, V palette) -->
+      <section class="sec" id="word-rows-sec">
+        <div class="sec-head">
+          <p class="eyebrow">Узнаёте запрос?</p>
+          <h2>Три входа в разговор</h2>
+          <p>При прокрутке активный пункт мягко окрашивается в палитру V Matter.</p>
+        </div>
+        <div class="word-rows" id="wordRows">
+          <article class="word-row" data-row>
+            <p class="phase">Пара</p>
+            <h3>«Мы говорим — и не слышим»</h3>
+            <p>Круговые ссоры, холод, усталость быть непонятым.</p>
+          </article>
+          <article class="word-row" data-row>
+            <p class="phase">Семья</p>
+            <h3>«Дома тяжело дышать»</h3>
+            <p>Границы, дети, вина — когда роли съедают близость.</p>
+          </article>
+          <article class="word-row" data-row>
+            <p class="phase">Выбор</p>
+            <h3>«Нужна ясность для себя»</h3>
+            <p>Остаться, уйти, изменить формат — без чужого вердикта.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="sec" id="recognize">
+        <div class="sec-head">
+          <p class="eyebrow">Отклик</p>
+          <h2>Узнаёте себя?</h2>
+        </div>
+        <div class="recog">
+          <div>
+            <div class="q-item">Чувствуете, что отдаляетесь?</div>
+            <div class="q-item">Боитесь говорить о боли?</div>
+            <div class="q-item">Держите отношения «на себе»?</div>
+            <div class="q-item">Хотите близости — и одновременно боитесь её?</div>
+          </div>
+          <div class="support-circle" aria-hidden="true">
+            <div class="ring"></div>
+            <div class="ring inner"></div>
+            <div class="heart">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#8E6B78" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="9" />
+                <path d="M12 16.2s-3.6-2.2-3.6-4.4A2.05 2.05 0 0 1 12 10.2a2.05 2.05 0 0 1 3.6 1.6c0 2.2-3.6 4.4-3.6 4.4z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec" id="about">
+        <div class="sec-head">
+          <p class="eyebrow">Обо мне</p>
+          <h2>Анна Щеголихина</h2>
+          <p>Семейный психолог · онлайн · конфиденциально</p>
+        </div>
+        <div class="about">
+          <div class="about-photo">
+            <img src="assets/portrait-920.webp" srcset="assets/portrait-460.webp 460w, assets/portrait-920.webp 920w" sizes="(max-width:800px) 70vw, 300px" alt="Анна Щеголихина, семейный психолог" width="920" height="920" loading="lazy" />
+          </div>
+          <div>
+            <p style="color:var(--muted);max-width:46ch">Создаю тёплое пространство для пар и семей — без давления «быть идеальными», с вниманием к тому, что между вами.</p>
+            <div class="diplomas">
+              <span class="diploma">Диплом психолога</span>
+              <span class="diploma">Семейное консультирование</span>
+              <span class="diploma">Кризис пары</span>
+            </div>
+            <div class="lock-row">🔒 Конфиденциальность — основа встречи</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec" id="pricing">
+        <div class="sec-head">
+          <p class="eyebrow">Стоимость</p>
+          <h2>Простые и ясные цены</h2>
+        </div>
+        <div class="price-grid">
+          <article class="price-card">
+            <p class="label">Индивидуально</p>
+            <p class="meta">50 минут · онлайн</p>
+            <p class="amount">4 500 <span>₽</span></p>
+            <p>Личная сессия в вашем темпе — для ясности с собой и в отношениях.</p>
+            <a class="btn" href="#booking" data-therapy-type="individual">Записаться</a>
+          </article>
+          <article class="price-card">
+            <p class="label">Индивидуально</p>
+            <p class="meta">90 минут · онлайн</p>
+            <p class="amount">7 000 <span>₽</span></p>
+            <p>Расширенная встреча, когда теме нужно больше пространства.</p>
+            <a class="btn" href="#booking" data-therapy-type="individual90">Записаться</a>
+          </article>
+          <article class="price-card">
+            <p class="label">Пара</p>
+            <p class="meta">90 минут · онлайн</p>
+            <p class="amount">7 000 <span>₽</span></p>
+            <p>Вдвоём: диалог и восстановление контакта без чужого вердикта.</p>
+            <a class="btn" href="#booking" data-therapy-type="family">Записаться</a>
+          </article>
+        </div>
+        <p style="margin-top:1rem;color:var(--muted);font-size:0.88rem;max-width:52ch">Пакет из 5 сессий — скидка 20% (через мессенджеры). Условия — в <a href="oferta/" style="color:var(--accent);font-weight:700;text-decoration:none">оферте</a>.</p>
+      </section>
+
+      <section class="sec" id="reviews">
+        <div class="sec-head">
+          <p class="eyebrow">Отзывы</p>
+          <h2>Слова тех, кто уже начал</h2>
+          <p>Опыт клиентов не гарантирует такой же результат у вас.</p>
+        </div>
+        <div class="reviews">
+          <article class="review">
+            <p class="stars">★★★★★</p>
+            <blockquote>«Будто нас снова мягко соединили — без давления.»</blockquote>
+            <cite>— Ольга и Сергей</cite>
+          </article>
+          <article class="review">
+            <p class="stars">★★★★★</p>
+            <blockquote>«Стало безопасно говорить о том, о чём молчали годами.»</blockquote>
+            <cite>— Наталья</cite>
+          </article>
+          <article class="review">
+            <p class="stars">★★★★★</p>
+            <blockquote>«Онлайн оказался тёплым. Чувствуется присутствие.»</blockquote>
+            <cite>— Артём</cite>
+          </article>
+        </div>
+      </section>
+
+      <section class="sec" id="faq">
+        <div class="sec-head">
+          <p class="eyebrow">FAQ</p>
+          <h2>Частые вопросы</h2>
+        </div>
+        <details class="faq-item"><summary>Как проходит онлайн-встреча?</summary><p class="ans">Видеосвязь в согласованном мессенджере, в тихом месте. 50 или 90 минут — в вашем темпе.</p></details>
+        <details class="faq-item"><summary>Сохранится ли конфиденциальность?</summary><p class="ans">Да. Содержание встреч конфиденциально. Запись не делаю без вашего согласия.</p></details>
+        <details class="faq-item"><summary>Как оплатить?</summary><p class="ans">100% предоплата до начала встречи. Реквизиты пришлю после записи. Чек — через «Мой налог».</p></details>
+        <details class="faq-item"><summary>Можно ли отменить?</summary><p class="ans">Перенос или отмена не позднее чем за 24 часа — без потери оплаты. Подробнее в <a href="oferta/">оферте</a>.</p></details>
+        <details class="faq-item"><summary>Кому подойдёт?</summary><p class="ans">Пара́м и семьям в кризисе, при ссорах, измене, непонимании — и индивидуально, когда важно разобраться в отношениях.</p></details>
+      </section>
+
+      <section class="sec" id="booking">
+        <div class="sec-head">
+          <p class="eyebrow">Запись</p>
+          <h2>Выберите время в календаре</h2>
+          <p>Онлайн-консультация. Если виджет не загрузится — напишите в мессенджер.</p>
+        </div>
+        <div class="booking">
+          <div data-anna-psy-widget></div>
+          <p class="calendar-note">Если календарь не отображается, попробуйте <strong>отключить VPN</strong> или открыть страницу в другом браузере. Индивидуальная 90 мин — пока через Telegram / WhatsApp.</p>
+          <p class="ochno-note">Живёте в Калининграде и хотите встретиться очно? <a href="kaliningrad/">Страница очных консультаций</a> — без конкуренции с онлайн-записью.</p>
+        </div>
+      </section>
+    </div>
+
+    <footer class="site-footer" id="contact">
+      <div class="footer-inner">
+        <div>
+          <p class="footer-brand">Анна Щеголихина
+            <span>Семейный психолог · онлайн · РФ / мир</span>
+          </p>
+          <div class="footer-links">
+            <a href="oferta/">Оферта</a>
+            <a href="privacy-policy/">Конфиденциальность</a>
+            <a href="consent/">Согласие</a>
+            <a href="kaliningrad/">Очно в Калининграде</a>
+          </div>
+        </div>
+        <div class="socials">
+          <a class="social" href="https://t.me/annashhe" target="_blank" rel="noopener" aria-label="Telegram">TG</a>
+          <a class="social" href="https://wa.me/79137556284" target="_blank" rel="noopener" aria-label="WhatsApp">WA</a>
+        </div>
+        <div><a class="btn" href="#booking">Записаться</a></div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const root = document.documentElement;
+    const voices = document.getElementById('voices');
+    const problems = document.getElementById('problems');
+    const wordRows = document.getElementById('word-rows-sec');
+    const about = document.getElementById('about');
+
+    function clamp(n, a, b) { return Math.max(a, Math.min(b, n)); }
+    function lerp(a, b, t) { return a + (b - a) * t; }
+    function smooth(t) { t = clamp(t, 0, 1); return t * t * (3 - 2 * t); }
+    function progressThrough(el, lead = 0.75, trail = 0.25) {
+      if (!el) return 0;
+      const vh = innerHeight;
+      const r = el.getBoundingClientRect();
+      const start = vh * lead;
+      const end = vh * trail;
+      return smooth((start - r.top) / Math.max(1, start - end));
+    }
+    function mix(a, b, t) {
+      return {
+        rx: lerp(a.rx, b.rx, t), lx: lerp(a.lx, b.lx, t),
+        ry: lerp(a.ry, b.ry, t), ly: lerp(a.ly, b.ly, t),
+        mute: lerp(a.mute, b.mute, t), scale: lerp(a.scale, b.scale, t),
+        n: lerp(a.n, b.n, t), e: lerp(a.e, b.e, t)
+      };
+    }
+    function applyPose(p) {
+      root.style.setProperty('--rose-x', p.rx.toFixed(2) + '%');
+      root.style.setProperty('--lav-x', p.lx.toFixed(2) + '%');
+      root.style.setProperty('--rose-y', p.ry.toFixed(2) + '%');
+      root.style.setProperty('--lav-y', p.ly.toFixed(2) + '%');
+      root.style.setProperty('--blob-mute', p.mute.toFixed(3));
+      root.style.setProperty('--blob-scale', p.scale.toFixed(3));
+      root.style.setProperty('--nimbus-opacity', p.n.toFixed(3));
+      root.style.setProperty('--escape-opacity', p.e.toFixed(3));
+    }
+
+    /* 1 split (rose L / lav R) → 2 meet → 3 swap split (rose R / lav L) → 4 meet */
+    const hero =  { rx:58, lx:70, ry:40, ly:44, mute:0,    scale:1,    n:0.88, e:1 };
+    const splitA ={ rx:24, lx:78, ry:52, ly:56, mute:0.28, scale:0.92, n:0,    e:0.12 };
+    const meet1 = { rx:48, lx:56, ry:46, ly:48, mute:0.2,  scale:0.95, n:0.45, e:0.1 };
+    const splitB ={ rx:78, lx:24, ry:50, ly:54, mute:0.3,  scale:0.9,  n:0,    e:0.1 };
+    const meet2 = { rx:50, lx:60, ry:56, ly:58, mute:0.35, scale:0.84, n:0.28, e:0.22 };
+
+    function updateBlobs() {
+      const t1 = progressThrough(voices, 0.92, 0.38);
+      const t2 = progressThrough(problems, 0.88, 0.32);
+      const t3 = progressThrough(wordRows, 0.88, 0.3);
+      const t4 = progressThrough(about, 0.82, 0.35);
+
+      let pose;
+      if (t4 > 0.02) pose = mix(splitB, meet2, t4);
+      else if (t3 > 0.02) pose = mix(meet1, splitB, t3);
+      else if (t2 > 0.02) pose = mix(splitA, meet1, t2);
+      else pose = mix(hero, splitA, t1);
+      applyPose(pose);
+    }
+    if (!reduce) {
+      let ticking = false;
+      addEventListener('scroll', () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => { updateBlobs(); ticking = false; });
+      }, { passive: true });
+      addEventListener('resize', updateBlobs, { passive: true });
+      updateBlobs();
+    } else {
+      applyPose(meet1);
+    }
+
+    /* Section reveal */
+    const secs = document.querySelectorAll('.sec');
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) { e.target.classList.add('is-in'); }
+        });
+      }, { threshold: 0.12 });
+      secs.forEach((s) => io.observe(s));
+    } else secs.forEach((s) => s.classList.add('is-in'));
+
+    /* Kinetic words — start when section visible */
+    const kws = [...document.querySelectorAll('.kw')];
+    const kineticSec = document.getElementById('path-words');
+    let kineticStarted = false;
+    function runKinetic() {
+      if (kineticStarted || !kws.length) return;
+      kineticStarted = true;
+      if (reduce) { kws[kws.length - 1].classList.add('is-active'); return; }
+      let i = 0;
+      const show = () => {
+        kws.forEach((w, idx) => {
+          w.classList.toggle('is-active', idx === i);
+          w.classList.toggle('is-done', idx < i);
+        });
+        if (i < kws.length - 1) { i += 1; setTimeout(show, 1100); }
+      };
+      show();
+    }
+    if (kineticSec && 'IntersectionObserver' in window) {
+      const kio = new IntersectionObserver((entries) => {
+        entries.forEach((e) => { if (e.isIntersecting) { runKinetic(); kio.disconnect(); } });
+      }, { threshold: 0.4 });
+      kio.observe(kineticSec);
+    } else runKinetic();
+
+    /* Word rows scroll highlight */
+    const rows = [...document.querySelectorAll('[data-row]')];
+    if ('IntersectionObserver' in window && rows.length) {
+      const rio = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (!e.isIntersecting) return;
+          const idx = rows.indexOf(e.target);
+          rows.forEach((r, i) => {
+            r.classList.toggle('is-lit', i === idx);
+            r.classList.toggle('is-past', i < idx);
+          });
+        });
+      }, { threshold: 0.55, rootMargin: '-15% 0px -40% 0px' });
+      rows.forEach((r) => rio.observe(r));
+    }
+
+    /* Calendar widget (same as мужской сайт) */
+    (function () {
+      function loadBookingWidget() {
+        if (window.__psiWidgetLoading) return;
+        window.__psiWidgetLoading = true;
+        var s = document.createElement('script');
+        s.src = 'https://anna-psy-schedule-frontend.vercel.app/widget.js';
+        s.async = true;
+        s.onerror = function () {
+          var host = document.querySelector('[data-anna-psy-widget]');
+          if (!host) return;
+          host.innerHTML = '<div style="padding:1.25rem;border-radius:16px;background:rgba(255,255,255,0.7)"><p style="margin:0 0 .75rem">Календарь временно недоступен. Запишитесь через мессенджеры.</p><p style="margin:0"><a href="https://t.me/annashhe" target="_blank" rel="noopener">Telegram</a> · <a href="https://wa.me/79137556284" target="_blank" rel="noopener">WhatsApp</a></p></div>';
+        };
+        var root = document.getElementById('booking');
+        if (root) root.appendChild(s);
+      }
+      var root = document.getElementById('booking');
+      if (!root) return;
+      if (!('IntersectionObserver' in window)) { loadBookingWidget(); return; }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) { loadBookingWidget(); io.disconnect(); }
+        });
+      }, { rootMargin: '200px 0px' });
+      io.observe(root);
+    })();
+  </script>
+</body>
+</html>
