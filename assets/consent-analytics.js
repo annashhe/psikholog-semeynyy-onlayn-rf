@@ -101,11 +101,34 @@
     return true;
   }
 
+  var goalQueue = [];
+
+  function flushGoal(name, params) {
+    if (typeof global.ym === 'function') {
+      try {
+        global.ym(METRIKA_ID, 'reachGoal', name, params || {});
+      } catch (e) {}
+    }
+    if (typeof global.gtag === 'function') {
+      try {
+        global.gtag('event', name, params || {});
+      } catch (e2) {}
+    }
+  }
+
+  function flushGoalQueue() {
+    while (goalQueue.length) {
+      var g = goalQueue.shift();
+      flushGoal(g.name, g.params);
+    }
+  }
+
   function startAnalytics() {
     if (started || !consentOk()) return;
     started = true;
     loadGtag();
     loadMetrika();
+    flushGoalQueue();
   }
 
   global.psiLoadAnalytics = function () {
@@ -120,7 +143,11 @@
         fired = true;
         startAnalytics();
       }
-      // После load: по взаимодействию сразу, иначе через 3.5с (аналитика не отключается)
+      // Thank-you: цели конверсии — сразу. Иначе: interaction или ~3.5с после load.
+      if (/\/thank-you-booking\/?$/.test(location.pathname || '')) {
+        fire();
+        return;
+      }
       setTimeout(fire, 3500);
       ['scroll', 'pointerdown', 'keydown', 'touchstart'].forEach(function (ev) {
         global.addEventListener(ev, fire, { once: true, passive: true });
@@ -149,16 +176,12 @@
 
   global.psiMetrikaGoal = function (name, params) {
     if (!global.psiHasAnalyticsConsent || !global.psiHasAnalyticsConsent()) return;
-    if (typeof global.ym === 'function') {
-      try {
-        global.ym(METRIKA_ID, 'reachGoal', name, params || {});
-      } catch (e) {}
+    if (!started) {
+      goalQueue.push({ name: name, params: params || {} });
+      tryLoadIfAllowed();
+      return;
     }
-    if (typeof global.gtag === 'function') {
-      try {
-        global.gtag('event', name, params || {});
-      } catch (e2) {}
-    }
+    flushGoal(name, params);
   };
 
   function tryLoadIfAllowed() {
