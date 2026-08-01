@@ -7,6 +7,7 @@
   <meta name="description" content="Очные встречи семейного психолога Анны Щеголихиной в центре Калининграда, ул. Кирова, 1. Индивидуальные и парные консультации по предварительной записи.">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#FFF3E3">
+  <meta name="color-scheme" content="light only">
   <link rel="canonical" href="https://психолог-семейный-онлайн.рф/kaliningrad/">
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="../assets/favicon-192.png">
@@ -17,7 +18,8 @@
   <meta property="og:locale" content="ru_RU">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800&family=Literata:opsz,wght@7..72,500;7..72,600&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&family=Literata:opsz,wght@7..72,500;7..72,600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&family=Literata:opsz,wght@7..72,500;7..72,600&display=swap" rel="stylesheet"></noscript>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -42,13 +44,13 @@
   }
   </script>
   <style>
-    :root { --cream:#FFF3E3; --rose:#D4A5A5; --lav:#B8A9C9; --ink:#4A3F45; --muted:#5c4f55; --accent:#9a6b7a; --white:rgba(255,255,255,.55); --serif:Literata, Georgia, serif; --sans:Nunito, system-ui, sans-serif; }
+    :root { --cream:#FFF3E3; --rose:#D4A5A5; --lav:#B8A9C9; --ink:#4A3F45; --muted:#5c4f55; --accent:#9a6b7a; --white:rgba(255,255,255,.55); --serif:Literata, Georgia, serif; --sans:Nunito, system-ui, sans-serif; color-scheme:light only; }
     * { box-sizing:border-box; }
-    html { scroll-behavior:smooth; }
-    body { margin:0; background:var(--cream); color:var(--ink); font:500 16px/1.6 var(--sans); overflow-x:hidden; }
-    a { color:var(--accent); }
-    .aurora { position:fixed; inset:-15%; z-index:-2; background:radial-gradient(ellipse 46% 38% at 10% 20%,rgba(184,169,201,.57),transparent 68%),radial-gradient(ellipse 38% 37% at 86% 17%,rgba(212,165,165,.5),transparent 68%),radial-gradient(ellipse 52% 42% at 50% 85%,rgba(255,214,185,.63),transparent 68%),var(--cream); filter:blur(3px); animation:drift 16s ease-in-out infinite alternate; }
-    .blob { position:fixed; z-index:-1; width:260px; height:260px; border-radius:50%; pointer-events:none; opacity:.5; filter:blur(1px); }
+    html { scroll-behavior:smooth; color-scheme:light only; }
+    body { margin:0; background:var(--cream)!important; color:var(--ink)!important; font:600 16px/1.6 var(--sans); overflow-x:hidden; forced-color-adjust:none; }
+    a { color:#7a5563; }
+    .aurora { position:fixed; inset:-15%; z-index:-2; background:radial-gradient(ellipse 46% 38% at 10% 20%,rgba(184,169,201,.42),transparent 68%),radial-gradient(ellipse 38% 37% at 86% 17%,rgba(212,165,165,.38),transparent 68%),radial-gradient(ellipse 52% 42% at 50% 85%,rgba(255,214,185,.45),transparent 68%),var(--cream); filter:blur(3px); animation:drift 16s ease-in-out infinite alternate; }
+    .blob { position:fixed; z-index:-1; width:260px; height:260px; border-radius:50%; pointer-events:none; opacity:.28; filter:blur(1px) saturate(.7); }
     .blob-rose { right:-90px; top:24%; background:linear-gradient(145deg,#f3d7d8,var(--rose) 55%,#bd8999); box-shadow:inset -18px -20px 36px #fff9,inset 13px 15px 29px #79506038,0 22px 44px #9b687652; }
     .blob-lav { left:-105px; bottom:8%; background:linear-gradient(215deg,#ddd0ea,var(--lav) 50%,#9e8fb8); box-shadow:inset -18px -20px 36px #fff9; }
     @keyframes drift { to { transform:translate(-1.5%,1.5%) scale(1.05); } }
@@ -57,7 +59,7 @@
     .back, .top-phone { color:var(--accent); font-size:.87rem; font-weight:800; text-decoration:none; }
     .top-phone { color:var(--ink); }
     .hero { min-height:650px; display:grid; grid-template-columns:minmax(0,1.18fr) minmax(250px,.82fr); align-items:center; gap:56px; padding:54px 0 78px; }
-    .eyebrow { margin:0 0 13px; color:var(--accent); font-size:.72rem; font-weight:800; letter-spacing:.13em; text-transform:uppercase; }
+    .eyebrow { margin:0 0 13px; color:#6d4a58; font-size:.72rem; font-weight:800; letter-spacing:.13em; text-transform:uppercase; }
     h1,h2,h3 { font-family:var(--serif); font-weight:600; line-height:1.14; }
     h1 { max-width:11ch; margin:0; font-size:clamp(2.65rem,6.3vw,5.15rem); letter-spacing:-.035em; }
     h1 em { font-style:normal; background:linear-gradient(90deg,var(--rose),var(--lav)); background-size:100% .15em; background-position:0 91%; background-repeat:no-repeat; }
@@ -100,9 +102,13 @@
     .amount { margin:15px 0 12px; font:600 2rem var(--serif); }
     .price p { color:var(--muted); margin:0; }
     .price .btn { align-self:start; margin-top:auto; padding:9px 15px; min-height:42px; font-size:.85rem; }
-    .package { grid-column:1/-1; display:flex; justify-content:space-between; align-items:center; gap:24px; padding:22px 27px; background:linear-gradient(100deg,rgba(212,165,165,.44),rgba(184,169,201,.4)); }
-    .package p { margin:5px 0 0; color:#65565d; }
+    .package { grid-column:1/-1; display:flex; justify-content:space-between; align-items:center; gap:24px; flex-wrap:wrap; padding:22px 27px; background:linear-gradient(100deg,rgba(212,165,165,.44),rgba(184,169,201,.4)); }
+    .package p { margin:5px 0 0; color:#5c4f55; }
     .package strong { font-family:var(--serif); font-size:1.28rem; }
+    .package-prices { font-size:.95rem; line-height:1.7; color:var(--ink); }
+    .package-prices del { color:#5c4f55; margin-left:4px; }
+    .adults-note { margin:16px 0 0; color:#5c4f55; font-size:.88rem; }
+    .contact-links a { color:#6d4a58; }
     .map-layout { display:grid; grid-template-columns:1.4fr .6fr; gap:18px; }
     .map-frame { overflow:hidden; min-height:390px; }
     .map-frame iframe { display:block; width:100%; height:100%; min-height:390px; border:0; }
@@ -200,8 +206,9 @@
         <div class="glass about-copy">
           <p class="eyebrow">О специалисте</p>
           <h2 id="about-title">Анна Щеголихина</h2>
-          <p>Клинический и семейный психолог, веду психологическую практику с 2019 года. Работаю со взрослыми индивидуально и с парами, когда важно восстановить контакт, выдержать кризис или разобраться в сложном выборе.</p>
+          <p>Клинический и семейный психолог, обучаюсь гештальт-подходу. Работаю со взрослыми индивидуально и с парами, когда важно восстановить контакт, выдержать кризис или разобраться в сложном выборе.</p>
           <p>В кабинете нет правильной стороны и виноватого. Есть история отношений, чувства и потребности каждого — и возможность постепенно увидеть, что с ними делать. Можно прийти парой или начать одному.</p>
+          <p>Если удобнее онлайн — <a href="../">запись на онлайн-консультации</a> доступна с календарем на главной странице.</p>
         </div>
       </div>
     </section>
@@ -216,8 +223,9 @@
         <article class="glass price"><h3>Индивидуальная</h3><span class="time">50 минут</span><div class="amount">4&nbsp;500 ₽</div><p>Чтобы сфокусироваться на личной ситуации, чувствах и отношениях.</p><a class="btn" href="https://t.me/annashhe" target="_blank" rel="noopener">Уточнить время</a></article>
         <article class="glass price"><h3>Индивидуальная</h3><span class="time">90 минут</span><div class="amount">7&nbsp;000 ₽</div><p>Более спокойный темп, когда хочется подробно разобрать важную тему.</p><a class="btn" href="https://t.me/annashhe" target="_blank" rel="noopener">Уточнить время</a></article>
         <article class="glass price"><h3>Для пары</h3><span class="time">90 минут</span><div class="amount">7&nbsp;000 ₽</div><p>Время для разговора, где оба голоса имеют значение.</p><a class="btn" href="https://t.me/annashhe" target="_blank" rel="noopener">Уточнить время</a></article>
-        <div class="glass package"><div><strong>Пакет консультаций</strong><p>При оплате пакета встреч — скидка 20%. Количество и подходящий формат обсудим в переписке.</p></div><a class="btn btn-ghost" href="https://wa.me/79137556284" target="_blank" rel="noopener">Спросить о пакете</a></div>
+        <div class="glass package"><div><strong>Пакет из 5 встреч −20%</strong><p>Оплата одним платежом. Действует для индивидуального и парного формата.</p><div class="package-prices"><div>5×50 мин — <strong>18 000 ₽</strong> <del>22 500 ₽</del></div><div>5×90 мин — <strong>28 000 ₽</strong> <del>35 000 ₽</del></div></div></div><a class="btn btn-ghost" href="https://t.me/annashhe" target="_blank" rel="noopener">Написать, чтобы купить пакет</a></div>
       </div>
+      <p class="adults-note">Работаю только со взрослыми — от 18 лет. Очные встречи согласуем в переписке: онлайн-календарь для очного приёма не используется.</p>
     </section>
 
     <section id="contacts" aria-labelledby="contacts-title">
