@@ -1,11 +1,13 @@
 /**
  * Яндекс.Метрика и Google Tag (семейный сайт).
- * По умолчанию статистика включена до явного отказа в настройках cookie.
+ * Аналитика включена по умолчанию; загрузка отложена до после first paint
+ * (interaction или ~3.5с после load), без отключения счётчиков.
  */
 (function (global) {
   var METRIKA_ID = 111192861;
   var GTAG_ID = 'G-H1CJPPTM22';
   var started = false;
+  var armed = false;
 
   function loadGtag() {
     if (global.__psiGtagLoaded) return;
@@ -91,15 +93,45 @@
     });
   }
 
-  global.psiLoadAnalytics = function () {
-    if (global.__psiAnalyticsDisabled) return;
-    if (started) return;
+  function consentOk() {
+    if (global.__psiAnalyticsDisabled) return false;
     if (typeof global.psiHasAnalyticsConsent === 'function' && !global.psiHasAnalyticsConsent()) {
-      return;
+      return false;
     }
+    return true;
+  }
+
+  function startAnalytics() {
+    if (started || !consentOk()) return;
     started = true;
     loadGtag();
     loadMetrika();
+  }
+
+  global.psiLoadAnalytics = function () {
+    if (started || !consentOk()) return;
+    if (armed) return;
+    armed = true;
+
+    function arm() {
+      var fired = false;
+      function fire() {
+        if (fired) return;
+        fired = true;
+        startAnalytics();
+      }
+      // После load: по взаимодействию сразу, иначе через 3.5с (аналитика не отключается)
+      setTimeout(fire, 3500);
+      ['scroll', 'pointerdown', 'keydown', 'touchstart'].forEach(function (ev) {
+        global.addEventListener(ev, fire, { once: true, passive: true });
+      });
+    }
+
+    if (document.readyState === 'complete') {
+      arm();
+    } else {
+      global.addEventListener('load', arm, { once: true });
+    }
   };
 
   global.psiStopAnalytics = function () {
@@ -130,24 +162,8 @@
   };
 
   function tryLoadIfAllowed() {
-    if (typeof global.psiHasAnalyticsConsent === 'function' && !global.psiHasAnalyticsConsent()) {
-      return;
-    }
-    var run = function () {
-      global.psiLoadAnalytics();
-    };
-    var schedule = function () {
-      if (typeof global.requestIdleCallback === 'function') {
-        global.requestIdleCallback(run, { timeout: 3500 });
-      } else {
-        global.setTimeout(run, 2000);
-      }
-    };
-    if (document.readyState === 'complete') {
-      schedule();
-    } else {
-      global.addEventListener('load', schedule, { once: true });
-    }
+    if (!consentOk()) return;
+    global.psiLoadAnalytics();
   }
 
   if (document.readyState === 'loading') {
