@@ -1,0 +1,14 @@
+.copy-protected {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.copy-protected input,
+.copy-protected textarea,
+.copy-protected select,
+.copy-protected option,
+.copy-protected button,
+.copy-protected a {
+  -webkit-user-select: text;
+  user-select: text;
+}

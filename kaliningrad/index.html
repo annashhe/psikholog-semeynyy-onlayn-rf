@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Семейный психолог в Калининграде — Анна Щеголихина | очные консультации</title>
-  <meta name="description" content="Очные встречи семейного психолога Анны Щеголихиной в центре Калининграда, ул. Кирова, 1. Индивидуальные и парные консультации по предварительной записи.">
+  <title>Семейный психолог в Калининграде — очные консультации | Анна Щеголихина</title>
+  <meta name="description" content="Семейный психолог в Калининграде: очные индивидуальные и парные консультации, ул. Кирова, 1. Запись через форму или мессенджеры. Пн–Вс 9:00–21:00.">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#FFF3E3">
   <meta name="color-scheme" content="light only">
@@ -24,24 +24,55 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "name": "Анна Щеголихина — семейный психолог",
-    "description": "Очные индивидуальные и семейные психологические консультации в Калининграде.",
-    "url": "https://психолог-семейный-онлайн.рф/kaliningrad/",
-    "telephone": "+79137556284",
-    "priceRange": "₽₽",
-    "address": {
-      "@type": "PostalAddress",
-      "addressCountry": "RU",
-      "addressLocality": "Калининград",
-      "streetAddress": "ул. Кирова, 1"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 54.72494,
-      "longitude": 20.49493
-    },
-    "openingHours": "Mo-Su 09:00-21:00"
+    "@graph": [
+      {
+        "@type": "ProfessionalService",
+        "name": "Анна Щеголихина — семейный психолог в Калининграде",
+        "description": "Очные индивидуальные и семейные психологические консультации в Калининграде.",
+        "url": "https://психолог-семейный-онлайн.рф/kaliningrad/",
+        "telephone": "+79137556284",
+        "priceRange": "₽₽",
+        "image": "https://психолог-семейный-онлайн.рф/assets/portrait-920.webp",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "RU",
+          "addressLocality": "Калининград",
+          "streetAddress": "ул. Кирова, 1"
+        },
+        "geo": { "@type": "GeoCoordinates", "latitude": 54.72494, "longitude": 20.49493 },
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+          "opens": "09:00",
+          "closes": "21:00"
+        },
+        "provider": { "@type": "Person", "name": "Анна Щеголихина", "jobTitle": "Семейный и клинический психолог" },
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Очные консультации",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Индивидуальная консультация 50 минут" }, "price": "4500", "priceCurrency": "RUB" },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Индивидуальная консультация 90 минут" }, "price": "7000", "priceCurrency": "RUB" },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Парная консультация 90 минут" }, "price": "7000", "priceCurrency": "RUB" }
+          ]
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Главная", "item": "https://психолог-семейный-онлайн.рф/" },
+          { "@type": "ListItem", "position": 2, "name": "Очно в Калининграде", "item": "https://психолог-семейный-онлайн.рф/kaliningrad/" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Где проходит консультация?", "acceptedAnswer": { "@type": "Answer", "text": "Очные встречи проходят в Калининграде по адресу ул. Кирова, 1, примерно в 400 метрах от Северного вокзала." } },
+          { "@type": "Question", "name": "Как записаться на очную встречу?", "acceptedAnswer": { "@type": "Answer", "text": "Оставьте заявку в форме на странице или напишите в Telegram, WhatsApp или MAX. Онлайн-календарь для очных встреч не используется." } },
+          { "@type": "Question", "name": "Стыдно идти к психологу очно — это нормально?", "acceptedAnswer": { "@type": "Answer", "text": "Да, такой страх частый. Можно начать с короткого сообщения в мессенджере или с заявки в форме — без обязательства сразу идти на встречу." } }
+        ]
+      }
+    ]
   }
   </script>
   <style>
@@ -123,10 +154,24 @@
     details { padding:0 22px; border:1px solid rgba(74,63,69,.1); border-radius:17px; background:rgba(255,255,255,.47); }
     summary { padding:17px 25px 17px 0; cursor:pointer; font-weight:800; }
     details p { max-width:76ch; margin:0 0 18px; color:var(--muted); }
-    .booking { display:grid; grid-template-columns:1.2fr .8fr; gap:24px; align-items:center; padding:34px; background:linear-gradient(118deg,rgba(212,165,165,.55),rgba(184,169,201,.5)); }
+    .booking { display:grid; grid-template-columns:1fr 1fr; gap:24px; align-items:start; padding:34px; background:linear-gradient(118deg,rgba(212,165,165,.55),rgba(184,169,201,.5)); }
     .booking h2 { font-size:clamp(1.8rem,3vw,2.5rem); }
     .booking p { margin:10px 0 0; color:#5f5057; }
-    .booking .actions { justify-content:flex-end; margin:0; }
+    .booking .actions { justify-content:flex-start; margin-top:18px; }
+    .hours { margin-top:14px; font-size:.92rem; color:#5f5057; }
+    .callback-form { display:grid; gap:10px; }
+    .callback-form input[type="text"], .callback-form input[type="tel"], .callback-form textarea { width:100%; min-height:48px; padding:12px 14px; border:1px solid #fff9; border-radius:16px; background:#fffdf9; color:var(--ink); font:600 1rem var(--sans); }
+    .callback-form textarea { min-height:96px; resize:vertical; }
+    .callback-form input.is-error, .callback-form textarea.is-error, .contact-methods.is-error, .consent-row.is-error { outline:2px solid #9a6b7a; outline-offset:2px; }
+    .contact-methods { display:grid; grid-template-columns:1fr 1fr; gap:8px; padding:12px; border-radius:16px; background:#fff9; }
+    .contact-methods legend { padding:0 0 6px; font-size:.85rem; font-weight:800; }
+    .contact-methods label { display:flex; gap:8px; align-items:center; min-height:44px; font-size:.92rem; }
+    .consent-row { display:flex; gap:10px; align-items:flex-start; font-size:.86rem; color:#5f5057; }
+    .consent-row a { color:var(--accent); }
+    .hp-field { position:absolute; left:-9999px; height:0; overflow:hidden; }
+    .form-note { margin:8px 0 0; font-size:.8rem; color:#5f5057; }
+    .scroll-top { position:fixed; right:16px; bottom:18px; z-index:40; width:48px; height:48px; border:0; border-radius:50%; background:linear-gradient(105deg,var(--rose),var(--lav)); color:#fff; font:800 1.1rem var(--sans); box-shadow:0 12px 28px #9a6b7a40; opacity:0; pointer-events:none; transition:opacity .2s; cursor:pointer; }
+    .scroll-top.show { opacity:1; pointer-events:auto; }
     .legal { max-width:810px; margin:0 auto; padding:8px 0 34px; color:var(--muted); font-size:.8rem; text-align:center; }
     footer { padding:28px 0 37px; border-top:1px solid rgba(74,63,69,.1); color:var(--muted); font-size:.88rem; }
     .footer-inner { display:flex; justify-content:space-between; align-items:flex-start; gap:24px; }
@@ -264,33 +309,77 @@
         <details><summary>Как записаться на очную встречу?</summary><p>Напишите в Telegram или WhatsApp. Мы уточним ваш запрос, подходящий формат и согласуем свободное время. Онлайн-календарь для очных встреч не используется.</p></details>
         <details><summary>Нужно ли приходить паре вместе?</summary><p>Для парной консультации лучше прийти вместе. Если партнёр пока не готов, можно начать с индивидуальной встречи: разобраться в своей части ситуации и понять дальнейшие шаги.</p></details>
         <details><summary>Вы принимаете чью-то сторону в конфликте?</summary><p>Нет. В работе с парой я не выбираю правого и виноватого. Моё внимание направлено на отношения, переживания и потребности каждого участника, чтобы разговор стал более безопасным и честным.</p></details>
-        <details><summary>Можно ли отменить или перенести встречу?</summary><p>Перенос или отмена не позднее чем за 24 часа — без потери оплаты. Подробные условия указаны в <a href="../oferta/">публичной оферте</a>.</p></details>
+        <details><summary>Можно ли отменить или перенести встречу?</summary><p>Перенос или отмена не позднее чем за 24 часа — без потери оплаты. Подробные условия указаны в <a href="../oferta/" target="_blank" rel="noopener">публичной оферте</a>.</p></details>
+        <details><summary>Стыдно идти к психологу очно — это нормально?</summary><p>Да, такой страх частый. Можно начать с короткого сообщения или заявки в форме — без обязательства сразу приходить на встречу. Разберёмся в комфортном темпе.</p></details>
+        <details><summary>Какой график приёма?</summary><p>Очные встречи — по предварительной записи, Пн–Вс с 9:00 до 21:00 по калининградскому времени.</p></details>
       </div>
     </section>
 
-    <section aria-label="Запись на консультацию">
+    <section id="callback" aria-label="Запись на очную консультацию">
       <div class="glass booking">
-        <div><p class="eyebrow">Очная консультация</p><h2>Давайте выберем время для встречи</h2><p>Напишите в удобный мессенджер. Отвечу и помогу сориентироваться по формату. Онлайн-календарь для очного приёма не используется.</p></div>
-        <div class="actions"><a class="btn" href="https://t.me/annashhe" target="_blank" rel="noopener">Telegram</a><a class="btn btn-ghost" href="https://wa.me/79137556284" target="_blank" rel="noopener">WhatsApp</a><a class="btn btn-ghost" href="https://max.ru/u/f9LHodD0cOKrHIa3XdZycCKQSXXx0dFf9Ck7hXPtx3Ti-6RSxFnoPC7d1Ag" target="_blank" rel="noopener">MAX</a></div>
+        <div>
+          <p class="eyebrow">Очная консультация</p>
+          <h2>Оставьте контакты или напишите в мессенджер</h2>
+          <p>Онлайн-календарь для очного приёма не используется. Свяжусь в выбранном канале и согласуем время в кабинете.</p>
+          <p class="hours"><strong>Часы:</strong> Пн–Вс 9:00–21:00, калининградское время · по предварительной записи через мессенджеры или форму</p>
+          <div class="actions">
+            <a class="btn" href="https://t.me/annashhe" target="_blank" rel="noopener">Telegram</a>
+            <a class="btn btn-ghost" href="https://wa.me/79137556284" target="_blank" rel="noopener">WhatsApp</a>
+            <a class="btn btn-ghost" href="https://max.ru/u/f9LHodD0cOKrHIa3XdZycCKQSXXx0dFf9Ck7hXPtx3Ti-6RSxFnoPC7d1Ag" target="_blank" rel="noopener">MAX</a>
+          </div>
+        </div>
+        <form class="callback-form" id="callbackForm" data-callback-form novalidate>
+          <div class="hp-field" aria-hidden="true">
+            <label for="formWebsite">Не заполняйте это поле</label>
+            <input type="text" id="formWebsite" name="website" tabindex="-1" autocomplete="off">
+          </div>
+          <input type="text" id="formName" name="name" placeholder="Ваше имя" required autocomplete="name" aria-label="Ваше имя">
+          <input type="tel" id="formPhone" name="phone" placeholder="+7 (900) 123-45-67" required autocomplete="tel" inputmode="tel" aria-label="Телефон" pattern="^\+7\s?\(?\d{3}\)?[\s-]?\d{3}[\s-]?\d{2}[\s-]?\d{2}$">
+          <p class="form-note">Форма для номеров РФ (+7). Из-за рубежа удобнее написать в мессенджер.</p>
+          <fieldset class="contact-methods" data-contact-methods>
+            <legend>Как с вами связаться?</legend>
+            <label><input type="checkbox" name="contactMethod" value="Telegram"> Telegram</label>
+            <label><input type="checkbox" name="contactMethod" value="WhatsApp"> WhatsApp</label>
+            <label><input type="checkbox" name="contactMethod" value="MAX"> MAX</label>
+            <label><input type="checkbox" name="contactMethod" value="SMS"> SMS</label>
+          </fieldset>
+          <textarea name="comment" placeholder="Коротко о запросе (по желанию)" aria-label="Комментарий"></textarea>
+          <div class="consent-row">
+            <input type="checkbox" id="formConsent" name="consent" required>
+            <label for="formConsent">Я согласен(на) на <a href="../consent/" target="_blank" rel="noopener">обработку персональных данных</a>, принимаю <a href="../privacy-policy/" target="_blank" rel="noopener">политику конфиденциальности</a> и условия <a href="../oferta/" target="_blank" rel="noopener">публичной оферты</a>.</label>
+          </div>
+          <button type="submit" class="btn">Отправить заявку</button>
+          <p class="form-note">Напишу в выбранном канале. Убедитесь, что уведомления включены.</p>
+        </form>
       </div>
     </section>
-    <p class="legal">Психологические консультации не являются медицинской услугой; отзывы клиентов не гарантируют результат.</p>
+    <p class="legal">Психологические консультации не являются медицинской услугой; отзывы клиентов не гарантируют результат. Работаю только со взрослыми (18+).</p>
   </main>
 
   <footer>
     <div class="wrap footer-inner">
-      <div>Анна Щеголихина · семейный психолог<br>Калининград · очные консультации</div>
+      <div>Анна Щеголихина · семейный психолог · самозанятая<br>Калининград · очные консультации · 18+</div>
       <div class="footer-links">
         <a href="../">Онлайн-консультации</a>
-        <a href="../oferta/">Оферта</a>
-        <a href="../privacy-policy/">Политика конфиденциальности</a>
-        <a href="../consent/">Согласие на обработку данных</a>
+        <a href="../oferta/" target="_blank" rel="noopener">Оферта</a>
+        <a href="../privacy-policy/" target="_blank" rel="noopener">Политика конфиденциальности</a>
+        <a href="../consent/" target="_blank" rel="noopener">Согласие на обработку данных</a>
         <a href="#" class="js-cookie-settings">Настройки cookie</a>
       </div>
     </div>
   </footer>
+  <button type="button" class="scroll-top" id="scrollTopBtn" aria-label="Наверх">↑</button>
   <script src="../assets/lead-tracking.js" defer></script>
   <script src="../assets/cookie-notice.js" defer></script>
   <script src="../assets/consent-analytics.js" defer></script>
+  <script src="../assets/callback-form.js" defer></script>
+  <script>
+    (function(){
+      var btn=document.getElementById('scrollTopBtn');
+      if(!btn)return;
+      window.addEventListener('scroll',function(){btn.classList.toggle('show',window.scrollY>400)},{passive:true});
+      btn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});
+    })();
+  </script>
 </body>
 </html>
