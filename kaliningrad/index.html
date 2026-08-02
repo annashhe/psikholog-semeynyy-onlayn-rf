@@ -82,6 +82,7 @@
     body { margin:0; background:var(--cream)!important; color:var(--ink)!important; font:600 16px/1.6 var(--sans); overflow-x:hidden; forced-color-adjust:none; }
     .grid-soft { position:fixed; inset:0; z-index:-1; pointer-events:none; background-image:linear-gradient(#4a3f450a 1px,transparent 1px),linear-gradient(90deg,#4a3f450a 1px,transparent 1px); background-size:80px 80px; }
     a { color:#7a5563; }
+    a:focus-visible, .btn:focus-visible, .diploma:focus-visible, .carousel-button:focus-visible, .review-toggle:focus-visible, .modal button:focus-visible, .scroll-top:focus-visible, summary:focus-visible { outline:2px solid #9a6b7a; outline-offset:3px; }
     .aurora { position:fixed; inset:-15%; z-index:-2; background:radial-gradient(ellipse 46% 38% at 10% 20%,rgba(184,169,201,.42),transparent 68%),radial-gradient(ellipse 38% 37% at 86% 17%,rgba(212,165,165,.38),transparent 68%),radial-gradient(ellipse 52% 42% at 50% 85%,rgba(255,214,185,.45),transparent 68%),var(--cream); filter:blur(3px); animation:drift 16s ease-in-out infinite alternate; }
     .blob { position:fixed; z-index:-1; width:260px; height:260px; border-radius:50%; pointer-events:none; opacity:.28; filter:blur(1px) saturate(.7); }
     .blob-rose { right:-90px; top:24%; background:linear-gradient(145deg,#f3d7d8,var(--rose) 55%,#bd8999); box-shadow:inset -18px -20px 36px #fff9,inset 13px 15px 29px #79506038,0 22px 44px #9b687652; }
@@ -123,12 +124,43 @@
     .steps { grid-template-columns:repeat(3,1fr); counter-reset:steps; }
     .step { position:relative; padding:27px 24px 25px; }
     .step::before { counter-increment:steps; content:"0" counter(steps); display:block; margin-bottom:22px; color:var(--accent); font:600 1.8rem var(--serif); }
-    .about { display:grid; grid-template-columns:.8fr 1.2fr; gap:20px; align-items:stretch; }
-    .about-mark { display:flex; flex-direction:column; justify-content:end; min-height:260px; padding:29px; border-radius:25px; background:linear-gradient(145deg,rgba(212,165,165,.88),rgba(184,169,201,.85)); color:#fff; box-shadow:inset -16px -20px 35px rgba(255,255,255,.25); }
-    .about-mark .quote { margin:0 0 18px; font:600 clamp(1.7rem,3.4vw,2.55rem)/1.18 var(--serif); letter-spacing:-.02em; }
-    .about-mark small { font-weight:800; letter-spacing:.09em; text-transform:uppercase; }
+    .about { display:grid; grid-template-columns:.84fr 1.16fr; gap:28px; align-items:center; }
+    .portrait { position:relative; aspect-ratio:1/1.15; max-width:460px; overflow:hidden; border-radius:30px; box-shadow:0 24px 55px #9a6b7a45,0 0 0 1px #fff8,0 0 48px #d4a5a560; animation:float-photo 5.6s ease-in-out infinite; }
+    .portrait img { width:100%; height:100%; object-fit:cover; object-position:center 20%; display:block; }
+    .portrait::after { content:""; position:absolute; inset:0; border-radius:inherit; box-shadow:inset 0 0 40px #fff4; pointer-events:none; }
+    @keyframes float-photo { 50% { transform:translateY(-12px); } }
     .about-copy { padding:31px; }
-    .about-copy p + p { margin-top:14px; }
+    .about-copy > p { margin:0 0 13px; color:var(--muted); }
+    .about-quote { margin:0 0 18px; padding:16px 18px; border-radius:18px; background:linear-gradient(145deg,rgba(212,165,165,.28),rgba(184,169,201,.28)); color:var(--ink); font:600 1.15rem/1.35 var(--serif); }
+    .principles { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin:17px 0; }
+    .principle { padding:10px 12px; border-radius:15px; background:#fff; color:#7a5563; font-size:.82rem; border:1px solid #d4a5a566; }
+    .not-work { margin-top:13px; padding:15px 17px; border-radius:17px; border:1.5px solid #c4899acc; background:linear-gradient(135deg,#f8e6e6e6,#efe6f3e6); box-shadow:0 10px 28px #9a6b7a22; color:#4a3f45; font-size:.88rem; }
+    .not-work h3 { margin:0 0 5px; font-size:1rem; color:var(--ink); }
+    .accent-line-scroll { background:linear-gradient(90deg,var(--rose),var(--lav)) no-repeat 0 93%; background-size:0 .13em; }
+    .accent-line-scroll.is-on { animation:underline 1s cubic-bezier(.22,1,.36,1) .55s forwards; }
+    @keyframes underline { to { background-size:100% .13em; } }
+    .diplomas { display:flex; flex-wrap:wrap; gap:7px; margin:18px 0; }
+    .diploma { border:1px solid #d4a5a588; border-radius:999px; background:#fff; padding:10px 14px; min-height:44px; color:#7a5563; font:700 .75rem var(--sans); cursor:pointer; }
+    .modal { position:fixed; z-index:100; inset:0; display:none; align-items:center; justify-content:center; overflow:auto; padding:20px; background:#4a3f45d9; cursor:zoom-out; }
+    .modal.show { display:flex; }
+    .modal figure { position:relative; margin:auto; max-width:min(900px,94vw); cursor:default; }
+    .modal img { display:block; max-width:100%; max-height:86vh; object-fit:contain; border-radius:14px; }
+    .modal button { position:absolute; top:-12px; right:-12px; z-index:2; width:44px; height:44px; min-width:44px; min-height:44px; border:0; border-radius:50%; background:#fff; color:var(--ink); font-size:1.3rem; cursor:pointer; box-shadow:0 8px 20px #0003; }
+    .reviews-wrap { position:relative; }
+    .reviews { display:grid; grid-auto-flow:column; grid-auto-columns:100%; gap:16px; overflow:hidden; scroll-snap-type:x mandatory; }
+    .review { padding:21px; border-radius:23px; scroll-snap-align:start; min-width:0; }
+    .stars { margin:0 0 7px; color:#a77854; letter-spacing:.08em; }
+    .review blockquote { display:-webkit-box; margin:0 0 10px; font-family:var(--serif); -webkit-box-orient:vertical; -webkit-line-clamp:5; overflow:hidden; color:var(--ink); }
+    .review.open blockquote { display:block; }
+    .review cite { color:#5c4f55; font-size:.82rem; font-style:normal; }
+    .review-toggle, .carousel-button { border:0; background:none; color:#7a5563; font:800 .82rem var(--sans); cursor:pointer; }
+    .carousel-controls { display:flex; gap:8px; margin-top:14px; }
+    .carousel-button { display:grid; place-items:center; width:44px; height:44px; min-width:44px; min-height:44px; border:1px solid #d4a5a566; border-radius:50%; background:#fff; font-size:1.2rem; color:#6d4a58; }
+    .review-note { color:var(--muted); font-size:.9rem; }
+    .review-cta { margin-top:20px; padding:20px; border-radius:23px; background:#ffffff78; text-align:center; }
+    .review-cta p { margin:0 0 12px; }
+    .review-cta a { color:#7a5563; }
+    @media (min-width:821px) { .reviews { grid-auto-columns:calc((100% - 16px)/2); } .review blockquote { -webkit-line-clamp:7; } }
     .prices { grid-template-columns:repeat(3,1fr); align-items:center; }
     .price { display:flex; flex-direction:column; min-height:260px; padding:26px; }
     .price.featured { border:2px solid transparent; background:linear-gradient(#fffdfad9,#d4a5a538 45%,#b8a9c940) padding-box,linear-gradient(130deg,var(--rose),var(--lav),var(--rose)) border-box; box-shadow:0 28px 70px #9a6b7a55; transform:scale(1.04); }
@@ -180,8 +212,9 @@
     .footer-inner { display:flex; justify-content:space-between; align-items:flex-start; gap:24px; }
     .footer-links { display:flex; flex-wrap:wrap; gap:8px 17px; }
     .footer-links a { text-decoration:none; }
-    @media (max-width:820px) { .hero { min-height:auto; grid-template-columns:1fr; gap:5px; padding-top:30px; } .hero-aside { min-height:250px; } .problem-grid,.prices,.steps { grid-template-columns:1fr 1fr; } .price.featured { transform:none; order:-1; } .map-layout,.booking { grid-template-columns:1fr; } .booking .actions { justify-content:flex-start; } }
-    @media (max-width:570px) { .wrap { padding:0 17px; } .top-phone { display:none; } .hero { padding-bottom:45px; } h1 { font-size:clamp(2.55rem,12vw,4rem); } section { padding:34px 0; } .problem-grid,.prices,.steps,.about { grid-template-columns:1fr; } .price.featured { order:-1; } .package { grid-column:auto; display:block; } .package .btn { margin-top:16px; } .orb { width:235px; } .map-frame,.map-frame iframe { min-height:310px; } .booking,.about-copy,.contact-card { padding:24px; } .footer-inner { display:block; } .footer-links { margin-top:13px; } }
+    @media (max-width:820px) { .hero { min-height:auto; grid-template-columns:1fr; gap:5px; padding-top:30px; } .hero-aside { min-height:250px; } .problem-grid,.prices,.steps { grid-template-columns:1fr 1fr; } .about { grid-template-columns:1fr; } .portrait { margin:auto; } .price.featured { transform:none; order:-1; } .map-layout,.booking { grid-template-columns:1fr; } .booking .actions { justify-content:flex-start; } .reviews { grid-auto-columns:100%; } }
+    @media (max-width:570px) { .wrap { padding:0 17px; } .top-phone { display:none; } .hero { padding-bottom:45px; } h1 { font-size:clamp(2.55rem,12vw,4rem); } section { padding:34px 0; } .problem-grid,.prices,.steps,.about { grid-template-columns:1fr; } .principles { grid-template-columns:1fr; } .price.featured { order:-1; } .package { grid-column:auto; display:block; } .package .btn { margin-top:16px; } .orb { width:235px; } .map-frame,.map-frame iframe { min-height:310px; } .booking,.about-copy,.contact-card { padding:24px; } .footer-inner { display:block; } .footer-links { margin-top:13px; } }
+    @media (prefers-reduced-motion:reduce) { .portrait,.accent-line-scroll { animation:none!important; } .accent-line-scroll { background-size:100% .13em; } }
     @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; } }
   </style>
 </head>
@@ -250,16 +283,71 @@
 
     <section id="about" aria-labelledby="about-title">
       <div class="about">
-        <div class="about-mark">
-          <p class="quote">«Можно не знать ответ сразу. Иногда важно сначала услышать вопрос».</p>
-          <small>Анна Щеголихина</small>
+        <div class="portrait">
+          <img src="../assets/portrait-920.webp" srcset="../assets/portrait-460.webp 460w, ../assets/portrait-920.webp 920w" sizes="(max-width:820px) 82vw,460px" width="460" height="529" loading="lazy" decoding="async" alt="Анна Щеголихина, семейный психолог в Калининграде">
         </div>
         <div class="glass about-copy">
           <p class="eyebrow">О специалисте</p>
           <h2 id="about-title">Анна Щеголихина</h2>
-          <p>Клинический и семейный психолог, обучаюсь гештальт-подходу. Работаю со взрослыми индивидуально и с парами, когда важно восстановить контакт, выдержать кризис или разобраться в сложном выборе.</p>
+          <p class="about-quote">«Можно не знать ответ сразу. Иногда важно сначала услышать вопрос».</p>
+          <p>Клинический и семейный психолог, обучаюсь гештальт-подходу и групповой психологии. Работаю со взрослыми индивидуально и с парами — когда важно восстановить контакт, выдержать кризис или разобраться в сложном выборе.</p>
           <p>В кабинете нет правильной стороны и виноватого. Есть история отношений, чувства и потребности каждого — и возможность постепенно увидеть, что с ними делать. Можно прийти парой или начать одному.</p>
-          <p>Если удобнее онлайн — <a href="../">запись на онлайн-консультации</a> доступна с календарем на главной странице.</p>
+          <div class="principles">
+            <div class="principle">Конфиденциальность</div>
+            <div class="principle">Без осуждения</div>
+            <div class="principle">Без готовых советов</div>
+            <div class="principle">В вашем темпе</div>
+          </div>
+          <div class="not-work">
+            <h3>С кем я <span class="accent-line-scroll">не работаю</span></h3>
+            С детьми и подростками, зависимостями, острыми суицидальными состояниями, психозом и судебной экспертизой.
+          </div>
+          <p class="eyebrow" style="margin-top:20px">Образование</p>
+          <div class="diplomas">
+            <button class="diploma" type="button" data-diploma="../assets/diplomas/НИИДПО_Диплом_ПП_с_квалификацией_Семейный_психолог_Щеголихина_Анна.webp">Семейный психолог</button>
+            <button class="diploma" type="button" data-diploma="../assets/diplomas/НИИДПО_Диплом_ПП_с_квалификацией_Клинический_психолог_Щеголихина_Анна.webp">Клинический психолог</button>
+            <button class="diploma" type="button" data-diploma="../assets/diplomas/КемГУ_Диплом_магистра_Прикладная_Математика_и_Информатика_Щеголихина_Анна.webp">Диплом магистра</button>
+            <button class="diploma" type="button" data-diploma="../assets/diplomas/Сертификат психолога Анны Щеголихиной Вторая ступень 2025.webp">Гештальт: вторая ступень</button>
+            <button class="diploma" type="button" data-diploma="../assets/diplomas/Сертификат психолога Анны Щеголихиной Первая ступень 2023.webp">Гештальт: первая ступень</button>
+            <button class="diploma" type="button" data-diploma="../assets/diplomas/Сертификат психолога Анны Щеголихиной Интенсив 2024 Калининград.webp">Психологический интенсив</button>
+            <button class="diploma" type="button" data-diploma="../assets/diplomas/Сертификат психолога Анны Щеголихиной Интенсив 2024 коса.webp">Интенсив · коса</button>
+            <button class="diploma" type="button" data-diploma="../assets/diplomas/Сертификат психолога Анны Щеголихиной Интенсив 2025 ББИ.webp">Интенсив · ББИ</button>
+            <button class="diploma" type="button" data-diploma="../assets/diplomas/Сертификат психолога Анны Щеголихиной Конференция 2024.webp">Конференция</button>
+            <button class="diploma" type="button" data-diploma="../assets/diplomas/Сертификат психолога Анны Щеголихиной Конференция 2025 Клнд.webp">Конференция · Клнд</button>
+            <button class="diploma" type="button" data-diploma="../assets/diplomas/Сертификат психолога Анны Щеголихиной Конференция 2025 Онлайн.webp">Конференция · онлайн</button>
+          </div>
+          <p>Если удобнее онлайн — <a href="../">запись на онлайн-консультации</a> доступна с календарём на главной.</p>
+          <a class="btn" href="#callback">Оставить заявку на очную встречу</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="reviews" aria-labelledby="reviews-title">
+      <div class="section-head">
+        <p class="eyebrow">Отзывы</p>
+        <h2 id="reviews-title">Слова тех, кто уже начал</h2>
+        <p class="review-note">Отзывы отражают личный опыт клиентов и не гарантируют такой же результат.</p>
+      </div>
+      <div class="reviews-wrap">
+        <div class="reviews" id="reviewsTrack">
+          <article class="glass review"><p class="stars" aria-hidden="true">★★★★★</p><blockquote>«Сходили с мужем к Анне 5 раз. Если честно, это лучшее что мы делали для наших отношений за последнее время. Анна умная, рассудительная, теплая и внимательная, она запоминает всё что ты говорил неделю или 2 назад, и это так приятно)) Не осуждает никого, не ищет кто прав кто виноват, просто помогает услышать друг друга по-настоящему. Мы за эти встречи смогли разобраться с ожиданиями друг от друга, с ролями в семье... и знаете, я выходила после каждого сеанса как заново влюблённая... в мужа, в нас. Очень советую Анну, она правда крутой семейный психолог!!»</blockquote><cite>М. и И. · 35 и 36 лет · парная терапия · b17</cite><br><button class="review-toggle" type="button">Читать полностью</button></article>
+          <article class="glass review"><p class="stars" aria-hidden="true">★★★★★</p><blockquote>«Довольно скептически относилась к психологии, но когда отношения с мужем были почти разрушены - решились на семейную терапию в качестве последнего шанса. Сессии проходили в комфортном темпе, Анна не давала нам уходить в ссоры или обиды, выводила на конструктивные диалоги, которые помогали находить корень проблемы и работали уже с самим источником разлада. Сейчас прошло несколько месяцев с начала терапии, и я очень благодарна Анне за ее профессионализм, такт, комфорт благодаря которым нам удалось сохранить семью, конечно впереди еще много работы, но сейчас ситуация сильно изменилась, так как мы наконец стали слышать друг друга. Спасибо большое, очень рада что нашла вас»</blockquote><cite>А. и М. · 36 и 29 лет · парная терапия · Яндекс Услуги · отзыв партнёрши</cite><br><button class="review-toggle" type="button">Читать полностью</button></article>
+          <article class="glass review"><p class="stars" aria-hidden="true">★★★★★</p><blockquote>«Большая благодарность Анне, за ее человечность, отличный подход без копания в детских травмах если это некомфортно, подсвечивает такие важные моменты, которых я бы точно не заметила если бы разбиралась в одиночку. Очень нравится наше общение, где меня принимают разной. Когда я обратилась за помощью изначально, я уже ни во что не верила и готова была опустить руки, но спустя несколько месяцев продуктивной работы, вижу этот колоссальный прогресс и понимаю, что точно хочу прожить эту жизнь в гармонии с собой и быть наполненным сосудом! Спасибо, Анна, вы вернули мне себя»</blockquote><cite>М. · 32 года · Яндекс Услуги</cite><br><button class="review-toggle" type="button">Читать полностью</button></article>
+          <article class="glass review"><p class="stars" aria-hidden="true">★★★★★</p><blockquote>«Проходил через развод и обратился к Анне, чтобы не утонуть в эмоциях. Работа помогла мне держать голову холодной, не влетать в конфликты и постепенно собрать себя заново. Чувствую, что вышел из ситуации гораздо сильнее, чем мог бы сам. Спасибо!»</blockquote><cite>М. · 49 лет · b17</cite><br><button class="review-toggle" type="button">Читать полностью</button></article>
+          <article class="glass review"><p class="stars" aria-hidden="true">★★★★★</p><blockquote>«Прохожу терапию у Анны несколько месяцев и чувствую реальный результат. Каждая встреча точная и продуктивная, без лишних разговоров ни о чём. Благодаря этим сессиям я лучше понимаю себя, спокойнее реагирую на стресс и выстраиваю отношения с женой иначе. Ценно, что изменения ощущаются в повседневной жизни, а не только во время разговора. Анна умеет видеть то, что самому сложно заметить, и помогает найти свои решения.»</blockquote><cite>И. · 38 лет · Яндекс Карты</cite><br><button class="review-toggle" type="button">Читать полностью</button></article>
+          <article class="glass review"><p class="stars" aria-hidden="true">★★★★★</p><blockquote>«Аня, добрый день! Хочу написать отзыв о работе с тобой, вдруг это кому-то поможет ещё) Прошло полгода с того момента как мы начали наши встречи, и я уже чувствую реальную разницу в себе. Раньше постоянное напряжение, выгорание и тревога были нормой, я почти не умел останавливаться и отдыхать, мне вечно казалось, что я куда-то не успеваю и что всё чего я добиваюсь недостаточно (( Сейчас же я стал рациональнее распределять задачи, слушать себя и свои приоритеты, и могу принимать решения без постоянного внутреннего давления. Появилось ощущение, что можно идти к целям, не „раздавливая“ себя при этом. С тобой легко говорить обо всём, даже о сомнениях и страхах, которые раньше казались стыдными. Ты помогаешь видеть то, что я сам обычно не замечаю, задаёшь точные вопросы, и благодаря этому я начинаю понимать свои мотивации и реакции. Иногда бывает непросто, но после встреч остаётся ясность и уверенность, что я двигаюсь в правильном направлении. Очень благодарен за твоё внимание и поддержку! Планирую продолжать встречи, потому что понимаю, что ещё многое могу открыть для себя с твоей помощью )»</blockquote><cite>С. · 44 года · личные сообщения</cite><br><button class="review-toggle" type="button">Читать полностью</button></article>
+          <article class="glass review"><p class="stars" aria-hidden="true">★★★★★</p><blockquote>«Аня, привет) Решил всё-таки написать, хотя обычно не оставляю отзывы. Я пришел к тебе с конкретной целью наладить отношения с женой, так как дело шло к разводу, думал, мы с тобой будем разбирать наши с ней диалоги, искать компромиссы... В итоге меньше чем за год я разобрался в себе так, что это отразилось вообще на всём. Я стал увереннее, спокойное такое ровное состояние появилось) на работе стало легче, и с друзьями, и просто с самим собой. С женой кстати, все наладилось довольно быстро, чему я очень рад! Спасибо тебе огромное. Если честно, я раньше думал, что терапия это что-то заумное)) а оказалось наоборот, понятное и можно сказать приятное) Если у меня вновь возникнут какие-то трудности в жизни, обязательно вернусь!»</blockquote><cite>И. · 41 год · b17</cite><br><button class="review-toggle" type="button">Читать полностью</button></article>
+        </div>
+        <div class="carousel-controls">
+          <button class="carousel-button" id="reviewPrev" type="button" aria-label="Предыдущий отзыв">←</button>
+          <button class="carousel-button" id="reviewNext" type="button" aria-label="Следующий отзыв">→</button>
+        </div>
+        <div class="review-cta">
+          <p>Оставьте отзыв о работе со мной</p>
+          <a class="ghost" target="_blank" rel="noopener" href="https://yandex.ru/profile/119983917035?tab=reviews">Яндекс Карты</a> ·
+          <a class="ghost" target="_blank" rel="noopener" href="https://uslugi.yandex.ru/search?action=addReview&amp;profile=AnnaShh-3119113">Яндекс Услуги</a> ·
+          <a class="ghost" target="_blank" rel="noopener" href="https://www.b17.ru/annams/#otzyv">b17</a> ·
+          <a class="ghost" target="_blank" rel="noopener" href="https://t.me/annashhe">Telegram</a>
         </div>
       </div>
     </section>
@@ -373,6 +461,7 @@
     </div>
   </footer>
   <button type="button" class="scroll-top" id="scrollTopBtn" aria-label="Наверх">↑</button>
+  <div class="modal" id="diplomaModal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Диплом"><figure><button type="button" id="diplomaModalClose" aria-label="Закрыть">×</button><img src="" alt="Диплом или сертификат Анны Щеголихиной"></figure></div>
   <script src="../assets/lead-tracking.js" defer></script>
   <script src="../assets/cookie-notice.js" defer></script>
   <script src="../assets/consent-analytics.js" defer></script>
@@ -380,9 +469,42 @@
   <script>
     (function(){
       var btn=document.getElementById('scrollTopBtn');
-      if(!btn)return;
-      window.addEventListener('scroll',function(){btn.classList.toggle('show',window.scrollY>400)},{passive:true});
-      btn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});
+      if(btn){
+        window.addEventListener('scroll',function(){btn.classList.toggle('show',window.scrollY>400)},{passive:true});
+        btn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});
+      }
+
+      var notWork=document.querySelector('.not-work');
+      if(notWork){
+        new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.querySelector('.accent-line-scroll')?.classList.add('is-on')})},{threshold:.6}).observe(notWork);
+      }
+
+      var modal=document.getElementById('diplomaModal');
+      if(modal){
+        var diplomaFocusReturn=null;
+        function diplomaFocusables(){return Array.prototype.slice.call(modal.querySelectorAll('button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])')).filter(function(el){return !el.disabled&&el.offsetParent!==null})}
+        function openDiploma(src,from){diplomaFocusReturn=from||document.activeElement;modal.querySelector('img').src=src;modal.classList.add('show');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';var closeBtn=document.getElementById('diplomaModalClose');if(closeBtn)closeBtn.focus()}
+        function closeDiploma(){if(!modal.classList.contains('show'))return;modal.classList.remove('show');modal.setAttribute('aria-hidden','true');document.body.style.overflow='';var restore=diplomaFocusReturn;diplomaFocusReturn=null;if(restore&&restore.focus)restore.focus()}
+        document.querySelectorAll('[data-diploma]').forEach(function(b){b.onclick=function(){openDiploma(b.dataset.diploma,b)}});
+        document.getElementById('diplomaModalClose').onclick=function(e){e.stopPropagation();closeDiploma()};
+        modal.onclick=function(e){if(!e.target.closest('img')&&!e.target.closest('button'))closeDiploma()};
+        window.addEventListener('keydown',function(e){if(!modal.classList.contains('show'))return;if(e.key==='Escape'){e.preventDefault();closeDiploma();return}if(e.key!=='Tab')return;var list=diplomaFocusables();if(!list.length)return;var first=list[0],last=list[list.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}});
+      }
+
+      var track=document.getElementById('reviewsTrack');
+      if(track){
+        var reviewCards=Array.prototype.slice.call(track.querySelectorAll('.review'));
+        var reviewCount=reviewCards.length;
+        var reviewIndex=0,auto=true;
+        function cardStep(){var c=reviewCards[0];return c?(c.getBoundingClientRect().width+16):track.clientWidth}
+        function maxReview(){return Math.max(0,reviewCount-(matchMedia('(min-width:821px)').matches?2:1))}
+        function slide(n){var max=maxReview();reviewIndex=((n%(max+1))+(max+1))%(max+1);track.scrollTo({left:cardStep()*reviewIndex,behavior:'smooth'})}
+        document.getElementById('reviewPrev').onclick=function(){auto=false;slide(reviewIndex-1)};
+        document.getElementById('reviewNext').onclick=function(){auto=false;slide(reviewIndex+1)};
+        setInterval(function(){if(auto)slide(reviewIndex+1)},4500);
+        document.querySelectorAll('.review-toggle').forEach(function(b){b.onclick=function(){var r=b.closest('.review'),open=r.classList.toggle('open');b.textContent=open?'Свернуть':'Читать полностью';auto=false}});
+        window.addEventListener('resize',function(){slide(Math.min(reviewIndex,maxReview()))},{passive:true});
+      }
     })();
   </script>
 </body>
