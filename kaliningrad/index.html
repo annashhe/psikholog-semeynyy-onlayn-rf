@@ -39,7 +39,7 @@
           "addressLocality": "Калининград",
           "streetAddress": "ул. Кирова, 1"
         },
-        "geo": { "@type": "GeoCoordinates", "latitude": 54.72494, "longitude": 20.49493 },
+        "geo": { "@type": "GeoCoordinates", "latitude": 54.724339, "longitude": 20.496959 },
         "openingHoursSpecification": {
           "@type": "OpeningHoursSpecification",
           "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
@@ -80,6 +80,7 @@
     * { box-sizing:border-box; }
     html { scroll-behavior:smooth; color-scheme:light only; }
     body { margin:0; background:var(--cream)!important; color:var(--ink)!important; font:600 16px/1.6 var(--sans); overflow-x:hidden; forced-color-adjust:none; }
+    .grid-soft { position:fixed; inset:0; z-index:-1; pointer-events:none; background-image:linear-gradient(#4a3f450a 1px,transparent 1px),linear-gradient(90deg,#4a3f450a 1px,transparent 1px); background-size:80px 80px; }
     a { color:#7a5563; }
     .aurora { position:fixed; inset:-15%; z-index:-2; background:radial-gradient(ellipse 46% 38% at 10% 20%,rgba(184,169,201,.42),transparent 68%),radial-gradient(ellipse 38% 37% at 86% 17%,rgba(212,165,165,.38),transparent 68%),radial-gradient(ellipse 52% 42% at 50% 85%,rgba(255,214,185,.45),transparent 68%),var(--cream); filter:blur(3px); animation:drift 16s ease-in-out infinite alternate; }
     .blob { position:fixed; z-index:-1; width:260px; height:260px; border-radius:50%; pointer-events:none; opacity:.28; filter:blur(1px) saturate(.7); }
@@ -128,8 +129,10 @@
     .about-mark small { font-weight:800; letter-spacing:.09em; text-transform:uppercase; }
     .about-copy { padding:31px; }
     .about-copy p + p { margin-top:14px; }
-    .prices { grid-template-columns:repeat(3,1fr); }
+    .prices { grid-template-columns:repeat(3,1fr); align-items:center; }
     .price { display:flex; flex-direction:column; min-height:260px; padding:26px; }
+    .price.featured { border:2px solid transparent; background:linear-gradient(#fffdfad9,#d4a5a538 45%,#b8a9c940) padding-box,linear-gradient(130deg,var(--rose),var(--lav),var(--rose)) border-box; box-shadow:0 28px 70px #9a6b7a55; transform:scale(1.04); }
+    .price .badge { display:inline-block; align-self:flex-start; margin-bottom:8px; padding:4px 10px; border-radius:999px; background:linear-gradient(100deg,var(--rose),var(--lav)); color:#fff; font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; }
     .price .time { color:var(--muted); font-size:.9rem; }
     .amount { margin:15px 0 12px; font:600 2rem var(--serif); }
     .price p { color:var(--muted); margin:0; }
@@ -177,12 +180,13 @@
     .footer-inner { display:flex; justify-content:space-between; align-items:flex-start; gap:24px; }
     .footer-links { display:flex; flex-wrap:wrap; gap:8px 17px; }
     .footer-links a { text-decoration:none; }
-    @media (max-width:820px) { .hero { min-height:auto; grid-template-columns:1fr; gap:5px; padding-top:30px; } .hero-aside { min-height:250px; } .problem-grid,.prices,.steps { grid-template-columns:1fr 1fr; } .map-layout,.booking { grid-template-columns:1fr; } .booking .actions { justify-content:flex-start; } }
-    @media (max-width:570px) { .wrap { padding:0 17px; } .top-phone { display:none; } .hero { padding-bottom:45px; } h1 { font-size:clamp(2.55rem,12vw,4rem); } section { padding:34px 0; } .problem-grid,.prices,.steps,.about { grid-template-columns:1fr; } .package { grid-column:auto; display:block; } .package .btn { margin-top:16px; } .orb { width:235px; } .map-frame,.map-frame iframe { min-height:310px; } .booking,.about-copy,.contact-card { padding:24px; } .footer-inner { display:block; } .footer-links { margin-top:13px; } }
+    @media (max-width:820px) { .hero { min-height:auto; grid-template-columns:1fr; gap:5px; padding-top:30px; } .hero-aside { min-height:250px; } .problem-grid,.prices,.steps { grid-template-columns:1fr 1fr; } .price.featured { transform:none; order:-1; } .map-layout,.booking { grid-template-columns:1fr; } .booking .actions { justify-content:flex-start; } }
+    @media (max-width:570px) { .wrap { padding:0 17px; } .top-phone { display:none; } .hero { padding-bottom:45px; } h1 { font-size:clamp(2.55rem,12vw,4rem); } section { padding:34px 0; } .problem-grid,.prices,.steps,.about { grid-template-columns:1fr; } .price.featured { order:-1; } .package { grid-column:auto; display:block; } .package .btn { margin-top:16px; } .orb { width:235px; } .map-frame,.map-frame iframe { min-height:310px; } .booking,.about-copy,.contact-card { padding:24px; } .footer-inner { display:block; } .footer-links { margin-top:13px; } }
     @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; } }
   </style>
 </head>
 <body>
+  <div class="grid-soft" aria-hidden="true"></div>
   <div class="aurora" aria-hidden="true"></div>
   <div class="blob blob-rose" aria-hidden="true"></div>
   <div class="blob blob-lav" aria-hidden="true"></div>
@@ -267,9 +271,9 @@
         <p>Время встречи и формат согласуем заранее в Telegram или WhatsApp.</p>
       </div>
       <div class="grid prices">
-        <article class="glass price"><h3>Индивидуальная</h3><span class="time">50 минут</span><div class="amount">4&nbsp;500 ₽</div><p>Чтобы сфокусироваться на личной ситуации, чувствах и отношениях.</p><a class="btn" href="https://t.me/annashhe" target="_blank" rel="noopener">Уточнить время</a></article>
-        <article class="glass price"><h3>Индивидуальная</h3><span class="time">90 минут</span><div class="amount">7&nbsp;000 ₽</div><p>Более спокойный темп, когда хочется подробно разобрать важную тему.</p><a class="btn" href="https://t.me/annashhe" target="_blank" rel="noopener">Уточнить время</a></article>
-        <article class="glass price"><h3>Для пары</h3><span class="time">90 минут</span><div class="amount">7&nbsp;000 ₽</div><p>Время для разговора, где оба голоса имеют значение.</p><a class="btn" href="https://t.me/annashhe" target="_blank" rel="noopener">Уточнить время</a></article>
+        <article class="glass price"><h3>Индивидуальная</h3><span class="time">50 минут</span><div class="amount">4&nbsp;500 ₽</div><p>Чтобы сфокусироваться на личной ситуации, чувствах и отношениях.</p><a class="btn" href="#callback">Уточнить время</a></article>
+        <article class="glass price featured"><span class="badge">Для пары</span><h3>Пара</h3><span class="time">90 минут</span><div class="amount">7&nbsp;000 ₽</div><p>Время для разговора, где оба голоса имеют значение.</p><a class="btn" href="#callback">Уточнить время</a></article>
+        <article class="glass price"><h3>Индивидуальная</h3><span class="time">90 минут</span><div class="amount">7&nbsp;000 ₽</div><p>Более спокойный темп, когда хочется подробно разобрать важную тему.</p><a class="btn" href="#callback">Уточнить время</a></article>
         <div class="glass package"><div><strong>Пакет из 5 встреч −20%</strong><p>Оплата одним платежом. Действует для индивидуального и парного формата.</p><div class="package-prices"><div>5×50 мин — <strong>18 000 ₽</strong> <del>22 500 ₽</del></div><div>5×90 мин — <strong>28 000 ₽</strong> <del>35 000 ₽</del></div></div></div><a class="btn btn-ghost" href="https://t.me/annashhe" target="_blank" rel="noopener">Написать, чтобы купить пакет</a></div>
       </div>
       <p class="adults-note">Работаю только со взрослыми — от 18 лет. Очные встречи согласуем в переписке: онлайн-календарь для очного приёма не используется.</p>
@@ -282,14 +286,14 @@
       </div>
       <div class="map-layout">
         <div class="glass map-frame">
-          <iframe src="https://yandex.ru/map-widget/v1/?ll=20.49493%2C54.72494&amp;z=16&amp;pt=20.49493,54.72494,pm2rdm&amp;l=map" title="Карта: кабинет психолога, Калининград, улица Кирова, 1" aria-label="Карта расположения кабинета психолога на улице Кирова, 1 в Калининграде" loading="lazy"></iframe>
+          <iframe src="https://yandex.ru/map-widget/v1/?ll=20.496959%2C54.724339&amp;z=16&amp;pt=20.496959,54.724339,pm2rdm&amp;l=map" title="Карта: кабинет психолога, Калининград, улица Кирова, 1" aria-label="Карта расположения кабинета психолога на улице Кирова, 1 в Калининграде" loading="lazy"></iframe>
         </div>
         <aside class="glass contact-card">
           <h3>Как найти</h3>
           <p><address>Россия, Калининград<br><strong>ул. Кирова, 1</strong></address></p>
           <p>Около 400 метров от Северного вокзала.</p>
           <div class="contact-links">
-            <a href="https://yandex.ru/maps/?ll=20.49493%2C54.72494&amp;z=16&amp;pt=20.49493,54.72494,pm2rdm" target="_blank" rel="noopener">Открыть в Яндекс Картах ↗</a>
+            <a href="https://yandex.ru/maps/?ll=20.496959%2C54.724339&amp;z=16&amp;pt=20.496959,54.724339,pm2rdm" target="_blank" rel="noopener">Открыть в Яндекс Картах ↗</a>
             <a href="tel:+79137556284">+7 913 755 62 84</a>
             <a href="https://t.me/annashhe" target="_blank" rel="noopener">Telegram</a>
             <a href="https://wa.me/79137556284" target="_blank" rel="noopener">WhatsApp</a>
