@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /thank-you-booking/
+Disallow: /thank-you-callback/
+Disallow: /previews/
 
 Sitemap: https://психолог-семейный-онлайн.рф/sitemap.xml

@@ -45,6 +45,8 @@ window.PSI_LEADS_API = 'https://psi-leads.anna-shhe-adwords.workers.dev';
         window.psiMetrikaGoal('click_phone');
       } else if (href === '#booking' || href.indexOf('#booking') !== -1) {
         window.psiMetrikaGoal('open_booking');
+      } else if (href === '#callback' || href.indexOf('#callback') !== -1) {
+        window.psiMetrikaGoal('open_callback');
       }
     },
     true
