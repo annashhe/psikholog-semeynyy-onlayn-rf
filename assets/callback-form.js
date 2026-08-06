@@ -36,6 +36,11 @@
     var contacts = form.querySelectorAll('[name="contactMethods"], [name="contactMethod"]');
     var contactGroup = field(form, '[data-contact-methods]') || (contacts[0] && contacts[0].closest('fieldset'));
     var consentRow = consent && (consent.closest('.consent-row') || consent.parentElement);
+    var errorBox = field(form, '#formError') || field(form, '.form-error');
+
+    function showError(message) {
+      if (errorBox) errorBox.textContent = message || '';
+    }
 
     if (phone) {
       phone.addEventListener('input', function () {
@@ -43,9 +48,31 @@
         phone.value = formatPhone(phone.value);
         if (caretAtEnd) phone.setSelectionRange(phone.value.length, phone.value.length);
         setError(phone, false);
+        showError('');
       });
       phone.addEventListener('focus', function () {
         if (!phone.value) phone.value = '+7';
+      });
+    }
+
+    if (name) {
+      name.addEventListener('input', function () {
+        setError(name, false);
+        showError('');
+      });
+    }
+
+    Array.prototype.forEach.call(contacts, function (item) {
+      item.addEventListener('change', function () {
+        setError(contactGroup, false);
+        showError('');
+      });
+    });
+
+    if (consent) {
+      consent.addEventListener('change', function () {
+        setError(consentRow || consent, false);
+        showError('');
       });
     }
 
@@ -65,8 +92,16 @@
       setError(phone, invalidPhone);
       setError(contactGroup, invalidContacts);
       setError(consentRow || consent, invalidConsent);
-      if (invalidName || invalidPhone || invalidContacts || invalidConsent) return;
 
+      if (invalidName || invalidPhone || invalidContacts || invalidConsent) {
+        if (invalidName) showError('Укажите имя');
+        else if (invalidPhone) showError('Укажите телефон в формате +7…');
+        else if (invalidContacts) showError('Выберите способ связи');
+        else if (invalidConsent) showError('Нужно согласие на обработку данных и условия оферты');
+        return;
+      }
+
+      showError('');
       var submit = field(form, '[type="submit"]');
       if (submit) submit.disabled = true;
 
@@ -105,7 +140,7 @@
         window.location.assign('/thank-you-callback/');
       }).catch(function () {
         if (submit) submit.disabled = false;
-        window.alert('Не удалось отправить форму. Напишите, пожалуйста, в Telegram: @annashhe');
+        showError('Не удалось отправить. Напишите в Telegram, WhatsApp или MAX');
       });
     });
   }
