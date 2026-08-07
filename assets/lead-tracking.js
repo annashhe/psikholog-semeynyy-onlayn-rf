@@ -17,7 +17,12 @@ window.PSI_LEADS_API = 'https://psi-leads.anna-shhe-adwords.workers.dev';
         }
       });
       if (has) {
-        sessionStorage.setItem('psiUtms', JSON.stringify(utm));
+        // First-touch only: do not overwrite after landing.
+        try {
+          if (!sessionStorage.getItem('psiUtms')) {
+            sessionStorage.setItem('psiUtms', JSON.stringify(utm));
+          }
+        } catch (e0) {}
         try {
           if (!localStorage.getItem('psiUtmsFirst')) {
             localStorage.setItem('psiUtmsFirst', JSON.stringify(utm));
@@ -64,7 +69,7 @@ function getLeadTrackingPayload() {
   var utm = {};
   try {
     utm = JSON.parse(
-      sessionStorage.getItem('psiUtms') || localStorage.getItem('psiUtmsFirst') || '{}'
+      localStorage.getItem('psiUtmsFirst') || sessionStorage.getItem('psiUtms') || '{}'
     );
   } catch (e2) {}
 
