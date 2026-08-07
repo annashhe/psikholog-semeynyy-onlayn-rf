@@ -131,6 +131,7 @@
               name: payload.name,
               phone: phone.value.trim(),
               contact: selectedContacts.join(', '),
+              contactMethods: selectedContacts.slice(),
               comment: payload.comment || '',
               format: 'Очная консультация в Калининграде',
             })
