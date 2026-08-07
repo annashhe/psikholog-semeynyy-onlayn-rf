@@ -105,11 +105,15 @@
         'bookingThankYou',
         JSON.stringify({
           name: payload.name || '',
+          phone: payload.phone || '',
           therapy: therapy.title,
           duration: therapy.duration,
           price: therapy.price,
           datetime: formatWhen(payload.startIso, endIso, payload.clientTimezone),
           contact: formatContact(payload.contactMethods),
+          contactMethods: Array.isArray(payload.contactMethods)
+            ? payload.contactMethods.slice()
+            : [],
           leadGoal: 'pending',
         })
       );
