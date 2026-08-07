@@ -18,23 +18,25 @@
 <body><div class="grid-soft" aria-hidden="true"></div><main class="card"><p class="eyebrow">Онлайн-консультация</p><h1>Спасибо, <span id="name">ваша запись</span> принята</h1><p class="lead" id="lead">Я получила заявку. Подтверждение и ссылка на встречу придут в выбранный способ связи.</p><div class="details" id="details" hidden><div class="row"><span>Формат</span><strong id="therapy"></strong></div><div class="row"><span>Длительность</span><strong id="duration"></strong></div><div class="row"><span>Стоимость</span><strong id="price"></strong></div><div class="row"><span>Дата и время</span><strong id="datetime"></strong></div><div class="row"><span>Телефон</span><strong id="phone"></strong></div><div class="row"><span>Связь</span><strong id="contact"></strong></div></div><div class="actions"><a class="btn" href="/">Вернуться на главную</a><a class="btn ghost" href="/kaliningrad/">Очно в Калининграде</a><a class="btn ghost" href="https://t.me/annashhe" target="_blank" rel="noopener">Telegram</a><a class="btn ghost" href="https://wa.me/79137556284" target="_blank" rel="noopener">WhatsApp</a><a class="btn ghost" href="https://max.ru/u/f9LHodD0cOKrHIa3XdZycCKQSXXx0dFf9Ck7hXPtx3Ti-6RSxFnoPC7d1Ag" target="_blank" rel="noopener">MAX</a></div><p class="note">Если нужно что-то уточнить или изменить, напишите в любой удобный мессенджер.</p></main><script>
 try{
   var x=JSON.parse(sessionStorage.getItem('bookingThankYou')||'{}');
-  function maskPhone(phone){
+  function displayPhone(phone){
     var digits=String(phone||'').replace(/\D/g,'');
-    if(digits.length<11) return '';
-    return '+7 ••• ••• '+digits.slice(-4,-2)+'-'+digits.slice(-2);
+    if(digits.charAt(0)==='8') digits='7'+digits.slice(1);
+    if(digits.length===10) digits='7'+digits;
+    if(digits.length!==11||digits.charAt(0)!=='7') return String(phone||'').trim();
+    return '+7 '+digits.slice(1,4)+' '+digits.slice(4,7)+'-'+digits.slice(7,9)+'-'+digits.slice(9,11);
   }
-  var phoneMasked=maskPhone(x.phone);
+  var phoneShown=displayPhone(x.phone);
   var fields=['therapy','duration','price','datetime','contact'];
   if(x.name){document.getElementById('name').textContent=x.name;document.querySelector('h1').childNodes[0].textContent='Спасибо, ';document.getElementById('name').insertAdjacentText('afterend',', ваша запись ');}
-  if(phoneMasked||x.contact){
+  if(phoneShown||x.contact){
     var via=x.contact||'выбранный способ связи';
-    document.getElementById('lead').innerHTML='Я получила заявку. Свяжусь с вами через <strong>'+via+'</strong>'+(phoneMasked?' по номеру <strong>'+phoneMasked+'</strong>':'')+', чтобы подтвердить запись и прислать ссылку на встречу.';
+    document.getElementById('lead').innerHTML='Я получила заявку. Свяжусь с вами через <strong>'+via+'</strong>'+(phoneShown?' по номеру <strong>'+phoneShown+'</strong>':'')+', чтобы подтвердить запись и прислать ссылку на встречу.';
   }
-  if(fields.some(function(k){return x[k]})||phoneMasked){
+  if(fields.some(function(k){return x[k]})||phoneShown){
     document.getElementById('details').hidden=false;
     fields.forEach(function(k){document.getElementById(k).textContent=x[k]||'—'});
-    document.getElementById('phone').textContent=phoneMasked||'—';
-    if(!phoneMasked){document.getElementById('phone').parentNode.style.display='none'}
+    document.getElementById('phone').textContent=phoneShown||'—';
+    if(!phoneShown){document.getElementById('phone').parentNode.style.display='none'}
   }
 }catch(_){}
 function fireConversionGoals(){
